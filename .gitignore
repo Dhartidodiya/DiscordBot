@@ -1,5 +1,9 @@
 .env
 env/Lib/site-packages/torch/lib/torch_cpu.dll
 env/Lib/site-packages/torch/lib/dnnl.lib
-
-env
+env/
+__pycache__/
+*.pyc
+*.pyo
+.vscode/
+.idea/
