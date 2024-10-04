@@ -60,7 +60,7 @@ class TaskView(discord.Client):
                     await self.send_all_users_tasks_on_date(message, requested_date, detected_language)
                 
 
-        elif 'today' in preprocessed_content.lower():
+        elif 'today' or 'aujourd\'hui' in preprocessed_content.lower():
             if mentioned_user:
                 await self.send_todays_tasks_for_user(message, mentioned_user, detected_language)
             else:

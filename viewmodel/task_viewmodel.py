@@ -1,5 +1,6 @@
 # /viewmodel/task_viewmodel.py
 import re
+import fasttext
 from transformers import T5ForConditionalGeneration, T5Tokenizer,pipeline
 from deep_translator import GoogleTranslator
 from datetime import datetime, timedelta
@@ -12,8 +13,10 @@ class TaskViewModel:
         self.tokenizer = T5Tokenizer.from_pretrained(model_name)
         self.model = T5ForConditionalGeneration.from_pretrained(model_name)
         
-        # Initialize XLM-R model for language detection
-        self.language_identifier = pipeline("text-classification", model="papluca/xlm-roberta-base-language-detection")
+        # Initialize FastText model for language detection
+        # Download a pre-trained language identification model
+        self.language_identifier = fasttext.load_model("D:/Neofid/DiscordBot/DiscordBot/lid.176.bin")
+
 
     def preprocess_content(self, content):
         """Preprocess the content by removing mentions and unwanted characters."""
@@ -28,16 +31,14 @@ class TaskViewModel:
     def detect_language(self, text):
         """Detect the language of a given text using XLM-R."""
         try:
-            result = self.language_identifier(text)
-            print(f"Raw result from XLM-R language detection model: {result}")  # Debug: Print the raw result
-            
-            detected_lang = result[0]['label'].lower()  # Convert label to lowercase (e.g., "EN" -> "en")
+            # Use FastText to predict the language
+            prediction = self.language_identifier.predict(text, k=1)
+            detected_lang = prediction[0][0].replace("__label__", "")  # Get the language code
             print(f"Detected language code: {detected_lang}")  # Debug: Print the detected language code
-            
-            
             return detected_lang
+        
         except Exception as e:
-            print(f"Error detecting language with XLM-R: {e}")
+            print(f"Error detecting language with FastText: {e}")
             return 'unknown'
         
     def translate(self, text, source_language, target_language):
