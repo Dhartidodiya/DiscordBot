@@ -5,12 +5,105 @@ from model.task_model import TaskModel
 from viewmodel.task_viewmodel import TaskViewModel
 from langdetect import detect
 from datetime import datetime, timedelta
+from discord.ext import commands
+from view.task_ui_componanets import AddTaskView, TaskViewButtons  
+from discord.ui import View, Button
+from discord import Embed
 
-class TaskView(discord.Client):
+
+class TaskView(commands.Bot):
     def __init__(self, model, viewmodel, **options):
-        super().__init__(**options)
+        intents = options.get('intents', discord.Intents.default())
+        super().__init__(command_prefix="!", intents=intents)
         self.model = model
         self.viewmodel = viewmodel
+        self.task_display_message = None  # Store reference to the task display message
+        self.additional_task_messages = []  # Track additional task display messages
+        self.add_commands()
+        
+        
+    def add_commands(self):
+        """Register commands for the bot."""
+        print("Registering commands...") 
+        
+        @self.command()
+        async def add_task(ctx):
+            print("Add Task Command Triggered")  # Debug: Check if command is triggered
+            await ctx.send("Click below to add a new task:", view=AddTaskView(task_view=self))
+
+        @self.command()
+        async def manage_tasks(ctx):
+            """Display task management UI for all tasks in the database."""
+            tasks = self.model.get_all_tasks()
+
+            if not tasks:
+                await ctx.send("No tasks available. Use 'Add Task' to create a new task.")
+                return
+
+            # Use `self` to access `build_task_embed` if the method is in the same class
+            embeds = self.build_task_embed(tasks)
+
+            if not embeds:  # Check if embeds were generated correctly
+                await ctx.send("Unable to display tasks. Please try again later.")
+                return
+
+            # Send the first embed and track the message
+            self.task_display_message = await ctx.send(embed=embeds[0])
+
+            # Clear any previous additional messages
+            await self.clear_additional_messages(ctx)
+
+            # Send additional embeds as separate messages
+            self.additional_task_messages = []
+            for embed in embeds[1:]:
+                msg = await ctx.send(embed=embed)
+                self.additional_task_messages.append(msg)
+                
+        async def clear_additional_messages(self, ctx):
+            """Delete additional task display messages from the channel."""
+            if self.additional_task_messages:
+                for msg in self.additional_task_messages:
+                    try:
+                        await msg.delete()
+                    except discord.NotFound:
+                        pass  # Message already deleted or not found
+                self.additional_task_messages = []        
+                    
+    
+    def build_task_embed(self, tasks):
+        """Create a formatted embed to display the list of tasks grouped by categories."""
+        embeds = []
+        max_embed_size = 6000
+        current_embed = discord.Embed(title="Task List", description="Here are the current tasks:", color=discord.Color.blue())
+        current_size = len(current_embed.title) + len(current_embed.description)
+
+        for task in tasks:
+            task_id, content, author, channel, timestamp, language = task
+            field_value = f"**Author**: {author}\n**Channel**: {channel}\n**Timestamp**: {timestamp}\n**Language**: {language}"
+            field_size = len(f"Task {task_id}: {content}") + len(field_value)
+
+            # Check if adding this field will exceed the embed size limit
+            if current_size + field_size > max_embed_size:
+                # If so, start a new embed
+                embeds.append(current_embed)
+                current_embed = discord.Embed(title="Task List (Continued)", color=discord.Color.blue())
+                current_size = len(current_embed.title)
+
+            current_embed.add_field(
+                name=f"Task {task_id}: {content}",
+                value=field_value,
+                inline=False
+            )
+            current_size += field_size
+
+        # Append the last embed if it has fields
+        if current_embed.fields:
+            embeds.append(current_embed)
+
+        return embeds
+
+
+            
 
     async def on_ready(self):
         print(f'Logged on as {self.user}!')
@@ -31,12 +124,19 @@ class TaskView(discord.Client):
         print(f"detected language in preprossed: {detected_language}")
         target_channels = ['général', 'back', 'front', 'database']
 
-        if not message.content.startswith(f"<@{self.user.id}>"):
-            if message.channel.name in target_channels:
-                self.model.store_task(preprocessed_content, str(message.author), message.channel.name, detected_language)
-
-        if self.user in message.mentions:
-            await self.handle_bot_mentions(message, preprocessed_content, detected_language)
+        # Check if the message should be treated as a task
+        if (not message.content.startswith(f"<@{self.user.id}>") and not message.content.startswith("!") and
+            message.channel.name in target_channels):
+            # Store as a regular task if it doesn't start with a mention or command prefix
+            self.model.store_task(preprocessed_content, str(message.author), message.channel.name, detected_language)
+            print(f"Stored task: {preprocessed_content}")
+            return
+            if self.user in message.mentions:
+                await self.handle_bot_mentions(message, preprocessed_content, detected_language)
+                
+        # Handle bot mentions or command messages
+        if message.content.startswith("!") or self.user in message.mentions:
+            await self.process_commands(message)        
 
     async def handle_bot_mentions(self, message, preprocessed_content, detected_language):
         """Handles all the cases where the bot is mentioned."""
@@ -66,7 +166,7 @@ class TaskView(discord.Client):
             else:
                 await self.send_todays_tasks_for_all_users(message, detected_language)
                 
-        elif 'yesterday' in preprocessed_content.lower():
+        elif 'yesterday' or 'hier' in preprocessed_content.lower():
             if mentioned_user:
                 await self.send_yesterdays_tasks_for_user(message, mentioned_user, detected_language)
             else:
@@ -176,3 +276,7 @@ class TaskView(discord.Client):
         """Splits a long message into smaller chunks and sends them sequentially."""
         for i in range(0, len(content), max_length):
             await channel.send(content[i:i + max_length])
+            
+            
+ 
+        
