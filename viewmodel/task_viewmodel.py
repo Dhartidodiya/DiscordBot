@@ -22,7 +22,7 @@ class TaskViewModel:
         """Preprocess the content by removing mentions and unwanted characters."""
         content = re.sub(r'<@!?[0-9]+>', '', content)  # Remove user mentions
         content = re.sub(r'<@&[0-9]+>', '', content)   # Remove role mentions
-        content = re.sub(r'[^a-zA-Z0-9/\-\s]', '', content)  # Keep alphanumeric, slashes, dashes, and spaces
+        content = re.sub(r'[^a-zA-Z0-9/\-\s!]', '', content)  # Keep alphanumeric, slashes, dashes, and spaces
         content = re.sub(r'\s+', ' ', content)  # Replace multiple spaces with a single space
         return content.strip()
   

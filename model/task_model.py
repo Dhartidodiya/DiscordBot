@@ -9,10 +9,12 @@ class TaskModel:
         if reset_table:
             self.drop_table_if_exists()  # Call the method to drop the table if it exists (optional)
         self.create_table()
+        self.create_checklist_table()  # Create the checklist table
         
     def drop_table_if_exists(self):
         """Drop the tasks table if it already exists."""
         self.c.execute("DROP TABLE IF EXISTS tasks")
+        self.c.execute("DROP TABLE IF EXISTS checklists")
         self.conn.commit()
         print("Dropped the tasks table if it existed.")    
 
@@ -21,6 +23,22 @@ class TaskModel:
         self.c.execute('''CREATE TABLE IF NOT EXISTS tasks
                           (task_id INTEGER PRIMARY KEY AUTOINCREMENT, content TEXT, author TEXT, channel TEXT, timestamp TEXT, language TEXT)''')
         self.conn.commit()
+        
+        
+    def create_checklist_table(self):
+        """Create a checklist table for storing checklist items."""
+        self.c.execute('''
+            CREATE TABLE IF NOT EXISTS checklists (
+                checklist_id INTEGER PRIMARY KEY AUTOINCREMENT,
+                task_id INTEGER,
+                content TEXT,
+                is_completed BOOLEAN DEFAULT 0,
+                timestamp TEXT,
+                author TEXT,
+                FOREIGN KEY (task_id) REFERENCES tasks (task_id) ON DELETE CASCADE
+            )
+        ''')
+        self.conn.commit()    
 
         
     def store_task(self,content, author, channel, language='unknown'):
@@ -31,7 +49,54 @@ class TaskModel:
         self.conn.commit()
         print(f"Stored task from {author} in {channel}: \n {content} [Language: {language}]")   
 
+
+
+    def mark_task_complete(self, task_id):
+        """Mark the task as completed."""
+        self.c.execute("UPDATE tasks SET status = 'completed' WHERE task_id = ?", (task_id,))
+        self.conn.commit()
+
+    def delete_task(self, task_name):
+        """Delete the task from the database."""
+        self.c.execute("DELETE FROM tasks WHERE content = ?", (task_name,))
+        self.conn.commit()
+
+    def get_all_tasks(self):
+        """Retrieve all tasks from the database."""
+        self.c.execute("SELECT * FROM tasks WHERE status = 'active'")
+        return self.c.fetchall()
     
+    
+    def delete_task(self, content):
+        """Delete a task and its associated checklists by task content."""
+        self.c.execute("DELETE FROM tasks WHERE content = ?", (content,))
+        self.conn.commit()
+
+    def get_all_tasks(self):
+        """Retrieve all tasks from the database."""
+        self.c.execute("SELECT * FROM tasks")
+        return self.c.fetchall()
+    
+    def add_checklist_item(self, task_id, content, author):
+        """Add a new checklist item linked to a task."""
+        timestamp = str(datetime.now())
+        self.c.execute("INSERT INTO checklists (task_id, content, author, timestamp) VALUES (?, ?, ?, ?)",
+                       (task_id, content, author, timestamp))
+        self.conn.commit()
+
+    def get_checklists_by_task_id(self, task_id):
+        """Get all checklist items for a specific task by its ID."""
+        self.c.execute("SELECT checklist_id, content, is_completed FROM checklists WHERE task_id = ?", (task_id,))
+        return self.c.fetchall()
+    
+    def toggle_checklist_status(self, checklist_id, task_id):
+        """Toggle the completion status of a checklist item."""
+        self.c.execute("SELECT is_completed FROM checklists WHERE checklist_id = ? AND task_id = ?", (checklist_id, task_id))
+        status = self.c.fetchone()
+        if status:
+            new_status = not status[0]
+            self.c.execute("UPDATE checklists SET is_completed = ? WHERE checklist_id = ?", (new_status, checklist_id))
+            self.conn.commit()
     
     def get_tasks_by_date(self,query_date):
         """Retrieve all tasks for all users on a specific date."""
