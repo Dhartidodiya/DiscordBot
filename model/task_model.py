@@ -50,6 +50,16 @@ class TaskModel:
         print(f"Stored task from {author} in {channel}: \n {content} [Language: {language}]")   
 
 
+    def update_task(self, task_id, new_content):
+        """Update a task's content."""
+        self.c.execute("UPDATE tasks SET content = ? WHERE task_id = ?", (new_content, task_id))
+        self.conn.commit()
+
+
+    def delete_task_by_id(self, task_id):
+        """Delete a task by its unique ID."""
+        self.c.execute("DELETE FROM tasks WHERE task_id = ?", (task_id,))
+        self.conn.commit()
 
     def mark_task_complete(self, task_id):
         """Mark the task as completed."""

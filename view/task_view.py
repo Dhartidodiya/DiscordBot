@@ -6,7 +6,7 @@ from viewmodel.task_viewmodel import TaskViewModel
 from langdetect import detect
 from datetime import datetime, timedelta
 from discord.ext import commands
-from view.task_ui_componanets import AddTaskView, TaskViewButtons  
+from view.task_ui_componanets import AddTaskView, TaskButtonsView, TaskButton  # ✅ Correct Imports
 from discord.ui import View, Button
 from discord import Embed
 
@@ -31,63 +31,63 @@ class TaskView(commands.Bot):
             print("Add Task Command Triggered")  # Debug: Check if command is triggered
             await ctx.send("Click below to add a new task:", view=AddTaskView(task_view=self))
 
+        
         @self.command()
         async def manage_tasks(ctx):
-            """Display task management UI for all tasks in the database."""
+            """Display task management UI for all tasks in the database with buttons."""
             tasks = self.model.get_all_tasks()
 
             if not tasks:
                 await ctx.send("No tasks available. Use 'Add Task' to create a new task.")
                 return
 
-            # Use `self` to access `build_task_embed` if the method is in the same class
             embeds = self.build_task_embed(tasks)
 
-            if not embeds:  # Check if embeds were generated correctly
+            if not embeds:
                 await ctx.send("Unable to display tasks. Please try again later.")
                 return
 
-            # Send the first embed and track the message
-            self.task_display_message = await ctx.send(embed=embeds[0])
+            self.task_display_message = await ctx.send(embed=embeds[0], view=TaskButtonsView(tasks, self))
 
-            # Clear any previous additional messages
+            # Clear previous additional messages
             await self.clear_additional_messages(ctx)
 
-            # Send additional embeds as separate messages
+            # Send additional embeds with buttons
             self.additional_task_messages = []
             for embed in embeds[1:]:
                 msg = await ctx.send(embed=embed)
                 self.additional_task_messages.append(msg)
-                
-        async def clear_additional_messages(self, ctx):
-            """Delete additional task display messages from the channel."""
-            if self.additional_task_messages:
-                for msg in self.additional_task_messages:
-                    try:
-                        await msg.delete()
-                    except discord.NotFound:
-                        pass  # Message already deleted or not found
-                self.additional_task_messages = []        
+
+    async def clear_additional_messages(self, ctx):
+        """Delete additional task display messages from the channel."""
+        if self.additional_task_messages:
+            for msg in self.additional_task_messages:
+                try:
+                    await msg.delete()
+                except discord.NotFound:
+                    pass  # Message already deleted or not found
+            self.additional_task_messages = []       
                     
     
     def build_task_embed(self, tasks):
         """Create a formatted embed to display the list of tasks grouped by categories."""
         embeds = []
+        max_fields_per_embed = 25 
         max_embed_size = 6000
         current_embed = discord.Embed(title="Task List", description="Here are the current tasks:", color=discord.Color.blue())
-        current_size = len(current_embed.title) + len(current_embed.description)
+        current_size = len(current_embed.title) + (len(current_embed.description) if current_embed.description else 0)
+
 
         for task in tasks:
             task_id, content, author, channel, timestamp, language = task
             field_value = f"**Author**: {author}\n**Channel**: {channel}\n**Timestamp**: {timestamp}\n**Language**: {language}"
             field_size = len(f"Task {task_id}: {content}") + len(field_value)
 
-            # Check if adding this field will exceed the embed size limit
-            if current_size + field_size > max_embed_size:
-                # If so, start a new embed
+            # If current embed has reached max fields OR size, start a new one
+            if len(current_embed.fields) >= max_fields_per_embed or (current_size + field_size > max_embed_size):
                 embeds.append(current_embed)
                 current_embed = discord.Embed(title="Task List (Continued)", color=discord.Color.blue())
-                current_size = len(current_embed.title)
+                current_size = len(current_embed.title) + (len(current_embed.description) if current_embed.description else 0)
 
             current_embed.add_field(
                 name=f"Task {task_id}: {content}",
@@ -121,22 +121,22 @@ class TaskView(commands.Bot):
             return
 
         detected_language = self.viewmodel.detect_language(preprocessed_content)
-        print(f"detected language in preprossed: {detected_language}")
+        
         target_channels = ['général', 'back', 'front', 'database']
 
-        # Check if the message should be treated as a task
-        if (not message.content.startswith(f"<@{self.user.id}>") and not message.content.startswith("!") and
-            message.channel.name in target_channels):
-            # Store as a regular task if it doesn't start with a mention or command prefix
+         # ✅ Store task if message is in a target channel and not a command or mention
+        if not message.content.startswith("!") and message.channel.name in target_channels:
             self.model.store_task(preprocessed_content, str(message.author), message.channel.name, detected_language)
             print(f"Stored task: {preprocessed_content}")
-            return
-            if self.user in message.mentions:
-                await self.handle_bot_mentions(message, preprocessed_content, detected_language)
-                
-        # Handle bot mentions or command messages
-        if message.content.startswith("!") or self.user in message.mentions:
-            await self.process_commands(message)        
+
+        # ✅ Now properly check if bot is mentioned
+        if self.user in message.mentions:  # 🔥 Correct mention detection
+            print(f"✅ Bot was mentioned in: {message.content}")  # Debugging log
+            await self.handle_bot_mentions(message, preprocessed_content, detected_language)
+            return 
+
+        # ✅ Ensure commands are processed
+        await self.process_commands(message)
 
     async def handle_bot_mentions(self, message, preprocessed_content, detected_language):
         """Handles all the cases where the bot is mentioned."""
@@ -277,6 +277,43 @@ class TaskView(commands.Bot):
         for i in range(0, len(content), max_length):
             await channel.send(content[i:i + max_length])
             
+    async def update_task_display(self, interaction):
+        """Update the task display after deletion, completion, or editing."""
+        tasks = self.model.get_all_tasks()
+        embeds = self.build_task_embed(tasks)
+
+        # Handle empty embeds gracefully
+        if not embeds:
+            await interaction.channel.send("No tasks to display.", ephemeral=True)
+            return
+
+        # Update main task display message if it exists
+        if self.task_display_message:
+            await self.task_display_message.edit(embed=embeds[0])
+
+            # Delete additional messages to prevent duplicates
+            for msg in self.additional_task_messages:
+                try:
+                    await msg.delete()
+                except discord.NotFound:
+                    pass  # Message already deleted
+
+            # Clear old additional messages
+            self.additional_task_messages = []
+
+            # Send new embeds if there are multiple
+            for embed in embeds[1:]:
+                msg = await interaction.channel.send(embed=embed)
+                self.additional_task_messages.append(msg)
+        else:
+            # If no main display message, create a new one
+            self.task_display_message = await interaction.channel.send(embed=embeds[0])
+
+            # Send additional embeds, if any
+            for embed in embeds[1:]:
+                msg = await interaction.channel.send(embed=embed)
+                self.additional_task_messages.append(msg)
             
- 
-        
+                
+    
+            
