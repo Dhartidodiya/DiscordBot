@@ -6,7 +6,7 @@ from viewmodel.task_viewmodel import TaskViewModel
 from langdetect import detect
 from datetime import datetime, timedelta
 from discord.ext import commands
-from view.task_ui_componanets import AddTaskView, TaskButtonsView, TaskButton  # ✅ Correct Imports
+from view.task_ui_componanets import AddTaskView, TaskButtonsView, TaskButton ,TaskListView # ✅ Correct Imports
 from discord.ui import View, Button
 from discord import Embed
 
@@ -28,35 +28,24 @@ class TaskView(commands.Bot):
         
         @self.command()
         async def add_task(ctx):
-            print("Add Task Command Triggered")  # Debug: Check if command is triggered
-            await ctx.send("Click below to add a new task:", view=AddTaskView(task_view=self))
+            """Displays the 'Add Task' button when !add_task is used."""
+            await ctx.send("Click below to add a task:", view=AddTaskView(self))
 
         
+      
         @self.command()
         async def manage_tasks(ctx):
             """Display task management UI for all tasks in the database with buttons."""
             tasks = self.model.get_all_tasks()
 
             if not tasks:
-                await ctx.send("No tasks available. Use 'Add Task' to create a new task.")
+                await ctx.send("No tasks available. Use '!add_task' to create a new task.")
                 return
 
-            embeds = self.build_task_embed(tasks)
+            # Display tasks as buttons instead of embedding text
+            self.task_display_message = await ctx.send(view=TaskListView(tasks, self))
 
-            if not embeds:
-                await ctx.send("Unable to display tasks. Please try again later.")
-                return
 
-            self.task_display_message = await ctx.send(embed=embeds[0], view=TaskButtonsView(tasks, self))
-
-            # Clear previous additional messages
-            await self.clear_additional_messages(ctx)
-
-            # Send additional embeds with buttons
-            self.additional_task_messages = []
-            for embed in embeds[1:]:
-                msg = await ctx.send(embed=embed)
-                self.additional_task_messages.append(msg)
 
     async def clear_additional_messages(self, ctx):
         """Delete additional task display messages from the channel."""
@@ -106,9 +95,12 @@ class TaskView(commands.Bot):
             
 
     async def on_ready(self):
-        print(f'Logged on as {self.user}!')
-        for guild in self.guilds:
-            print(f"- {guild.name} (ID: {guild.id})")
+        """Bot startup log."""
+        print(f'✅ Logged in as {self.user}')
+
+
+
+
 
     async def on_message(self, message):
         if message.author == self.user:
@@ -278,42 +270,23 @@ class TaskView(commands.Bot):
             await channel.send(content[i:i + max_length])
             
     async def update_task_display(self, interaction):
-        """Update the task display after deletion, completion, or editing."""
+        """Refresh the displayed task list after any modification."""
         tasks = self.model.get_all_tasks()
-        embeds = self.build_task_embed(tasks)
-
-        # Handle empty embeds gracefully
-        if not embeds:
-            await interaction.channel.send("No tasks to display.", ephemeral=True)
+        if not tasks:
+            await interaction.channel.send("📌 No tasks available.", ephemeral=True)
             return
 
-        # Update main task display message if it exists
+        embeds = self.build_task_embed(tasks)
+
         if self.task_display_message:
-            await self.task_display_message.edit(embed=embeds[0])
-
-            # Delete additional messages to prevent duplicates
-            for msg in self.additional_task_messages:
-                try:
-                    await msg.delete()
-                except discord.NotFound:
-                    pass  # Message already deleted
-
-            # Clear old additional messages
-            self.additional_task_messages = []
-
-            # Send new embeds if there are multiple
-            for embed in embeds[1:]:
-                msg = await interaction.channel.send(embed=embed)
-                self.additional_task_messages.append(msg)
+            try:
+                await self.task_display_message.edit(embed=embeds[0], view=TaskListView(tasks, self))
+            except discord.NotFound:
+                self.task_display_message = await interaction.channel.send(embed=embeds[0], view=TaskListView(tasks, self))
         else:
-            # If no main display message, create a new one
-            self.task_display_message = await interaction.channel.send(embed=embeds[0])
+            self.task_display_message = await interaction.channel.send(embed=embeds[0], view=TaskListView(tasks, self))
 
-            # Send additional embeds, if any
-            for embed in embeds[1:]:
-                msg = await interaction.channel.send(embed=embed)
-                self.additional_task_messages.append(msg)
-            
+
                 
     
             
