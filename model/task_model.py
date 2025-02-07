@@ -1,5 +1,7 @@
 import sqlite3
 from datetime import datetime
+import spacy
+from fuzzywuzzy import fuzz
 
 class TaskModel:
     def __init__(self, reset_table=False):
@@ -9,7 +11,8 @@ class TaskModel:
             self.drop_table_if_exists()
         self.create_table()
         self.create_checklist_table()
-
+        self.nlp = spacy.load("fr_core_news_sm")  # ✅ Use French NLP model
+        
     def drop_table_if_exists(self):
         """Drop the tasks table if it already exists."""
         self.c.execute("DROP TABLE IF EXISTS tasks")
@@ -17,7 +20,30 @@ class TaskModel:
         self.conn.commit()
         print("✅ Dropped existing tables.")
 
+    def get_tasks_by_keyword(self, keyword):
+        """Retrieve tasks that contain related keywords using NLP & fuzzy matching."""
+        self.c.execute("SELECT task_id, content, description, author, channel, status, timestamp FROM tasks")
+        all_tasks = self.c.fetchall()
 
+        # ✅ Extract the lemma (root word) of the keyword
+        keyword_lemma = self.detect_keywords(keyword)
+
+        matching_tasks = []
+        for task in all_tasks:
+            task_keywords = self.detect_keywords(task[1])  # ✅ Extract task name keywords
+
+            # ✅ Fuzzy match with a threshold (allows similar words)
+            if any(fuzz.ratio(kw, k) > 65 for kw in keyword_lemma for k in task_keywords):
+                matching_tasks.append(task)
+
+        return matching_tasks
+    
+    def detect_keywords(self, text):
+        """Extract important keywords from the text using NLP."""
+        doc = self.nlp(text)
+        return [token.lemma_.lower() for token in doc if token.pos_ in ["NOUN", "PROPN"]]
+    
+    
     def get_tasks_by_author(self, author):
         """Retrieve all tasks for a specific author."""
         self.c.execute("SELECT task_id, content, description, author, channel, status, timestamp FROM tasks WHERE author = ? ORDER BY timestamp DESC", (author,))

@@ -3,6 +3,7 @@ import asyncio
 from datetime import datetime, timedelta
 from discord.ext import tasks,commands
 from view.task_ui_componanets import AddTaskView, TaskListView
+from viewmodel.conversation_viewmodel import ConversationViewModel
 import re
 
 
@@ -17,6 +18,8 @@ class TaskView(commands.Bot):
         self.additional_task_messages = []
         
         # ✅ Register all commands properly
+        self.conversation_vm = ConversationViewModel()
+        self.cache = {} 
         self.add_commands()
     
     
@@ -120,6 +123,52 @@ class TaskView(commands.Bot):
     async def on_message(self, message):
         """Handles message processing for task updates and filtering."""
         if message.author == self.user:
+            return
+
+        user_id = str(message.author.id)
+        content = message.content.strip()
+        
+        # ✅ Store user message in conversation memory
+        self.conversation_vm.store_user_message(user_id, message.author.name, content)
+        
+        
+       # ✅ NLP-Based Discussion Retrieval (`!discuss <topic>`)
+        if content.startswith("!discuss"):
+            query = content.replace("!discuss", "").strip()
+
+            if not query:
+                await message.channel.send("❌ Veuillez spécifier un sujet. Exemple: `!discuss banque`")
+                return
+
+            # ✅ Check cache first
+            if (user_id, query) in self.cache:
+                response = self.cache[(user_id, query)]
+            else:
+                past_conversations = self.conversation_vm.get_past_messages(user_id, query)
+                related_tasks = self.model.get_tasks_by_keyword(query)  # ✅ Fetch related tasks
+
+                if past_conversations or related_tasks:
+                    response = f"📌 Discussions et tâches précédentes sur '{query}':\n\n"
+                    
+                    # ✅ Display conversations
+                    if past_conversations:
+                        response += "**📜 Conversations:**\n"
+                        for msg, timestamp in past_conversations:
+                            response += f"📅 {timestamp}: {msg}\n"
+
+                    # ✅ Display related tasks
+                    if related_tasks:
+                        response += "\n**✅ Tâches associées:**\n"
+                        for task in related_tasks:
+                            response += f"🔹 {task[1]} (Statut: {task[5]})\n"
+
+                else:
+                    response = f"❌ Aucune discussion ni tâche trouvée sur '{query}'."
+
+                # ✅ Cache the result
+                self.cache[(user_id, query)] = response  
+
+            await message.channel.send(response)
             return
 
         # ✅ Detects task updates using the pattern: taskname -> status

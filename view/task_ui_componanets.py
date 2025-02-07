@@ -208,12 +208,6 @@ class EditTaskButton(Button):
         """Opens a modal to edit a task."""
         await interaction.response.send_modal(EditTaskModal(self.task_id, self.task_name, self.task_details, self.task_view))
 
-
- 
-
- 
-
-
 class DeleteTaskButton(Button):
     """Delete Button with Trash Icon."""
     
