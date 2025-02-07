@@ -1,4 +1,3 @@
-# /model/task_model.py
 import sqlite3
 from datetime import datetime
 
@@ -7,200 +6,172 @@ class TaskModel:
         self.conn = sqlite3.connect('discord_tasks.db')
         self.c = self.conn.cursor()
         if reset_table:
-            self.drop_table_if_exists()  # Call the method to drop the table if it exists (optional)
+            self.drop_table_if_exists()
         self.create_table()
-        self.create_checklist_table()  # Create the checklist table
-        
+        self.create_checklist_table()
+
     def drop_table_if_exists(self):
         """Drop the tasks table if it already exists."""
         self.c.execute("DROP TABLE IF EXISTS tasks")
         self.c.execute("DROP TABLE IF EXISTS checklists")
         self.conn.commit()
-        print("Dropped the tasks table if it existed.")    
+        print("✅ Dropped existing tables.")
+
+
+    def get_tasks_by_author(self, author):
+        """Retrieve all tasks for a specific author."""
+        self.c.execute("SELECT task_id, content, description, author, channel, status, timestamp FROM tasks WHERE author = ? ORDER BY timestamp DESC", (author,))
+        return self.c.fetchall()
+
+    def get_tasks_by_date(self, date):
+        """Retrieve all tasks created on a specific date."""
+        self.c.execute("SELECT task_id, content, description, author, channel, status, timestamp FROM tasks WHERE DATE(timestamp) = ? ORDER BY timestamp DESC", (date,))
+        return self.c.fetchall()
+    
+    
+    def get_tasks_by_relative_date(self, keyword):
+        """Retrieve tasks based on relative date keywords: today, yesterday, tomorrow."""
+        today = datetime.now().strftime('%Y-%m-%d')
+        yesterday = (datetime.now() - timedelta(days=1)).strftime('%Y-%m-%d')
+        tomorrow = (datetime.now() + timedelta(days=1)).strftime('%Y-%m-%d')
+
+        if keyword.lower() == "today":
+            return self.get_tasks_by_date(today)
+        elif keyword.lower() == "yesterday":
+            return self.get_tasks_by_date(yesterday)
+        elif keyword.lower() == "tomorrow":
+            return self.get_tasks_by_date(tomorrow)
+        else:
+            return []  # No valid date match
+
+    def get_tasks_between_dates(self, from_date, till_date):
+        """Retrieve tasks within a specific date range."""
+        self.c.execute("SELECT task_id, content, description, author, channel, status, timestamp FROM tasks WHERE DATE(timestamp) BETWEEN ? AND ? ORDER BY timestamp DESC", (from_date, till_date))
+        return self.c.fetchall()
+
+    def get_tasks_by_status(self, status):
+        """Retrieve all tasks with a specific status."""
+        self.c.execute("SELECT task_id, content, description, author, channel, status, timestamp FROM tasks WHERE status = ? ORDER BY timestamp DESC", (status,))
+        return self.c.fetchall()
+    
+    
+
+    def get_tasks_for_today(self):
+        """Retrieve all tasks submitted today."""
+        today = datetime.now().strftime('%Y-%m-%d')
+        self.c.execute("SELECT task_id, content, description, author, channel, status, timestamp FROM tasks WHERE DATE(timestamp) = ? ORDER BY timestamp DESC", (today,))
+        return self.c.fetchall()
+
+
+    def normalize_status(self,input_status):
+        """Maps various user inputs to standardized status values."""
+        status_mapping = {
+            "in progress": "In Progress",
+            "progress": "In Progress",
+            "inprogress": "In Progress",
+            "on hold": "On Hold",
+            "onhold": "On Hold",
+            "hold": "On Hold",
+            "completed": "Completed",
+            "complete": "Completed",
+            "done": "Completed"
+        }
+
+        # Convert to lowercase & normalize spaces
+        input_status = input_status.lower().strip()
+
+        # Return normalized status or fallback to default
+        return status_mapping.get(input_status, "In Progress")  # Default: "In Progress"
+
 
     def create_table(self):
-        """Create the table to store tasks."""
-        self.c.execute('''CREATE TABLE IF NOT EXISTS tasks
-                          (task_id INTEGER PRIMARY KEY AUTOINCREMENT, content TEXT, author TEXT, channel TEXT, timestamp TEXT, language TEXT)''')
+        """Creates tasks table with correct schema."""
+        self.c.execute('''CREATE TABLE IF NOT EXISTS tasks (
+                            task_id INTEGER PRIMARY KEY AUTOINCREMENT,
+                            content TEXT,
+                            description TEXT,
+                            author TEXT,
+                            channel TEXT,
+                            status TEXT DEFAULT 'In Progress',
+                            timestamp TEXT,
+                            language TEXT
+                        )''')
         self.conn.commit()
+
+        # 🔥 Ensure columns match expected fields
+        self.c.execute("PRAGMA table_info(tasks)")
+        columns = [column[1] for column in self.c.fetchall()]
         
-        
+        expected_columns = ["task_id", "content", "description", "author", "channel", "status", "timestamp", "language"]
+
+        # 🔥 If the database has incorrect columns, reset it
+        if set(columns) != set(expected_columns):
+            print("⚠ Table schema mismatch detected! Resetting database...")
+            self.drop_table_if_exists()
+            self.create_table()
+
+
     def create_checklist_table(self):
-        """Create a checklist table for storing checklist items."""
-        self.c.execute('''
-            CREATE TABLE IF NOT EXISTS checklists (
-                checklist_id INTEGER PRIMARY KEY AUTOINCREMENT,
-                task_id INTEGER,
-                content TEXT,
-                is_completed BOOLEAN DEFAULT 0,
-                timestamp TEXT,
-                author TEXT,
-                FOREIGN KEY (task_id) REFERENCES tasks (task_id) ON DELETE CASCADE
-            )
-        ''')
-        self.conn.commit()    
+        """Create checklist table for task-related items."""
+        self.c.execute('''CREATE TABLE IF NOT EXISTS checklists (
+                            checklist_id INTEGER PRIMARY KEY AUTOINCREMENT,
+                            task_id INTEGER,
+                            content TEXT,
+                            is_completed BOOLEAN DEFAULT 0,
+                            timestamp TEXT,
+                            author TEXT,
+                            FOREIGN KEY (task_id) REFERENCES tasks (task_id) ON DELETE CASCADE
+                        )''')
+        self.conn.commit()
 
+
+    def get_task_by_name(self, task_name):
+        """Fetch a task by its name."""
+        self.c.execute("SELECT task_id, content, description, author, channel, status, timestamp FROM tasks WHERE content = ?", (task_name,))
+        return self.c.fetchone()  # Returns None if no task is found
+
+
+
+
+
+    def store_task(self, content, description,author, channel, language='unknown'):
+        """Store a new task in the database with default 'In Progress' status."""
+        timestamp = str(datetime.now())
+        try:
+            self.c.execute("INSERT INTO tasks (content,description, author, channel, status, timestamp, language) VALUES (?, ?, ?, ?, ?, ?, ?)",
+                        (content,description, author, channel, "In Progress", timestamp, language))
+            self.conn.commit()
+            print(f"✅ Stored task from {author} in {channel}: '{content}' with description '{description}' [Status: In Progress]")
+        except sqlite3.Error as e:
+            print(f"❌ Error inserting task: {e}")
+
+    def update_task_status(self, task_id, new_status):
+        """Update task status with normalized input."""
+        normalized_status = self.normalize_status(new_status)
+        self.c.execute("UPDATE tasks SET status = ? WHERE task_id = ?", (normalized_status, task_id))
+        self.conn.commit()
         
-    def store_task(self,content, author, channel, language='unknown'):
-        """Store the task into the database with an auto-incrementing task ID."""
-        timestamp = str(datetime.now())  # Capture the current timestamp
-        self.c.execute("INSERT OR IGNORE INTO tasks (content, author, channel, timestamp, language) VALUES (?, ?, ?, ?, ?)",
-              (content, author, channel, timestamp, language))
-        self.conn.commit()
-        print(f"Stored task from {author} in {channel}: \n {content} [Language: {language}]")   
-
-
-    def update_task(self, task_id, new_content):
-        """Update a task's content."""
-        self.c.execute("UPDATE tasks SET content = ? WHERE task_id = ?", (new_content, task_id))
+    def update_task(self, task_id, new_name, new_description, new_status):
+        """Updates the task name, description, and status in the database."""
+        self.c.execute("UPDATE tasks SET content = ?, description = ?, status = ? WHERE task_id = ?", 
+                    (new_name, new_description, new_status, task_id))
         self.conn.commit()
 
+
+
+    def mark_task_complete(self, task_id):
+        """Mark task as completed."""
+        self.update_task_status(task_id, "Completed")
 
     def delete_task_by_id(self, task_id):
-        """Delete a task by its unique ID."""
+        """Delete a task by ID."""
         self.c.execute("DELETE FROM tasks WHERE task_id = ?", (task_id,))
         self.conn.commit()
 
-    def mark_task_complete(self, task_id):
-        """Mark the task as completed."""
-        self.c.execute("UPDATE tasks SET status = 'completed' WHERE task_id = ?", (task_id,))
-        self.conn.commit()
-
-    def delete_task(self, task_name):
-        """Delete the task from the database."""
-        self.c.execute("DELETE FROM tasks WHERE content = ?", (task_name,))
-        self.conn.commit()
-
     def get_all_tasks(self):
-        """Retrieve all tasks from the database."""
-        self.c.execute("SELECT * FROM tasks WHERE status = 'active'")
+        """Retrieve all tasks from the database in descending order to show newest first."""
+        self.c.execute("SELECT task_id, content,description, author, channel, status, timestamp FROM tasks ORDER BY task_id DESC")
         return self.c.fetchall()
-    
-    
-    def delete_task(self, content):
-        """Delete a task and its associated checklists by task content."""
-        self.c.execute("DELETE FROM tasks WHERE content = ?", (content,))
-        self.conn.commit()
-
-    def get_all_tasks(self):
-        """Retrieve all tasks from the database."""
-        self.c.execute("SELECT * FROM tasks")
-        return self.c.fetchall()
-    
-    def add_checklist_item(self, task_id, content, author):
-        """Add a new checklist item linked to a task."""
-        timestamp = str(datetime.now())
-        self.c.execute("INSERT INTO checklists (task_id, content, author, timestamp) VALUES (?, ?, ?, ?)",
-                       (task_id, content, author, timestamp))
-        self.conn.commit()
-
-    def get_checklists_by_task_id(self, task_id):
-        """Get all checklist items for a specific task by its ID."""
-        self.c.execute("SELECT checklist_id, content, is_completed FROM checklists WHERE task_id = ?", (task_id,))
-        return self.c.fetchall()
-    
-    def toggle_checklist_status(self, checklist_id, task_id):
-        """Toggle the completion status of a checklist item."""
-        self.c.execute("SELECT is_completed FROM checklists WHERE checklist_id = ? AND task_id = ?", (checklist_id, task_id))
-        status = self.c.fetchone()
-        if status:
-            new_status = not status[0]
-            self.c.execute("UPDATE checklists SET is_completed = ? WHERE checklist_id = ?", (new_status, checklist_id))
-            self.conn.commit()
-    
-    def get_tasks_by_date(self,query_date):
-        """Retrieve all tasks for all users on a specific date."""
-        self.c.execute("SELECT content, author, channel FROM tasks WHERE date(timestamp) = ?", (query_date,))
-        tasks = self.c.fetchall()
-
-        # Group tasks by author and channel
-        grouped_tasks = {}
-        for task in tasks:
-            content, author, channel = task
-            if author not in grouped_tasks:
-                grouped_tasks[author] = {}
-            if channel not in grouped_tasks[author]:
-                grouped_tasks[author][channel] = []
-            grouped_tasks[author][channel].append(content)
-
-        return grouped_tasks  # Return tasks grouped by author and channel
-
-    
-    def get_tasks_by_author(self, author):
-        """Retrieve all tasks for a specific user, sorted by date."""
-        self.c.execute("SELECT content, channel, timestamp FROM tasks WHERE author = ? ORDER BY timestamp ASC", (author,))
-        tasks = self.c.fetchall()
-
-        grouped_tasks = {}
-        for task in tasks:
-            content, channel, timestamp = task
-            # Format the timestamp to display in DD/MM/YYYY format
-            formatted_date = datetime.strptime(timestamp, '%Y-%m-%d %H:%M:%S.%f').strftime('%d/%m/%Y')
-            
-            if channel not in grouped_tasks:
-                grouped_tasks[channel] = []
-            grouped_tasks[channel].append((content, formatted_date))
-
-        return grouped_tasks
-    
-    def get_tasks_by_author_and_date(self, author, query_date):
-        """Retrieve all tasks for a specific user on a specific date, including the date information."""
-        self.c.execute("SELECT content, channel, date(timestamp) FROM tasks WHERE author = ? AND date(timestamp) = ?", (author, query_date))
-        tasks = self.c.fetchall()
-
-        grouped_tasks = {}
-        for task in tasks:
-            content, channel, date = task  # Include the date in the task retrieval
-            
-            # Format the date to DD/MM/YYYY format if needed
-            formatted_date = datetime.strptime(date, '%Y-%m-%d').strftime('%d/%m/%Y')
-            if channel not in grouped_tasks:
-                grouped_tasks[channel] = []
-            grouped_tasks[channel].append((content, formatted_date))  # Append content and date as a tuple
-
-        return grouped_tasks
-
-
-    def get_tasks_by_author_till_date(self, author, query_date):
-        """Retrieve all tasks for a specific user up to a specified date."""
-        print(f"Fetching tasks for author: {author} till date: {query_date}")  # Debug: Print function inputs
-        
-        self.c.execute("SELECT content, channel, date(timestamp) FROM tasks WHERE author = ? AND date(timestamp) <= ? ORDER BY timestamp ASC", 
-                       (author, query_date))
-        tasks = self.c.fetchall()
-        print(f"Raw tasks fetched from database: {tasks}")  # Debug: Print raw fetched tasks
-
-        grouped_tasks = {}
-        for task in tasks:
-            content, channel, date = task
-            print(f"Processing task: Content='{content}', Channel='{channel}', Date='{date}'")  # Debug: Print each task detail
-
-            # Format the date to DD/MM/YYYY format
-            formatted_date = datetime.strptime(date, '%Y-%m-%d').strftime('%d/%m/%Y')
-
-            if channel not in grouped_tasks:
-                grouped_tasks[channel] = []
-            grouped_tasks[channel].append((content, formatted_date))  # Append a tuple instead of two separate arguments
-            
-        print(f"Grouped tasks by channel: {grouped_tasks}") 
-        return grouped_tasks
-    
-    def get_tasks_till_date(self, query_date):
-        """Retrieve all tasks for all users till a specific date."""
-        self.c.execute("SELECT content, author, channel FROM tasks WHERE date(timestamp) <= ?", (query_date,))
-        tasks = self.c.fetchall()
-
-        # Group tasks by author and channel
-        grouped_tasks = {}
-        for task in tasks:
-            content, author, channel = task
-            if author not in grouped_tasks:
-                grouped_tasks[author] = {}
-            if channel not in grouped_tasks[author]:
-                grouped_tasks[author][channel] = []
-            grouped_tasks[author][channel].append(content)
-
-        return grouped_tasks  # Return tasks grouped by author and channel
 
 
 

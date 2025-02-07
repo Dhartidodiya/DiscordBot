@@ -13,6 +13,12 @@ load_dotenv()
 # Get Discord bot token
 discord_token = os.getenv('DISCORD_TOKEN')
 
+# ✅ Fetch Report Channel ID from .env file
+report_channel_id = int(os.getenv('REPORT_CHANNEL_ID', 0))  # Default to 0 if not found
+
+if report_channel_id == 0:
+    print("⚠ Warning: REPORT_CHANNEL_ID is not set. Please check your .env file!")
+
 # Instantiate Model, ViewModel, and View
 task_model = TaskModel(reset_table=False)
 task_viewmodel = TaskViewModel()
@@ -24,7 +30,7 @@ intents.message_content = True
 # # Initialize the bot with commands.Bot, inheriting from TaskView
 # bot = commands.Bot(command_prefix="!", intents=intents)
 
-client = TaskView(model=task_model, viewmodel=task_viewmodel, intents=intents)
+client = TaskView(model=task_model, viewmodel=task_viewmodel,report_channel_id=report_channel_id, intents=intents)
 
 
 # # Command to clear a specified number of messages
@@ -63,5 +69,6 @@ client = TaskView(model=task_model, viewmodel=task_viewmodel, intents=intents)
 # bot.run(discord_token)
 
 
-# Run the Discord bot
-client.run(discord_token)
+# ✅ Run the Discord bot
+if __name__ == "__main__":
+    client.run(discord_token)
