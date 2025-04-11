@@ -1,0 +1,13 @@
+{
+    "services": [
+      {
+        "name": "flask-api",
+        "startCommand": "python app.py"
+      },
+      {
+        "name": "discord-bot",
+        "startCommand": "python run_bot.py"
+      }
+    ]
+  }
+  

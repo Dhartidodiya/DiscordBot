@@ -5,7 +5,7 @@ from fuzzywuzzy import fuzz
 
 class TaskModel:
     def __init__(self, reset_table=False):
-        self.conn = sqlite3.connect('discord_tasks.db')
+        self.conn = sqlite3.connect('discord_tasks.db', check_same_thread=False)
         self.c = self.conn.cursor()
         if reset_table:
             self.drop_table_if_exists()
@@ -46,7 +46,7 @@ class TaskModel:
     
     def get_tasks_by_author(self, author):
         """Retrieve all tasks for a specific author."""
-        self.c.execute("SELECT task_id, content, description, author, channel, status, timestamp FROM tasks WHERE author = ? ORDER BY timestamp DESC", (author,))
+        self.c.execute("SELECT task_id, content, description, author, channel, status, timestamp FROM tasks WHERE LOWER(author) = LOWER(?) ORDER BY timestamp DESC", (author,))
         return self.c.fetchall()
 
     def get_tasks_by_date(self, date):
@@ -199,5 +199,12 @@ class TaskModel:
         self.c.execute("SELECT task_id, content,description, author, channel, status, timestamp FROM tasks ORDER BY task_id DESC")
         return self.c.fetchall()
 
+    def insert_classified_sentence(self, author, sentence, category, channel="classified", language="unknown"):
+        timestamp = str(datetime.now())
+        self.c.execute("""
+            INSERT INTO tasks (content, description, author, channel, status, timestamp, language)
+            VALUES (?, ?, ?, ?, ?, ?, ?)
+        """, (sentence, f"[Category]: {category}", author, channel, "open", timestamp, language))
+        self.conn.commit()
 
 
