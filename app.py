@@ -1,6 +1,7 @@
 
 import os
 from dotenv import load_dotenv
+import asyncio
 from apscheduler.schedulers.asyncio import AsyncIOScheduler
 from model.task_model import TaskModel
 from model.data_model import DataModel
@@ -11,7 +12,7 @@ from services.data_service import DataService
 from threading import Thread
 from flask_api import app as flask_app
 from dashboard.dashboard import create_dashboard 
-
+from services.api_service import api
 import discord
  
 
@@ -23,6 +24,7 @@ discord_token = os.getenv('DISCORD_TOKEN')
 
 # ✅ Fetch Report Channel ID from .env file
 report_channel_id = int(os.getenv('REPORT_CHANNEL_ID', 0))  # Default to 0 if not found
+
 
 
 if not discord_token:
@@ -43,6 +45,7 @@ data_service = DataService(data_model)
 
 intents = discord.Intents.default()
 intents.message_content = True
+intents.members = True
 # intents.messages = True  # Ensure the bot can read messages
 
 # # Initialize the bot with commands.Bot, inheriting from TaskView
@@ -72,11 +75,38 @@ async def send_daily_report():
     else:
         print("❌ Report channel not found.")
 
+
+DASHBOARD_DARK = True
+
+
 @client.event
 async def on_ready():
     print(f"✅ Bot logged in as {client.user}")
     scheduler.start()
     print("⏰ Scheduler started.")
+    
+    allowed_guild_id = int(os.getenv("ALLOWED_GUILD_ID", 0))
+    authors = set()
+
+    for guild in client.guilds:
+        if guild.id == allowed_guild_id:
+            async for member in guild.fetch_members(limit=None):
+                if not member.bot:
+                    authors.add(member.name)
+
+
+    authors = sorted(authors)
+    print("✅ Filtered unique authors from DhartiBot server:", authors)
+    
+    # ✅ Start Flask dashboard in a new thread
+    def run_flask():
+        create_dashboard(flask_app, dark_mode=DASHBOARD_DARK, authors=authors).run(host="0.0.0.0", port=5000)
+
+    Thread(target=run_flask).start()
+    
+if __name__ == "__main__":
+    flask_app.register_blueprint(api)
+    client.run(discord_token)    
     
 # # Command to clear a specified number of messages
 # @bot.command()
@@ -113,20 +143,7 @@ async def on_ready():
 # # Run the bot with the token from the .env file
 # bot.run(discord_token)
 
-create_dashboard(flask_app)
 
 
 
-def run_flask():
-    flask_app.run(host="0.0.0.0", port=5000)
-     
 
-# ✅ Run the Discord bot
-if __name__ == "__main__":
-    
-    # Run Flask in one thread
-    flask_thread = Thread(target=run_flask)
-    flask_thread.start()
-    
-    # Run Discord bot in main thread
-    client.run(discord_token)

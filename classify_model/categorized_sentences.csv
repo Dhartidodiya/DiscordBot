@@ -1,0 +1,948 @@
+﻿Timestamp,Author,Title,Sentence,Category
+2025-02-20 16:34:25.273000+00:00,spookiehd,teintexpress,travail sur la page magasin en prenant en compte les demandes d'allios,front
+2025-02-20 16:34:25.273000+00:00,spookiehd,teintexpress,travail sur la page de génération de thèmes en prenant en compte l'état de traitement de la demande tribuneo,front
+2025-02-20 16:34:25.273000+00:00,spookiehd,teintexpress,support technique  bot discord:,back
+2025-02-20 16:34:25.273000+00:00,spookiehd,teintexpress,travail sur le bot - essaie de nettoyage des données neotech et de les classer par catégorie,back
+2025-02-19 16:31:40.908000+00:00,jeremyjuppet,teintexpress,"travail sur la page magasin et sur les thèmes, en cours",front
+2025-02-19 16:31:40.908000+00:00,jeremyjuppet,teintexpress,"travail sur la génération du fichier de formulation (visualisation), en cours bot discord:",back
+2025-02-19 16:31:40.908000+00:00,jeremyjuppet,teintexpress,travail sur le bot : entrainement du modèle avec les données des rapports existants,back
+2025-02-18 16:35:54.274000+00:00,emy_lctr,:,gestion du cas tribuneo,general
+2025-02-18 16:35:54.274000+00:00,emy_lctr,:,début des recherches sur les différents mode de paiement pour le nouveau bâtiment,general
+2025-02-18 16:35:54.274000+00:00,emy_lctr,:,modernisation du bulletin d'adhésion commerçants caramax,general
+2025-02-18 16:32:06.918000+00:00,jeremyjuppet,teintexpress,point sur les tâches à restante sur la partie magasin,front
+2025-02-18 16:32:06.918000+00:00,jeremyjuppet,teintexpress,"refactorisation du code de la page magasin, en cours",front
+2025-02-18 16:32:06.918000+00:00,jeremyjuppet,teintexpress,travail sur la génération du fichier de formulation (visualisation) bot discord:,back
+2025-02-18 16:32:06.918000+00:00,jeremyjuppet,teintexpress,travail sur le bot,back
+2025-02-17 16:37:33.679000+00:00,emy_lctr,:,récupération des dernières données commerçants pour la tournée de prospection,general
+2025-02-17 16:37:33.679000+00:00,emy_lctr,:,,general
+2025-02-17 16:37:33.679000+00:00,emy_lctr,listing des documents nécessaires à la tournée de prospection caramax,modernisation du bon de commande caramax avec création de l'exemplaire commerçant ocam et de l'exemplaire commerçant hors ocam,general
+2025-02-17 16:32:41.680000+00:00,jeremyjuppet,tribuneo:,publication de l'app sur l'apple store,report
+2025-02-17 16:32:41.680000+00:00,jeremyjuppet,tribuneo:,correction/ajout des remarques faites vendredi lors de la réunion avec vdpc.,general
+2025-02-17 16:32:41.680000+00:00,jeremyjuppet,tribuneo:,"déploiement en prod des màj (web, backoffice et api)",front
+2025-02-17 16:32:41.680000+00:00,jeremyjuppet,tribuneo:,envoie du fichier à judi pour la transformation des chèques en version papier.,back
+2025-02-17 16:32:41.680000+00:00,jeremyjuppet,teintexpress,reprise du projet bot discord:,back
+2025-02-17 16:32:41.680000+00:00,jeremyjuppet,teintexpress,nettoyage et catégorisation des données de rapport sur neotech,database
+2025-02-14 16:36:46.120000+00:00,emy_lctr,-,suite de l'élaboration du plan de tournée caramax,general
+2025-02-14 16:36:46.120000+00:00,emy_lctr,-,gestion du cas tribuneo pour la bijouterie richebois à oraison,general
+2025-02-14 16:36:46.120000+00:00,emy_lctr,-,gestion des appels utilisateur tribuneo,general
+2025-02-14 16:36:46.120000+00:00,emy_lctr,-,modifications apportées au document vdpc suite à la réunion,general
+2025-02-14 16:36:18.730000+00:00,jeremyjuppet,tribuneo:,publication de l'app sur play store,report
+2025-02-14 16:36:18.730000+00:00,jeremyjuppet,tribuneo:,support technique,general
+2025-02-14 16:36:18.730000+00:00,jeremyjuppet,tribuneo:,réunion avec vdpc bot discord:,general
+2025-02-14 16:36:18.730000+00:00,jeremyjuppet,tribuneo:,travail bot,back
+2025-02-13 16:33:17.471000+00:00,spookiehd,tribuneo:,mise en prod du back-office et de l'appli web (vdpc et kdo4).,front
+2025-02-13 16:33:17.471000+00:00,spookiehd,tribuneo:,support technique,general
+2025-02-13 16:33:17.471000+00:00,spookiehd,tribuneo:,investigation et résolution du problème de connexion pour diva lingerie & terre d'oc bot discord:,back
+2025-02-13 16:33:17.471000+00:00,spookiehd,tribuneo:,travail bot + réunion avec kathleen et hana,general
+2025-02-12 16:52:35.795000+00:00,jeremyjuppet,tribuneo:,"tests général, du back-office, de la version web et de l'application pour les deux réseaux (kdo4,vdpc)",front
+2025-02-12 16:52:35.795000+00:00,jeremyjuppet,tribuneo:,corrections de plusieurs bugs + redéploiement en preprod pour tester à nouveau.,back
+2025-02-12 16:52:35.795000+00:00,jeremyjuppet,bot discord:,travail bot : entrainement sur les rapports quotidiens du serveur discord neotech,back
+2025-02-11 16:39:52.623000+00:00,emy_lctr,-,réalisation du document vdpc,general
+2025-02-11 16:39:52.623000+00:00,emy_lctr,-,échange avec muriel,general
+2025-02-11 16:39:52.623000+00:00,emy_lctr,-,élaboration du plan de tournée caramax,general
+2025-02-11 16:35:02.733000+00:00,jeremyjuppet,tribuneo:,mise en preprod de l'api (kdo4 + vdpc),back
+2025-02-11 16:35:02.733000+00:00,jeremyjuppet,tribuneo:,backup de la base de données kdo4,back
+2025-02-11 16:35:02.733000+00:00,jeremyjuppet,tribuneo:,mise à jour et réinitialisation des bases de données de preprod pour les tests,database
+2025-02-11 16:35:02.733000+00:00,jeremyjuppet,tribuneo:,création du document : instructions de déploiement de l'api bot discord:,front
+2025-02-11 16:35:02.733000+00:00,jeremyjuppet,tribuneo:,travail devoir école + bot,back
+2025-02-10 16:36:24.471000+00:00,jeremyjuppet,tribuneo:,mise en preprod du back-office (kdo4 + vdpc),back
+2025-02-10 16:36:24.471000+00:00,jeremyjuppet,tribuneo:,mise en preprod la version web (kdo4 + vdpc),front
+2025-02-10 16:36:24.471000+00:00,jeremyjuppet,tribuneo:,test de l'appli sur ios en vue de la future publication de la màj,front
+2025-02-10 16:36:24.471000+00:00,jeremyjuppet,tribuneo:,réunion avec emily et judi pour parler des statistiques et autres bot discord:,general
+2025-02-10 16:36:24.471000+00:00,jeremyjuppet,tribuneo:,travail devoir école + bot,back
+2025-02-10 16:35:28.046000+00:00,emy_lctr,-,"suite de la recherche de prospect caramax / tribuneo dans la ""nouvelle"" zone  - échange avec la présidente des vdpc sur le visuel attendu pour l'ag du 17 février",general
+2025-02-07 16:31:42.899000+00:00,jeremyjuppet,tribuneo:,"travail api : gestion du taux de frais de gestion à 0% et des écritures compta - travail sur l'app mobile : correction, de l'affichage de la caméra (scanner qr code)",front
+2025-02-07 16:31:42.899000+00:00,jeremyjuppet,tribuneo:,travail web :  ajout du formulaire de saisie de rib pour les commerçants.,front
+2025-02-07 16:31:42.899000+00:00,jeremyjuppet,"fait, avec vérification des données",travail back-office :,back
+2025-02-07 16:31:42.899000+00:00,jeremyjuppet,"fait, avec vérification des données","sélection par défaut de l'événement ""hors événement urssaf"" pour vdpc",general
+2025-02-07 16:31:42.899000+00:00,jeremyjuppet,"fait, avec vérification des données","retrait par défaut du checkbox ""accepte démat' """,general
+2025-02-07 16:31:42.899000+00:00,jeremyjuppet,sur la création d'un commerçant bot discord:,travail sur la génération de rapports quotidiens en utilisant schedular.,report
+2025-02-07 16:31:42.899000+00:00,jeremyjuppet,sur la création d'un commerçant bot discord:,travail avec le modèle nlp pour récupérer les données passées et les traiter.,database
+2025-02-06 16:36:35.426000+00:00,jeremyjuppet,tribuneo:,"travail api : correction sur la création des utilisateurs commerçants de vdpc  - travail sur l'app mobile : correction, empêcher l'annulation des demandes de remboursement",front
+2025-02-06 16:36:35.426000+00:00,jeremyjuppet,tribuneo:,,back
+2025-02-06 16:36:35.426000+00:00,jeremyjuppet,travail web :,"ajout du formulaire de saisie de rib pour les commerçants, en cours",report
+2025-02-06 16:36:35.426000+00:00,jeremyjuppet,travail web :,gestion des thèmes sur toutes les pages,front
+2025-02-06 16:36:35.426000+00:00,jeremyjuppet,travail web :,et autres petites corrections bot discord:,back
+2025-02-06 16:36:35.426000+00:00,jeremyjuppet,travail web :,travail sur la génération de rapports quotidien automatique,report
+2025-02-05 18:52:17.332000+00:00,spookiehd,tribuneo:,"réunion avec béatrice, prise de note des différentes fonctionnalités a ajouté plus",general
+2025-02-05 18:52:17.332000+00:00,spookiehd,tard,"rencontre d'un problème a la création d'une demande en direct, bug a corrigé",front
+2025-02-05 18:52:17.332000+00:00,spookiehd,tard,résolution d'un bug d'affichage de la caméra (notamment sur ios),front
+2025-02-05 18:52:17.332000+00:00,spookiehd,", création d'un modal de redirection de permissions d'accès a la caméra teintexpress:",réunion et prise de note avec allios pour l'affichage de la partie magasin,general
+2025-02-05 18:52:17.332000+00:00,spookiehd,", création d'un modal de redirection de permissions d'accès a la caméra teintexpress:","réunion avec jordan, création d'un user sur la base de données pour pouvoir travailler bot discord:",general
+2025-02-05 18:52:17.332000+00:00,spookiehd,", création d'un modal de redirection de permissions d'accès a la caméra teintexpress:",travail sur le bot,back
+2025-02-04 17:00:39.898000+00:00,emy_lctr,-,"recherche de prospect caramax / tribuneo dans la ""nouvelle"" zone étendue sur tout le secteur manosquin et pas seulement le centre ville",general
+2025-02-04 17:00:39.898000+00:00,emy_lctr,-,informations sur l’utilisation du de neofid par le milord,general
+2025-02-04 16:35:03.586000+00:00,spookiehd,tribuneo:,travail sur la version web,front
+2025-02-04 16:35:03.586000+00:00,spookiehd,tribuneo:,ajout d'un système d'auto remplissage de formulaire de login sur le navigateur teintexpress:,database
+2025-02-04 16:35:03.586000+00:00,spookiehd,tribuneo:,travail et réajustement de la page magasin en vue de la présentation de demain à allios bot discord:,front
+2025-02-04 16:35:03.586000+00:00,spookiehd,tribuneo:,travail sur le bot,back
+2025-02-03 16:40:03.991000+00:00,jeremyjuppet,tribuneo:,travail sur la version web,front
+2025-02-03 16:40:03.991000+00:00,jeremyjuppet,tribuneo:,"travail sur l'app mobile, pour la correction des bugs ios.",front
+2025-02-03 16:40:03.991000+00:00,jeremyjuppet,corrigés mais à tester avec un iphone bot discord:,reprise du travail,back
+2025-02-03 16:37:53.536000+00:00,emy_lctr,-,gestion de l'appel tribuneo,general
+2025-02-03 16:37:53.536000+00:00,emy_lctr,-,"apport des modification aux documents ""tuto"" pour vdpc",general
+2025-02-03 16:37:53.536000+00:00,emy_lctr,-,"recherche de prospect caramax / tribuneo dans la ""nouvelle"" zone étendue sur tout le secteur manosquin et pas seulement le centre ville",general
+2025-01-31 16:34:22.451000+00:00,jeremyjuppet,tribuneo:,travail sur la version web :  - gros travail pour rendre le code similaire à l'application mobile,front
+2025-01-31 16:34:22.451000+00:00,jeremyjuppet,tribuneo:,implémentation du système de thème - ajout du thème vdpc et des images teintexpress:,front
+2025-01-31 16:34:22.451000+00:00,jeremyjuppet,tribuneo:,ajout de l'utilisation des thèmes sur page opérateur,front
+2025-01-31 16:34:22.451000+00:00,jeremyjuppet,tribuneo:,travail sur la fermeture des boites de dialogue,report
+2025-01-29 16:51:09.629000+00:00,jeremyjuppet,tribuneo:,support technique : appels et reprise de contact avec certaines personnes demandant la version papier - travail sur la version web,general
+2025-01-29 16:51:09.629000+00:00,jeremyjuppet,tribuneo:,"contact avec béatrice, qui préférait décaler la réunion démo.",general
+2025-01-29 16:51:09.629000+00:00,jeremyjuppet,partage des manuels d'utilisation teintexpress:,travail sur la page des thèmes,front
+2025-01-29 16:51:09.629000+00:00,jeremyjuppet,partage des manuels d'utilisation teintexpress:,travail sur les scroll bars des autres pages et la structure des tableaux,front
+2025-01-28 16:56:47.343000+00:00,jeremyjuppet,tribuneo:,"contact avec judi, pour répondre à ses demandes - problème requêtes sur l'api tribuneo.",back
+2025-01-28 16:56:47.343000+00:00,jeremyjuppet,j'ai bloqué l'accès tant qu'on n'a pas retravaillé dessus.,debug de la nouvelle version de l'application mobile sur ios avec emy.,front
+2025-01-28 16:56:47.343000+00:00,jeremyjuppet,nos fichiers d'import de facture ont bien les prénoms...,changement du taux de tva de la finlande  teintexpress:,front
+2025-01-28 16:56:47.343000+00:00,jeremyjuppet,nos fichiers d'import de facture ont bien les prénoms...,travail sur les thèmes,report
+2025-01-28 16:34:14.995000+00:00,emy_lctr,-,gestion des appels tribuneo,general
+2025-01-28 16:34:14.995000+00:00,emy_lctr,-,,general
+2025-01-27 16:35:47.296000+00:00,emy_lctr,-,"gestion de l'appel tribuneo création et écriture du document ""tuto"" pour vdpc (quasi terminé)",general
+2025-01-27 16:32:13.841000+00:00,jeremyjuppet,tribuneo:,"aide à l'écriture des documents ""tuto"" pour vdpc - ajout des secteurs d'activités aux commerçants partenaires avec emy - travail sur la version web teintexpress:",front
+2025-01-27 16:32:13.841000+00:00,jeremyjuppet,tribuneo:,point projet,database
+2025-01-24 16:36:55.817000+00:00,emy_lctr,-,gestion appels tribuneo,general
+2025-01-24 16:36:55.817000+00:00,emy_lctr,-,echange avec jérémy sur les demandes vdpc,general
+2025-01-24 16:36:55.817000+00:00,emy_lctr,-,début de l'ajout des secteurs d'activités aux commerçants vdpc avec jérémy,general
+2025-01-24 16:35:53.339000+00:00,jeremyjuppet,tribuneo:,contact avec béatrice :,report
+2025-01-24 16:35:53.339000+00:00,jeremyjuppet,tribuneo:,ils ont changé la date de distribution des coupons cadeaux.,front
+2025-01-24 16:35:53.339000+00:00,jeremyjuppet,(d'au moins une semaine),prévision d'un rendez-vous pour démo/formation du back-office jeudi prochain entre 12h15 et 13h15,back
+2025-01-24 16:35:53.339000+00:00,jeremyjuppet,(d'au moins une semaine),ajout des secteurs d'activités aux commerçants partenaires avec emy (pas terminé),front
+2025-01-24 16:35:53.339000+00:00,jeremyjuppet,(d'au moins une semaine),"travail sur la version web, en cours",front
+2025-01-23 16:52:19.764000+00:00,jeremyjuppet,tribuneo:,"mise en place d'un système de logger sur les api (en production), pour avoir une trace de toutes les requêtes et réponse",back
+2025-01-23 16:52:19.764000+00:00,jeremyjuppet,tribuneo:,commencement du travail sur la version web,front
+2025-01-23 16:52:19.764000+00:00,jeremyjuppet,tribuneo:,import des commerçants partenaires vdpc et de leurs adresses.,database
+2025-01-22 21:34:08.523000+00:00,jeremyjuppet,tribuneo:,derniers tests de l'application mobile,database
+2025-01-22 21:34:08.523000+00:00,jeremyjuppet,tribuneo:,"gestion des comptes admin de google console : ajout antoine, suppression des autres comptes",database
+2025-01-22 21:34:08.523000+00:00,jeremyjuppet,tribuneo:,paiement de l'abonnement apple développeur android:,front
+2025-01-22 21:34:08.523000+00:00,jeremyjuppet,tribuneo:,compilation et signature de l'appbundle,report
+2025-01-22 21:34:08.523000+00:00,jeremyjuppet,tribuneo:,envoie de la mise à jour en validation,report
+2025-01-22 21:34:08.523000+00:00,jeremyjuppet,tribuneo:,app à jour sur le google play ios :,front
+2025-01-22 21:34:08.523000+00:00,jeremyjuppet,tribuneo:,récupération du projet de l'app sur le mac,database
+2025-01-22 21:34:08.523000+00:00,jeremyjuppet,tribuneo:,test sur iphone,database
+2025-01-22 21:34:08.523000+00:00,jeremyjuppet,tribuneo:,"configuration de xcode,  - compilation et signature de ipa",database
+2025-01-22 21:34:08.523000+00:00,jeremyjuppet,tribuneo:,utilisation de transporteur pour envoyer l'ipa sur apple developper - envoie de la mise à jour en validation,report
+2025-01-22 21:34:08.523000+00:00,jeremyjuppet,tribuneo:,app à jour sur apple store serveur :,database
+2025-01-22 21:34:08.523000+00:00,jeremyjuppet,tribuneo:,clone des serveurs et génération des certificats ssl,database
+2025-01-22 21:34:08.523000+00:00,jeremyjuppet,tribuneo:,"pour les sous-domaines : apivdpc , webvdpc , backofficevdpc.",front
+2025-01-22 21:34:08.523000+00:00,jeremyjuppet,db :,mise à jours de la base kdo4 ( ajout des colonnes 'id_netword' sur 3 tables et set la valeur à 1 ),database
+2025-01-22 21:34:08.523000+00:00,jeremyjuppet,db :,mise à jours de la base vdpc ( ajout des colonnes 'id_netword' sur 3 tables et set la valeur à 2 ),database
+2025-01-22 21:34:08.523000+00:00,jeremyjuppet,db :,création du compte vdpcadmin et des autres infos qui sont liées au compte.,front
+2025-01-21 16:41:49.697000+00:00,jeremyjuppet,tribuneo:,test et corrections globales (application mobile et api),back
+2025-01-21 16:41:49.697000+00:00,jeremyjuppet,tribuneo:,correction des problèmes de modification d'utilisateur entre les deux api,front
+2025-01-21 16:41:49.697000+00:00,jeremyjuppet,tribuneo:,correction des transactions entre les différents réseaux (consommateur vers un commerçant et consommateur vers consommateur),front
+2025-01-21 16:41:49.697000+00:00,jeremyjuppet,tribuneo:,"ajout du blocage des demandes de remboursement pour les commerçants vdpc, bouton de redirection vers la version web (sur laquelle il sera plus simple de créer et de publier un formulaire de saisie de rib)",front
+2025-01-21 16:41:49.697000+00:00,jeremyjuppet,tribuneo:,correction de scan de coupon d'un réseau différent de celui du consommateur.,front
+2025-01-21 16:41:49.697000+00:00,jeremyjuppet,tribuneo:,et d'autres petites corrections,back
+2025-01-21 16:34:01.093000+00:00,emy_lctr,-,suite de la modification du fichier commerçants vdpc,general
+2025-01-21 16:34:01.093000+00:00,emy_lctr,-,gestion appels tribuneo,general
+2025-01-20 16:39:57.771000+00:00,jeremyjuppet,tribuneo:,"test global, pas terminé",general
+2025-01-20 16:39:57.771000+00:00,jeremyjuppet,tribuneo:,correction sur la génération de factures et de mise à jour de mot de passe utilisateur (communication entre les deux api),general
+2025-01-20 16:33:58.603000+00:00,emy_lctr,-,suite de la modification du fichier commerçants vdpc,general
+2025-01-20 16:33:58.603000+00:00,emy_lctr,-,gestion appels tribuneo,general
+2025-01-17 16:29:32.269000+00:00,emy_lctr,-,suite de la création du fichier commerçants vdpc,general
+2025-01-17 16:29:32.269000+00:00,emy_lctr,-,gestion appels tribuneo,general
+2025-01-17 16:29:32.269000+00:00,emy_lctr,-,modification visuel vdpc,general
+2025-01-17 16:22:19.529000+00:00,jeremyjuppet,tribuneo:,"travail sur l'application mobile : thème vpdc, ok",database
+2025-01-17 16:22:19.529000+00:00,jeremyjuppet,tribuneo:,correction de petits problèmes sur l'api,back
+2025-01-17 16:22:19.529000+00:00,jeremyjuppet,tribuneo:,tests de l'application mobile,report
+2025-01-17 16:22:19.529000+00:00,jeremyjuppet,tribuneo:,tests du back-office,back
+2025-01-17 16:22:19.529000+00:00,jeremyjuppet,tribuneo:,problème de connexion pour les commerçants vdpc corrigé teintexpress:,back
+2025-01-17 16:22:19.529000+00:00,jeremyjuppet,tribuneo:,update des thèmes terminé,report
+2025-01-16 16:41:26.470000+00:00,jeremyjuppet,tribuneo:,travail sur l'application mobile : thème vpdc - correction de l'api,back
+2025-01-16 16:41:26.470000+00:00,jeremyjuppet,tribuneo:,tests de l'application mobile,report
+2025-01-16 16:41:26.470000+00:00,jeremyjuppet,tribuneo:,découverte problème de connexion pour les commerçants vdpc teintexpress:,back
+2025-01-16 16:41:26.470000+00:00,jeremyjuppet,tribuneo:,travail sur le crud des thèmes magasin,back
+2025-01-16 16:41:26.470000+00:00,jeremyjuppet,tribuneo:,"création des principaux thèmes (jefco, soframap, ...)",front
+2025-01-15 16:36:20.067000+00:00,jeremyjuppet,tribuneo:,travail sur l'application mobile : thème vpdc - travail sur l'api sur la partie compta teintexpress:,back
+2025-01-15 16:36:20.067000+00:00,jeremyjuppet,tribuneo:,travail sur les thèmes magasin,front
+2025-01-14 16:49:13.268000+00:00,jeremyjuppet,tribuneo:,travail sur l'application mobile : thème vpdc et connexion aux deux api teintexpress:,front
+2025-01-14 16:49:13.268000+00:00,jeremyjuppet,tribuneo:,travail sur les thèmes magasin,front
+2025-01-14 16:30:20.966000+00:00,emy_lctr,-,suite de la création du fichier commerçants vdpc,general
+2025-01-13 16:35:23.862000+00:00,emy_lctr,-,gestion des appels tribuneo,general
+2025-01-13 16:35:23.862000+00:00,emy_lctr,-,suite de la création du fichier commerçants vdpc,general
+2025-01-13 16:34:53.254000+00:00,jeremyjuppet,tribuneo:,mise en pre-production de l'api (apidev et apivdpcdev),back
+2025-01-13 16:34:53.254000+00:00,jeremyjuppet,tribuneo:,tests d'appels api en pre,general
+2025-01-13 16:34:53.254000+00:00,jeremyjuppet,tribuneo:,,back
+2025-01-13 16:34:53.254000+00:00,jeremyjuppet,production,"préparation au travail sur l'application, pour demain teintexpress:",front
+2025-01-13 16:34:53.254000+00:00,jeremyjuppet,production,create et update d'une demande magasin : ok,database
+2025-01-13 16:34:53.254000+00:00,jeremyjuppet,production,"ajoute de la condition pour l'update tant que la demande est en statut ""à traiter""",report
+2025-01-13 16:34:53.254000+00:00,jeremyjuppet,production,retrait des filtres sur la page demande pour les magasins,front
+2025-01-10 16:51:48.483000+00:00,jeremyjuppet,tribuneo:,travail sur la création du thème vdpc,front
+2025-01-10 16:51:48.483000+00:00,jeremyjuppet,tribuneo:,ajout et test de création d'un qr code vdpc teintexpress:,front
+2025-01-10 16:51:48.483000+00:00,jeremyjuppet,tribuneo:,travail sur l'update d'une requête magasin neofid studio,database
+2025-01-10 16:51:48.483000+00:00,jeremyjuppet,tribuneo:,travail sur les factures manquantes et création d'un script de lecture de fichier json pour exporter les données manquantes,front
+2025-01-10 16:51:48.483000+00:00,jeremyjuppet,tribuneo:,import des factures,report
+2025-01-10 16:31:11.904000+00:00,emy_lctr,-,gestion de l’appel tribuneo,general
+2025-01-10 16:31:11.904000+00:00,emy_lctr,-,suite de la création du fichier commerçants vdpc,general
+2025-01-10 16:31:11.904000+00:00,emy_lctr,-,modification des visuels des coupons vdpc,general
+2025-01-09 16:30:25.214000+00:00,spookiehd,tribuneo:,"travail sur l'api, ajout de valeur dynamique par rapport au réseau (transaction, commande...)",back
+2025-01-09 16:30:25.214000+00:00,spookiehd,tribuneo:,test de la commande au remboursement d'un commerçant teintexpress:,back
+2025-01-09 16:30:25.214000+00:00,spookiehd,tribuneo:,"travail front, ajout scroll horizontal des tableaux et dialogue de confirmation de déconnexion - ajout de la route sur l'api : update d'une demande",front
+2025-01-08 16:30:32.020000+00:00,jeremyjuppet,tribuneo:,"travail sur l'api, ajout et tests des templates (factures et justificatifs) pour vdpc teintexpress:",back
+2025-01-08 16:30:32.020000+00:00,jeremyjuppet,tribuneo:,"travail front, modification des demandes de formulation et sur le scrolling horizontal neofid",front
+2025-01-08 16:30:32.020000+00:00,jeremyjuppet,tribuneo:,correction des bons pour le lycée,back
+2025-01-07 16:52:34.056000+00:00,jeremyjuppet,tribuneo:,"travail sur l'api principalement sur les ""id_network"" et la liaison entre les deux api et bdd  neofid",front
+2025-01-07 16:52:34.056000+00:00,jeremyjuppet,tribuneo:,aide à la facturation de fasthotel,report
+2025-01-07 16:36:31.703000+00:00,emy_lctr,-,gestion appels tribuneo,general
+2025-01-07 16:36:31.703000+00:00,emy_lctr,-,aide à la création de compte et à la connexion,general
+2025-01-07 16:36:31.703000+00:00,emy_lctr,-,suite de la création du fichier commerçants vdpc,general
+2025-01-06 16:36:29.443000+00:00,jeremyjuppet,tribuneo:,travail sur l'application mobile,report
+2025-01-06 16:36:29.443000+00:00,jeremyjuppet,tribuneo:,travail sur le back-office,back
+2025-01-06 16:36:29.443000+00:00,jeremyjuppet,tribuneo:,réflexion et mise sur papier du fonctionnement entre les api teintexpress:,back
+2025-01-06 16:36:29.443000+00:00,jeremyjuppet,tribuneo:,remise en route du projet sur le pc de dharti,database
+2025-01-06 16:36:29.443000+00:00,jeremyjuppet,tribuneo:,travail sur la création de demande pour les magasins,front
+2025-01-06 16:33:06.578000+00:00,emy_lctr,-,gestion appels tribuneo,general
+2025-01-06 16:33:06.578000+00:00,emy_lctr,-,aide à la création de compte et à la connexion,general
+2025-01-06 16:33:06.578000+00:00,emy_lctr,-,suite de la création du fichier commerçants vdpc,general
+2025-01-03 16:32:09.470000+00:00,jeremyjuppet,tribuneo:,"mise à jour de l'environnement flutter, ok",front
+2025-01-03 16:32:09.470000+00:00,jeremyjuppet,tribuneo:,remise en route du back-office,back
+2025-01-03 16:32:09.470000+00:00,jeremyjuppet,tribuneo:,calcul facturation,general
+2025-01-03 16:32:09.470000+00:00,jeremyjuppet,tribuneo:,support technique,general
+2025-01-03 16:29:49.784000+00:00,emy_lctr,-,gestion appels tribuneo,general
+2025-01-03 16:29:49.784000+00:00,emy_lctr,-,aide à la création de compte et à la connexion,general
+2025-01-03 16:29:49.784000+00:00,emy_lctr,-,création du fichier commerçants vdpc,general
+2025-01-02 16:35:57.145000+00:00,jeremyjuppet,tribuneo:,"tentative de mise à jour de l'environnement flutter, problèmes actuellement non résolus",front
+2024-12-31 16:36:46.382000+00:00,jeremyjuppet,tribuneo:,création du script sql d'update des tables de la base de données,front
+2024-12-31 16:36:46.382000+00:00,jeremyjuppet,tribuneo:,ajout de tâches supplémentaire dans l'espace notion,back
+2024-12-31 16:36:46.382000+00:00,jeremyjuppet,tribuneo:,remise en place de l'environnement de développement flutter,front
+2024-12-31 11:33:08.331000+00:00,emy_lctr,-,réalisation de maquettes pour les vdpc,general
+2024-12-31 11:33:08.331000+00:00,emy_lctr,-,recherche prospect caramax,general
+2024-12-30 16:40:53.333000+00:00,emy_lctr,-,gestion appels tribuneo,general
+2024-12-30 16:40:53.333000+00:00,emy_lctr,-,aide à la création de compte et à la connexion,general
+2024-12-30 16:40:53.333000+00:00,emy_lctr,-,recherche de salons,general
+2024-12-30 16:40:53.333000+00:00,emy_lctr,-,recherche prospect caramax,general
+2024-12-30 16:35:21.466000+00:00,jeremyjuppet,tribuneo:,mise au point des tâches réaliser la semaine dernière par antoine.,report
+2024-12-30 16:35:21.466000+00:00,jeremyjuppet,tribuneo:,vérification du google docs de la structure de la table params.,database
+2024-12-30 16:35:21.466000+00:00,jeremyjuppet,tribuneo:,mise en place de la structure des bases de données en local et clonage de la bdd kdo4 pour vdpc.,database
+2024-12-30 16:35:21.466000+00:00,jeremyjuppet,tribuneo:,listage des tâches prioritaires sur le notion.,front
+2024-12-27 16:30:03.112000+00:00,spookiehd,tribuneo:,"travail sur les tâches demandées par jeremy (api, web et app terminés).",front
+2024-12-27 16:30:03.112000+00:00,spookiehd,tribuneo:,google docs sur la structure de la table params terminé.,database
+2024-12-27 16:30:03.112000+00:00,spookiehd,neofid:,campagne sms et email pompadour.,database
+2024-12-27 16:29:14.264000+00:00,emy_lctr,-,gestion appels tribuneo,general
+2024-12-27 16:29:14.264000+00:00,emy_lctr,-,aide à la création de compte et à la connexion,general
+2024-12-27 16:29:14.264000+00:00,emy_lctr,-,recherche de salons,general
+2024-12-27 16:29:14.264000+00:00,emy_lctr,-,relance prospect caramax,general
+2024-12-26 16:32:19.433000+00:00,spookiehd,tribuneo:,"travail sur les tâches demandées par jeremy (api et web fait, manque plus qu'app).",front
+2024-12-26 16:32:19.433000+00:00,spookiehd,tribuneo:,mise en place d'un google docs pour la structure de la table params qui permettra par la suite d'utilisée les données de cette table pour rendre dynamique les données brutes rendues dans l'application.,front
+2024-12-26 16:30:57.814000+00:00,emy_lctr,-,gestion appels tribuneo,general
+2024-12-26 16:30:57.814000+00:00,emy_lctr,-,renvoi d'une cliente vers la cci pour plus d'information sur les chèques papiers,general
+2024-12-26 16:30:57.814000+00:00,emy_lctr,-,aide à la création de compte et à la connexion,general
+2024-12-26 16:30:57.814000+00:00,emy_lctr,-,recherche de salons,general
+2024-12-24 16:04:20.199000+00:00,spookiehd,tribuneo:,support pour les consommateurs et commerçants,general
+2024-12-24 16:04:20.199000+00:00,spookiehd,tribuneo:,envoi des statistiques à judi et émilie,report
+2024-12-24 16:04:20.199000+00:00,spookiehd,tribuneo:,affectation et commencement des tâches à faire pour le reste de la semaine neofid,front
+2024-12-24 16:04:20.199000+00:00,spookiehd,tribuneo:,"correction vero moda, de l'erreur de bon",back
+2024-12-24 11:32:00.439000+00:00,emy_lctr,-,gestion appels tribuneo,general
+2024-12-24 11:32:00.439000+00:00,emy_lctr,-,aide à la création de compte et à la connexion,general
+2024-12-24 11:32:00.439000+00:00,emy_lctr,-,recherche de salons,general
+2024-12-24 08:28:00.976000+00:00,emy_lctr,:,gestion des appels tribuneo,general
+2024-12-24 08:28:00.976000+00:00,emy_lctr,:,aide à la création de compte et à la connexion,general
+2024-12-24 08:28:00.976000+00:00,emy_lctr,:,recherche de salons,general
+2024-12-24 08:26:28.354000+00:00,jeremyjuppet,tribuneo:,support pour les consommateurs et commerçants,general
+2024-12-24 08:26:28.354000+00:00,jeremyjuppet,tribuneo:,création de requêtes pour les statistiques général,front
+2024-12-24 08:26:28.354000+00:00,jeremyjuppet,tribuneo:,installation des outils et connexion aux serveurs neofid et grid,front
+2024-12-19 16:37:55.430000+00:00,jeremyjuppet,tribuneo:,support pour les consommateurs et commerçants,general
+2024-12-19 16:37:55.430000+00:00,jeremyjuppet,tribuneo:,"contact avec judi et émilie, pour dépannage commerçants et résolution d'un souci sur le back-office",back
+2024-12-19 16:37:55.430000+00:00,jeremyjuppet,tribuneo:,préparation des requêtes pour les statistiques demandées par judi et émilie (et françois),database
+2024-12-19 16:37:55.430000+00:00,jeremyjuppet,tribuneo:,envoie du fichier des coupons annulés pour une version chèque papier neofid,back
+2024-12-19 16:37:55.430000+00:00,jeremyjuppet,tribuneo:,envoie de la deuxième campagne sms pour la panetière.,front
+2024-12-18 16:34:44.034000+00:00,jeremyjuppet,tribuneo:,support pour les consommateurs et commerçants,general
+2024-12-18 16:34:44.034000+00:00,jeremyjuppet,tribuneo:,contact avec judi et émilie,report
+2024-12-18 16:34:44.034000+00:00,jeremyjuppet,pour répondre à leurs questions,"correction back-office, il y avait un problème avec la page des commerçants partenaires",front
+2024-12-18 16:34:44.034000+00:00,jeremyjuppet,pour répondre à leurs questions,"grosse réflexion pour essayer être dans les temps pour châtillon, proposition à faire demain au daily neofid",back
+2024-12-18 16:34:44.034000+00:00,jeremyjuppet,pour répondre à leurs questions,campagne sms pour la panetière.,report
+2024-12-17 16:39:59.333000+00:00,jeremyjuppet,tribuneo:,support - nouvelles améliorations du back-office de support,back
+2024-12-17 16:39:59.333000+00:00,jeremyjuppet,tribuneo:,contact avec judi et émilie pour répondre à leurs questions,report
+2024-12-17 16:39:59.333000+00:00,jeremyjuppet,tribuneo:,pour info 537 chèques de 30€ ont été réceptionnés sur environ 826 chèques au total neofid - tentative de campagne sms pour la panetière.,report
+2024-12-17 16:39:59.333000+00:00,jeremyjuppet,je les ai recontactés pour les prévenir.,"problème, impossible d'envoyer un sms, à continuer de débuguer demain",database
+2024-12-16 16:41:21.548000+00:00,jeremyjuppet,tribuneo:,support,back
+2024-12-16 16:41:21.548000+00:00,jeremyjuppet,tribuneo:,améliorations du back-office de support,back
+2024-12-16 16:41:21.548000+00:00,jeremyjuppet,tribuneo:,pour info 498 chèques de 30€ ont été réceptionnés sur environ 826 chèques au total,database
+2024-12-13 17:14:21.984000+00:00,jeremyjuppet,tribuneo:,support,back
+2024-12-13 17:14:21.984000+00:00,jeremyjuppet,tribuneo:,améliorations et sécurisation du petit back-office de support,back
+2024-12-13 17:14:21.984000+00:00,jeremyjuppet,tribuneo:,"préparation du fichier des chèques cadeaux à transformer en papier, que je dois transmettre lundi à la cci 04.",front
+2024-12-13 17:14:21.984000+00:00,jeremyjuppet,tribuneo:,pour info 422 chèques de 30€ ont été réceptionnés sur environ 830 chèques au total,database
+2024-12-12 16:46:49.404000+00:00,jeremyjuppet,tribuneo:,"support, qui, je pense, devrait se prolonger encore quelques jours.",front
+2024-12-12 16:46:49.404000+00:00,jeremyjuppet,tribuneo:,développement d'un petit back-office pour simplifier les tâches récurrentes et éviter d'exécuter des requêtes sql manuellement pendant les échanges au téléphone.,general
+2024-12-12 16:46:49.404000+00:00,jeremyjuppet,tribuneo:,création d'un tableau partagé pour faciliter le suivi et améliorer les échanges entre le bureau et moi.,general
+2024-12-10 16:54:28.978000+00:00,jeremyjuppet,tribuneo:,investigation et correction de la première commande par fichier,database
+2024-12-10 16:54:28.978000+00:00,jeremyjuppet,tribuneo:,,back
+2024-12-10 16:33:32.945000+00:00,emy_lctr,rapport :  - rencontre avec un prospect caramax et envoi des documents à ce dernier,recherche de salons,general
+2024-12-09 16:49:26.516000+00:00,jeremyjuppet,:,"création des tâches sur l'espace notion, au vu du déploiement de la partie magasin  tribuneo:",front
+2024-12-09 16:49:26.516000+00:00,jeremyjuppet,:,"remise en route du projet, commencement du travail sur la v2 neofid",database
+2024-12-09 16:49:26.516000+00:00,jeremyjuppet,:,configuration du point de vente le milord,database
+2024-12-09 16:49:26.516000+00:00,jeremyjuppet,:,"nettoyage du consommateur qui a permis de tester la config, libération de sa carte et suppression des opérations/bons",front
+2024-12-09 16:34:30.262000+00:00,emy_lctr,rapport :,préparation du dossier de documents destinées aux prospects,general
+2024-12-09 16:34:30.262000+00:00,emy_lctr,rapport :,recherche de salons,general
+2024-12-04 16:33:45.242000+00:00,jeremyjuppet,tribuneo:,"contact avec un utilisateur, consommateur, pour un problème de création de compte.",front
+2024-12-04 16:33:45.242000+00:00,jeremyjuppet,général,poursuite du travail sur notre espace de gestion notion.,front
+2024-12-03 17:09:18.826000+00:00,jeremyjuppet,neofid:,"fasthotel : à leur demande, création d'un palmarès des hôteliers ayant le plus créé de compte consommateurs général",front
+2024-12-03 17:09:18.826000+00:00,jeremyjuppet,neofid:,avancées sur notre espace de gestion notion,database
+2024-12-03 16:35:50.914000+00:00,emy_lctr,rapport :  - création d'une base d'infos avec les commerçants pouvant être de potentiels prospects caramax/tribuneo,recherche de salons auxuqles participer pour ma formation,general
+2024-12-02 16:57:07.566000+00:00,jeremyjuppet,tribuneo:,"contact avec judi, pour :  - transfert de coupon démat' vers papier d'un consommateur cliiink, qui paraissait bizarre au vu des 70 coupons de 5€ qu'il avait scanné (350 €).",front
+2024-12-02 16:57:07.566000+00:00,jeremyjuppet,tribuneo:,"problème avec un autre consommateur cliiink dont le qr code avait ""disparu""",back
+2024-12-02 16:57:07.566000+00:00,jeremyjuppet,tribuneo:,"contact avec julie de terradona (cliiink), pour résoudre les mystères.",back
+2024-12-02 16:57:07.566000+00:00,jeremyjuppet,tout est résolu.,"création d'un compte consommateur ""support technique"", pour stocker l'argent transféré de la démat' vers papier général - avancées sur notre espace de gestion notion",front
+2024-11-29 16:50:41.927000+00:00,jeremyjuppet,neofid:,envoie des deux campagnes sms pour mbm,front
+2024-11-29 16:50:41.927000+00:00,jeremyjuppet,neofid:,réflexion sur le sujet du bar discothèque le milord général,general
+2024-11-29 16:50:41.927000+00:00,jeremyjuppet,neofid:,"apprentissage de notion et conception de nos pages de gestion de projet, en cours",front
+2024-11-29 16:50:41.927000+00:00,jeremyjuppet,neofid:,"création du compte github, pour neofid techno",front
+2024-11-29 16:50:41.927000+00:00,jeremyjuppet,neofid:,"préparation pour import de tous les repos github existant, actuellement sur nos comptes github persos.",database
+2024-11-27 16:58:33.633000+00:00,jeremyjuppet,neofid:,préparation et validation des campagnes sms de mbm,database
+2024-11-27 16:58:33.633000+00:00,jeremyjuppet,neofid:,réflexion sur le chiffrage de monaco santé général,general
+2024-11-27 16:58:33.633000+00:00,jeremyjuppet,neofid:,apprentissage de notion pour créer un outil de gestion de projet,database
+2024-11-26 17:30:47.911000+00:00,jeremyjuppet,neofid: - correction du script bash pour le renouvellement automatique des certificats ssl,certificats renouvelés et valides jusqu'au 23 février 2025,back
+2024-11-26 17:30:47.911000+00:00,jeremyjuppet,neofid: - correction du script bash pour le renouvellement automatique des certificats ssl,"echantillonnage, en préparation de campagnes sms pour mbm",database
+2024-11-26 17:30:47.911000+00:00,jeremyjuppet,neofid: - correction du script bash pour le renouvellement automatique des certificats ssl,création d'un nouvel hôtel à sarlat-la-canéda pour fasthôtel et envoie des identifiants.,front
+2024-11-26 17:30:47.911000+00:00,jeremyjuppet,général,,back
+2024-11-25 16:38:37.470000+00:00,jeremyjuppet,projet teintexpress:,"remise en route du projet sur mon pc - etat des lieux général, pour le point avec allios",front
+2024-11-25 16:38:37.470000+00:00,jeremyjuppet,projet teintexpress:,liste des tâches restantes à réaliser projet neofid:,database
+2024-11-25 16:38:37.470000+00:00,jeremyjuppet,projet teintexpress:,"modification du script sh du renouvellement des certificats ssl automatique, ajout du path complet dans le script afin qu'il ait accès à wget et curl (ce qui l'a empêché de fonctionner hier soir)",front
+2024-11-25 16:38:37.470000+00:00,jeremyjuppet,projet teintexpress:,programmation du renouvellement automatique pour dimanche 1er décembre à 23h.,back
+2024-11-25 16:38:37.470000+00:00,jeremyjuppet,général,"recherche, comparaison et test d'outils de gestion de projet",database
+2024-11-22 16:21:14.576000+00:00,jeremyjuppet,projet tribuneo:,continuation de l'organisation et de documentation du travail sur la v2 de tribuneo,report
+2024-11-22 16:21:14.576000+00:00,jeremyjuppet,projet tribuneo:,réflexion et implémentation du middleware databaserouteur,database
+2024-11-21 16:34:33.761000+00:00,jeremyjuppet,projet tribuneo:,travail et organisation sur la v2 de tribuneo,general
+2024-11-21 16:34:33.761000+00:00,jeremyjuppet,projet tribuneo:,configuration et lancement du projet en local sur le pc d'antoine.,database
+2024-11-20 16:31:38.457000+00:00,jeremyjuppet,projet tribuneo:,correction des derniers problèmes du back-office,back
+2024-11-20 16:31:38.457000+00:00,jeremyjuppet,projet tribuneo:,déploiement en préprod et test complet du back-office,back
+2024-11-20 16:31:38.457000+00:00,jeremyjuppet,projet tribuneo:,déploiement en production et test réalisable en prod,database
+2024-11-20 16:31:38.457000+00:00,jeremyjuppet,projet tribuneo:,travail et organisation sur la v2 de tribuneo,general
+2024-11-19 17:07:51.942000+00:00,jeremyjuppet,projet tribuneo:,"correction des problèmes de téléchargement depuis le back-office, ok",front
+2024-11-19 17:07:51.942000+00:00,jeremyjuppet,projet tribuneo:,demande de confirmation sur la suppression des secteurs d'activités,report
+2024-11-19 17:07:51.942000+00:00,jeremyjuppet,projet tribuneo:,gestion de la notification des demandes de remboursement en attente,database
+2024-11-19 17:07:51.942000+00:00,jeremyjuppet,projet tribuneo:,appel avec émilie pour détailler le travail en cours,general
+2024-11-18 16:40:20.666000+00:00,jeremyjuppet,projet tribuneo:,"correction des problèmes de téléchargement depuis le back-office, en cours..",front
+2024-11-18 16:40:20.666000+00:00,jeremyjuppet,projet tribuneo:,prémisse d'un middleware databasename,database
+2024-11-18 16:40:20.666000+00:00,jeremyjuppet,projet tribuneo:,"discussion et brainstorming, des solutions multibases  projet neofid:",general
+2024-11-18 16:40:20.666000+00:00,jeremyjuppet,projet tribuneo:,"campagne sms, laurent régusse vernouillet",front
+2024-11-14 16:44:18.160000+00:00,jeremyjuppet,projet tribuneo:,réalisation de la transaction pour super u sisteron,report
+2024-11-14 16:44:18.160000+00:00,jeremyjuppet,projet tribuneo:,correction du problème de téléchargement depuis le back-office,front
+2024-11-14 16:44:18.160000+00:00,jeremyjuppet,", reste à tester toutes les fonctions de téléchargement de fichier (zip, pdf, csv, xlsx, ...)","intégration des repositories de type eloquent, terminé",general
+2024-11-13 16:31:55.435000+00:00,jeremyjuppet,projet tribuneo:,"correction de deux fichiers de remboursement, en ayant eu la compta de la cci 04",front
+2024-11-13 16:31:55.435000+00:00,jeremyjuppet,projet tribuneo:,partage des coordonnées d'une conso à émilie,database
+2024-11-13 16:31:55.435000+00:00,jeremyjuppet,projet tribuneo:,tentative de correction du problème du backoffice,back
+2024-11-13 16:31:55.435000+00:00,jeremyjuppet,projet tribuneo:,poursuite du travail sur l'intégration des repositories de type eloquent,front
+2024-11-12 16:34:42.821000+00:00,spookiehd,projet tribuneo:,"recherche du problème de création de commande avec julien, l'élément mis en cause est dio.",front
+2024-11-12 16:34:42.821000+00:00,spookiehd,projet tribuneo:,poursuite du travail sur l'intégration des repositories de type eloquent,front
+2024-11-06 16:28:54.257000+00:00,julienc.,projet tribuneo:,création de tout les models type eloquent master et children,front
+2024-11-06 16:28:54.257000+00:00,julienc.,projet tribuneo:,réflexion et début de restructuration de la partie front de l'application pour accueillir le nouveau système,front
+2024-11-05 16:31:03.852000+00:00,jeremyjuppet,projet tribuneo:,réflexion sur la restructuration de tribuneo,back
+2024-11-05 16:31:03.852000+00:00,jeremyjuppet,projet tribuneo:,"création d'une nouvelle version de l'api, changement de la structure et intégration de l'orm eloquent",front
+2024-11-05 16:31:03.852000+00:00,jeremyjuppet,projet tribuneo:,tests de connexion multi bases de données avec eloquent,back
+2024-11-04 16:29:35.681000+00:00,jeremyjuppet,projet tribuneo:,réflexion sur la restructuration de tribuneo,back
+2024-11-04 16:29:35.681000+00:00,jeremyjuppet,projet tribuneo:,travail sur les schémas des bases de données,database
+2024-11-04 16:29:35.681000+00:00,jeremyjuppet,projet tribuneo:,,back
+2024-10-30 16:34:02.836000+00:00,jeremyjuppet,projet tribuneo:,"problème de manosque moto, nous aurons des nouvelles qu'après le 5 novembre - api :  - création du diagramme sql pour les multi-bases de données",front
+2024-10-30 16:34:02.836000+00:00,jeremyjuppet,projet tribuneo:,création d'un event de suppression d'ancienne notification expirée,front
+2024-10-30 16:34:02.836000+00:00,jeremyjuppet,projet tribuneo:,back-,back
+2024-10-30 16:34:02.836000+00:00,jeremyjuppet,office :  - correction et mise en production,"fonctionnalité de création de commande par fichier, d'envoi d'email pour les consommateurs et récupération auto (sur le login) des coupons : testé et en production.",front
+2024-10-29 16:35:43.006000+00:00,jeremyjuppet,projet tribuneo:,"problème de manosque moto, pas de nouvelle de judi..",report
+2024-10-29 16:35:43.006000+00:00,jeremyjuppet,projet tribuneo:,api :  - prémisse d'un système de databaserouter,back
+2024-10-29 16:35:43.006000+00:00,jeremyjuppet,projet tribuneo:,back-,back
+2024-10-28 16:31:52.033000+00:00,jeremyjuppet,projet tribuneo:,"retour sur le problème de manosque moto, judi va voir avec la compta demain, en attente de retour.",back
+2024-10-28 16:31:52.033000+00:00,jeremyjuppet,projet tribuneo:,api :  - fix qrcodes à la connexion des consommateurs,back
+2024-10-28 16:31:52.033000+00:00,jeremyjuppet,projet tribuneo:,"mise en preprod, puis prod",front
+2024-10-28 16:31:52.033000+00:00,jeremyjuppet,projet tribuneo:,"passage de php 8.1 à 8.2 (crash serveur), résolution en réinstallant l'extension pdo_mysql",back
+2024-10-28 16:31:52.033000+00:00,jeremyjuppet,projet tribuneo:,back-,back
+2024-10-28 16:31:52.033000+00:00,jeremyjuppet,office :  - mise en preprod : test création de commande par fichier et envoie de mail.,travail sur la récupération du fichier csv : récapitulatif de commande projet neofid: - génération et intégration de 500 numéros de cartes pour le milord,back
+2024-10-25 15:28:42.350000+00:00,jeremyjuppet,projet tribuneo:,api :,back
+2024-10-25 15:28:42.350000+00:00,jeremyjuppet,projet tribuneo:,validation des qrcodes à la connexion des consommateurs : ok (testé en preprod),back
+2024-10-25 15:28:42.350000+00:00,jeremyjuppet,projet neofid:,création d'un script bash et php pour lancer le renouvellement des certificats ssl du serveur neo - script qui envoie un mail avec les infos des résultats,front
+2024-10-25 15:28:42.350000+00:00,jeremyjuppet,projet neofid:,"ajout d'une règle dans crontab qui lance le renouvellement, tous les mois impairs (donc tous les 2 mois) entre le 20 et 27 seulement les dimanches à 23h00",front
+2024-10-24 15:32:52.405000+00:00,jeremyjuppet,projet tribuneo:,"api :  - lors de la connexion des utilisateurs, ajout de contrôle de données et vérification des qrcodes seulement pour les consommateurs + tests en preprod",back
+2024-10-23 15:46:20.253000+00:00,jeremyjuppet,projet tribuneo:,api :  - travail la vérification et récupération des qrcodes/coupons lors de la connexion des consommateurs,back
+2024-10-22 15:46:23.679000+00:00,jeremyjuppet,projet tribuneo:,api :  - travail sur le traitement des transactions projet allios:,front
+2024-10-22 15:46:23.679000+00:00,jeremyjuppet,projet tribuneo:,travail sur la gestion et l'utilisation des thèmes projet neofid: - correction des opérations et bons pour fasthotel annecy,database
+2024-10-21 15:30:18.123000+00:00,jeremyjuppet,projet tribuneo:,api :  - travail sur la procédure stocké,back
+2024-10-21 15:30:18.123000+00:00,jeremyjuppet,projet tribuneo:,travail sur le traitement des transactions  projet allios:,front
+2024-10-21 15:30:18.123000+00:00,jeremyjuppet,projet tribuneo:,ajout des checkboxs et la méthode d'ajout/retrait des packagings sur la page produit commerciaux.,front
+2024-10-21 15:30:18.123000+00:00,jeremyjuppet,projet tribuneo:,ajout des filtres avec ces fonctionnalités sur la page produit commerciaux.,front
+2024-10-21 15:30:18.123000+00:00,jeremyjuppet,projet tribuneo:,page produit commerciaux terminée.,front
+2024-10-21 15:30:18.123000+00:00,jeremyjuppet,projet tribuneo:,"prise de connaissance sur la page thème, ajout d'un bouton pour afficher le générateur de couleur et premier essaie de création de thème envoyer à l'api",front
+2024-10-18 15:30:39.410000+00:00,jeremyjuppet,projet tribuneo:,api :  - travail sur la procédure stocké projet allios:,front
+2024-10-18 15:30:39.410000+00:00,jeremyjuppet,projet tribuneo:,travail sur les checkboxs de conditionnement sur page des produits commerciaux projet neofid:,front
+2024-10-18 15:30:39.410000+00:00,jeremyjuppet,projet tribuneo:,regusse : campagne sms pour laurent geoffroy,back
+2024-10-17 15:31:47.669000+00:00,jeremyjuppet,projet tribuneo:,api :  - debug de la procédure stocké..,back
+2024-10-17 15:31:47.669000+00:00,jeremyjuppet,allios:,debug et retravail de la page des produits commerciaux : crud ok et testé,front
+2024-10-16 15:32:57.829000+00:00,jeremyjuppet,projet tribuneo:,api :  - travail sur la création d'une procédure stocké pour les calculs des montants restant sur chaque qr code.,front
+2024-10-16 15:32:57.829000+00:00,jeremyjuppet,projet tribuneo:,"retravail du mail, de commande par fichier",back
+2024-10-16 15:32:57.829000+00:00,jeremyjuppet,projet tribuneo:,point technique avec emilie projet,database
+2024-10-16 15:32:57.829000+00:00,jeremyjuppet,allios:,travail sur la page des produits commerciaux : crud ok projet neofid:,front
+2024-10-16 15:32:57.829000+00:00,jeremyjuppet,allios:,fasthotel : correction du bon utilisé par erreur d'un hôtelier,database
+2024-10-15 15:48:14.070000+00:00,jeremyjuppet,projet tribuneo:,"api :  - travail sur les calculs de ""sub_fund""",back
+2024-10-15 15:48:14.070000+00:00,jeremyjuppet,projet tribuneo:,travail sur l'envoi de mail lors de commande par fichier projet allios:,front
+2024-10-15 15:48:14.070000+00:00,jeremyjuppet,projet tribuneo:,"crud de la page produits commerciaux, quasiment terminé",front
+2024-10-14 15:34:48.832000+00:00,jeremyjuppet,projet tribuneo:,api :  - interprétation du fichier envoyé en bytes encodé en base 64,back
+2024-10-14 15:34:48.832000+00:00,jeremyjuppet,projet tribuneo:,"travail sur les calculs de ""sub_fund""",database
+2024-10-14 15:34:48.832000+00:00,jeremyjuppet,projet tribuneo:,front :,front
+2024-10-14 15:34:48.832000+00:00,jeremyjuppet,projet tribuneo:,création d'une commande via un fichier - champs de recherche corrigés,front
+2024-10-14 15:34:48.832000+00:00,jeremyjuppet,projet tribuneo:,travail sur la pagination des listes de documents projet,database
+2024-10-14 15:34:48.832000+00:00,jeremyjuppet,allios:,travail sur la page produits commerciaux,front
+2024-10-11 15:34:50.140000+00:00,jeremyjuppet,projet tribuneo:,api : travail l'interprétation des bytes en base 64,back
+2024-10-11 15:34:50.140000+00:00,jeremyjuppet,projet tribuneo:,correction du problème de remboursement de manosque moto et du manque de rib de l'escarcelle,back
+2024-10-11 15:34:50.140000+00:00,jeremyjuppet,projet tribuneo:,travail sur l'intégration d'un fichier csv/xlsx =conversion en string en base 64 pour plus de simplicité.,database
+2024-10-11 15:34:50.140000+00:00,jeremyjuppet,projet tribuneo:,avancement sur la page des coupons projet allios:,front
+2024-10-11 15:34:50.140000+00:00,jeremyjuppet,projet tribuneo:,travail sur la page produits commerciaux,front
+2024-10-11 15:34:50.140000+00:00,jeremyjuppet,projet tribuneo:,"restructuration des pages : operatorview, baseview pour s'accorder au nouveau widget",front
+2024-10-10 15:35:12.978000+00:00,jeremyjuppet,projet tribuneo:,api : travail sur la requête de la liste des bons,back
+2024-10-10 15:35:12.978000+00:00,jeremyjuppet,projet tribuneo:,correction du problème de remboursement de manosque moto,back
+2024-10-10 15:35:12.978000+00:00,jeremyjuppet,projet tribuneo:,"découverte d'un problème concernant les commerçants demandant un remboursement, sans avoir partagé leur rib à la cci projet allios:",front
+2024-10-10 15:35:12.978000+00:00,jeremyjuppet,projet tribuneo:,travail sur la page produits commerciaux,front
+2024-10-10 15:35:12.978000+00:00,jeremyjuppet,projet tribuneo:,"page sav, crud ok",front
+2024-10-09 15:32:55.371000+00:00,julienc.,projet tribuneo:,api : tests et correction de duplication de transactions,back
+2024-10-09 15:32:55.371000+00:00,julienc.,projet tribuneo:,front: changement du package http -dio et adaptation du code.,front
+2024-10-09 15:32:55.371000+00:00,julienc.,toujours sur l'envoi de fichier csv  projet allios:,ajout du delete produit commercial et travail sur l'update,front
+2024-10-09 15:32:55.371000+00:00,julienc.,toujours sur l'envoi de fichier csv  projet allios:,travail sur la page sav et admin des ventes.,front
+2024-10-08 15:41:23.150000+00:00,jeremyjuppet,projet tribuneo:,api : travail sur la route de la liste des bons,back
+2024-10-08 15:41:23.150000+00:00,jeremyjuppet,projet tribuneo:,exploration du problème de remboursement de manosque moto projet allios:,front
+2024-10-08 15:41:23.150000+00:00,jeremyjuppet,projet tribuneo:,travail sur les filtres de la page produits commerciaux,front
+2024-10-08 15:41:23.150000+00:00,jeremyjuppet,projet tribuneo:,travail sur la page sav,front
+2024-10-07 15:36:47.038000+00:00,jeremyjuppet,projet tribuneo:,"api : rapport csv ok, travail sur la route de la liste des bons",back
+2024-10-07 15:36:47.038000+00:00,jeremyjuppet,projet tribuneo:,"front : travail sur l'envoi de fichier, pour la création de commande projet allios:",front
+2024-10-07 15:36:47.038000+00:00,jeremyjuppet,projet tribuneo:,réunion : questions techniques sur teintexpress,general
+2024-10-07 15:36:47.038000+00:00,jeremyjuppet,projet tribuneo:,travail sur la structure du code du front et ajout des filtres manquant sur la page produits commerciaux,front
+2024-10-07 15:36:47.038000+00:00,jeremyjuppet,projet tribuneo:,présentation des évolutions avec dharti projet,database
+2024-10-07 15:36:47.038000+00:00,jeremyjuppet,bot discord:,travail sur la fonctionnalité de checklist,database
+2024-10-04 15:36:05.714000+00:00,jeremyjuppet,projet tribuneo:,api : travail sur la route permettant de créer le rapport de commande en csv,back
+2024-10-04 15:36:05.714000+00:00,jeremyjuppet,projet tribuneo:,"front : avancement sur l'envoi de fichier, pour la création de commande projet allios:",front
+2024-10-04 15:36:05.714000+00:00,jeremyjuppet,projet tribuneo:,front :,front
+2024-10-04 15:36:05.714000+00:00,jeremyjuppet,projet tribuneo:,finalisation de la vue des produits source,front
+2024-10-04 15:36:05.714000+00:00,jeremyjuppet,projet tribuneo:,refactoring et amélioration du projet général,database
+2024-10-04 15:36:05.714000+00:00,jeremyjuppet,projet tribuneo:,amélioration de l'interface lors du submit d'un form projet,front
+2024-10-04 15:36:05.714000+00:00,jeremyjuppet,bot discord:,travail sur la détection d'un modèle linguistique,front
+2024-10-04 15:36:05.714000+00:00,jeremyjuppet,bot discord:,intégration sur github projet neofid :,database
+2024-10-04 15:36:05.714000+00:00,jeremyjuppet,bot discord:,campagne sms pour tj boulazac,database
+2024-10-03 15:41:21.823000+00:00,jeremyjuppet,projet tribuneo:,api : création d'une commande via un fichier csv ou xlsx : ok (reste à faire le rapport et l'envoie de mail),front
+2024-10-03 15:41:21.823000+00:00,jeremyjuppet,projet tribuneo:,front : avancement sur le développement du formulaire et de l'envoi de fichier projet allios:,front
+2024-10-03 15:41:21.823000+00:00,jeremyjuppet,projet tribuneo:,api : création des endpoints pour les produits source (crud) (formatage des dates),front
+2024-10-03 15:41:21.823000+00:00,jeremyjuppet,projet tribuneo:,front : avancement sur la vue des produits source projet,front
+2024-10-03 15:41:21.823000+00:00,jeremyjuppet,bot discord:,optimisation du code pour le traitement des fonctions,database
+2024-10-03 15:41:21.823000+00:00,jeremyjuppet,bot discord:,recherche sur la traduction des langues,database
+2024-10-03 15:41:21.823000+00:00,jeremyjuppet,bot discord:,"recherche sur le modèle de détection de la langue modèle fasttext, modèle xlm-r, modèle cld3",report
+2024-10-02 15:31:12.707000+00:00,jeremyjuppet,projet tribuneo:,"avancement sur le développement coté api, sur la nouvelle façon de créer les commandes.",back
+2024-10-02 15:31:12.707000+00:00,jeremyjuppet,allios:,"point sur les avancées en détaillant le travail restant sur l'api et sur le front - réunion point projet, prévision d'une nouvelle réunion lundi matin projet bot discord:",general
+2024-10-02 15:31:12.707000+00:00,jeremyjuppet,allios:,travailler sur différents cas d'utilisation :,report
+2024-10-02 15:31:12.707000+00:00,jeremyjuppet,allios:,récupérer des données par utilisateur,database
+2024-10-02 15:31:12.707000+00:00,jeremyjuppet,allios:,récupérer les données par date,database
+2024-10-01 15:24:22.715000+00:00,jeremyjuppet,projet tribuneo:,"réponse à la demande de judi, au sujet de super u  - avancement sur le développement coté api, sur la nouvelle façon de créer les commandes.",back
+2024-10-01 15:24:22.715000+00:00,jeremyjuppet,allios:,point général sur les avancées et sur ce que l'on doit demander demain lors de la réunion projet,general
+2024-10-01 15:24:22.715000+00:00,jeremyjuppet,bot discord:,ajout d'une fonctionnalité de traduction au bot pour toutes les langues  - intégration du projet sur github,back
+2024-09-30 15:43:19.140000+00:00,julienc.,tribuneo:  - point sur le dev de tribuneo pour la cci des pyréenés orientales,point sur le dev pour la cci04,back
+2024-09-30 15:43:19.140000+00:00,julienc.,tribuneo:  - point sur le dev de tribuneo pour la cci des pyréenés orientales,commencer les modifications de la page order pour pouvoir prendre en compte un csv ou un fichier xlsx teintexpress:,front
+2024-09-30 15:43:19.140000+00:00,julienc.,tribuneo:  - point sur le dev de tribuneo pour la cci des pyréenés orientales,présentation du projet à antoine,database
+2024-09-30 15:43:19.140000+00:00,julienc.,tribuneo:  - point sur le dev de tribuneo pour la cci des pyréenés orientales,"point sur la phase 1  - avancement dans la validation des pages déjà faites, refactorisation, vérification des différents crud, et des différentes fonctionnalités  bot discord:",front
+2024-09-30 15:43:19.140000+00:00,julienc.,tribuneo:  - point sur le dev de tribuneo pour la cci des pyréenés orientales,intégration d'un nouveau model pour entrainer le bot sur certains termes.,back
+2024-09-27 15:31:33.934000+00:00,jeremyjuppet,projet tribuneo:,"contact avec émilie et judi, validation de la nouvelle façon de créer les commandes + demande d'ajout d'un listing avec les n° de coupons, montants, noms et prénoms - avancement sur le développement coté api, sur la nouvelle façon de créer les commandes.",back
+2024-09-27 15:31:33.934000+00:00,jeremyjuppet,projet tribuneo:,présentation de tribuneo avec la cci pyrénées orientales,front
+2024-09-26 15:37:13.885000+00:00,jeremyjuppet,projet tribuneo:,"communication avec émilie et judi, sur la nouvelle façon de créer les commandes.",general
+2024-09-26 15:37:13.885000+00:00,jeremyjuppet,projet tribuneo:,"début du travail, sur la réception de fichier xlsx et csv pour la génération de commandes.",back
+2024-09-26 15:37:13.885000+00:00,jeremyjuppet,projet tribuneo:,présentation de tribuneo avec la cci de besançon,report
+2024-09-26 15:37:13.885000+00:00,jeremyjuppet,projet tribuneo:,"contact avec laurent bondy, qui valide le format de fichier généré par tribuneo.",front
+2024-09-24 15:30:56.527000+00:00,jeremyjuppet,projet neofid :,"renouvellement des certificats ssl, nouvelle date d'expiration : 23/12/2024",back
+2024-09-24 15:30:56.527000+00:00,jeremyjuppet,projet neofid :,nettoyage du projet et des fichiers inutiles (~4000 fichiers supprimés),database
+2024-09-24 15:30:56.527000+00:00,jeremyjuppet,projet neofid :,campagne sms pour rayons de soleil projet tribuneo:,database
+2024-09-24 15:30:56.527000+00:00,jeremyjuppet,projet neofid :,"recherche du problème rencontré par super u sisteron (en attente de la réunion de demain avec la cci, pour en parler)",general
+2024-09-23 15:39:28.460000+00:00,jeremyjuppet,projet neofid :,"travail sur l'intégration du dump des bases neofid et indep2 sur mysql 8 : ok - sneofid tourne maintenant sur un container avec php 7.4, reste à corriger toutes les erreurs",back
+2024-09-23 15:39:28.460000+00:00,jeremyjuppet,projet neofid :,création un repo git,front
+2024-09-23 15:39:28.460000+00:00,jeremyjuppet,projet neofid :,préparation de la campagne sms pour rayons de soleil (sisteron) projet allios :,front
+2024-09-23 15:39:28.460000+00:00,jeremyjuppet,projet neofid :,"retravaille des pages : conditionnement, logiciels, machines (souci de dropdown des unités ok) et réseaux commerciaux",front
+2024-09-20 15:32:46.358000+00:00,jeremyjuppet,projet neofid :,recherche et résolution du problème de m buisson,front
+2024-09-20 15:32:46.358000+00:00,jeremyjuppet,projet neofid :,tentative d'exécution du dump mysql 5.7,database
+2024-09-20 15:32:46.358000+00:00,jeremyjuppet,allios :,"création de routes supplémentaires, sur les produits commerciaux et les liaisons avec les réseaux",front
+2024-09-19 15:39:25.793000+00:00,jeremyjuppet,projet tribuneo:,contact avec émilie pour une future commande d'environ 1000 coupons cadeaux de 30€. qu'ils aimeraient envoyer par mail à chaque consommateur.,front
+2024-09-19 15:39:25.793000+00:00,jeremyjuppet,projet neofid :,tentative de conversion du dump mysql 5.7 vers 8.,database
+2024-09-19 15:39:25.793000+00:00,jeremyjuppet,problème sur les datetime et timestamp,"création d'un nouveau conteneur en mysql 5.7, dans l'idée de se concentrer sur les erreurs php",front
+2024-09-18 15:32:00.688000+00:00,jeremyjuppet,projet allios :,mise en place du projet sur le pc d'antoine,database
+2024-09-18 15:32:00.688000+00:00,jeremyjuppet,projet allios :,front :    - travail sur la page produit commerciaux projet neofid :,front
+2024-09-18 15:32:00.688000+00:00,jeremyjuppet,projet allios :,dump de la base neofid et indep2,database
+2024-09-18 15:32:00.688000+00:00,jeremyjuppet,projet allios :,copie de sneofid,back
+2024-09-18 15:32:00.688000+00:00,jeremyjuppet,projet allios :,"tentative de faire fonctionner la solution sur des containers, avec php 7.4, bloqué à cause d'erreurs sql",back
+2024-09-17 15:48:16.410000+00:00,jeremyjuppet,projet allios :,api :    - fix sur les produits commerciaux,front
+2024-09-17 15:48:16.410000+00:00,jeremyjuppet,projet allios :,"modification de la route pour obtenir les bases, avec la possibilité ou non d'afficher les substitutions de base",database
+2024-09-17 15:48:16.410000+00:00,jeremyjuppet,projet allios :,get by id d'un produit commercial avec tous les détails et liaisons avec les réseaux et les conditionnements (pour modifications et création d'une nouvelle version),front
+2024-09-17 15:48:16.410000+00:00,jeremyjuppet,projet allios :,création d'helpers pour les dropdown du front : date version (prodcom) et produit source,front
+2024-09-16 15:36:01.929000+00:00,jeremyjuppet,projet allios :,présentation du projet api au stagiaire - api :    - delete des produits commerciaux,front
+2024-09-16 15:36:01.929000+00:00,jeremyjuppet,projet allios :,vérification avant delete,front
+2024-09-16 15:36:01.929000+00:00,jeremyjuppet,projet allios :,découverte d'un problème sur la liste des prod com (réseau afficher = 1),report
+2024-09-16 15:36:01.929000+00:00,jeremyjuppet,projet allios :,front : travail sur les pages :,front
+2024-09-16 15:36:01.929000+00:00,jeremyjuppet,projet allios :,familles colorant,general
+2024-09-16 15:36:01.929000+00:00,jeremyjuppet,projet allios :,colorants,general
+2024-09-16 15:36:01.929000+00:00,jeremyjuppet,projet allios :,système de substitution des colorants,back
+2024-09-16 15:36:01.929000+00:00,jeremyjuppet,projet allios :,noms de substitution des colorants,back
+2024-09-16 15:36:01.929000+00:00,jeremyjuppet,projet allios :,règles de substitution des colorants,general
+2024-09-16 15:36:01.929000+00:00,jeremyjuppet,projet allios :,bases,database
+2024-09-13 15:32:34.832000+00:00,jeremyjuppet,projet allios :,api : création et modification de produits commerciaux ok travail sur la suppression,front
+2024-09-13 15:32:34.832000+00:00,jeremyjuppet,projet allios :,"front : les pages : opérateurs, familles de colorant, remarques ok projet bot discord :",front
+2024-09-13 15:32:34.832000+00:00,jeremyjuppet,projet allios :,travail sur l'extraction et le traitement des données du serveur neotech,database
+2024-09-12 15:50:15.474000+00:00,jeremyjuppet,projet allios :,"api : avancement sur la création de produits commerciaux et leurs liaisons, presque terminé projet",front
+2024-09-12 15:50:15.474000+00:00,jeremyjuppet,bot discord :,recherche sur le modèle de fine-tuning,database
+2024-09-12 15:50:15.474000+00:00,jeremyjuppet,bot discord :,"connexion au serveur neotech pour extraction des données du canal ""reporting""",back
+2024-09-11 15:40:01.817000+00:00,jeremyjuppet,projet allios :,api : travail sur la création de produits commerciaux.,front
+2024-09-11 15:40:01.817000+00:00,jeremyjuppet,projet allios :,"frontend : travail sur la page opérateur crud, correction et amélioration projet",front
+2024-09-11 15:40:01.817000+00:00,jeremyjuppet,bot discord :,résolution de l'erreur de structure mvvm python,back
+2024-09-11 15:40:01.817000+00:00,jeremyjuppet,bot discord :,réunion avec hanna,general
+2024-09-11 15:40:01.817000+00:00,jeremyjuppet,bot discord :,travail pour faire fonctionner le modèle t5 avec le bot,back
+2024-09-10 15:33:19.090000+00:00,jeremyjuppet,projet allios :,"travail sur l'api, gestion et création d'exceptions pour des routes existantes, préparation des models et des repositories pour la création de produits commerciaux.",front
+2024-09-10 15:33:19.090000+00:00,jeremyjuppet,bot discord :,"apprentissage et travaille sur l'intégration de l'architecture mvvm pour python, sur le bot discord",back
+2024-09-09 16:02:34.267000+00:00,creboul,<@765128071900299276as,,general
+2024-09-09 15:50:27.988000+00:00,jeremyjuppet,projet allios :,"travail sur l'api, toujours sur les bases et les substitutions (je ne comprends pas)",back
+2024-09-09 15:50:27.988000+00:00,jeremyjuppet,projet allios :,travail sur le frontend : correction des bugs en général projet bot discord :,front
+2024-09-09 15:50:27.988000+00:00,jeremyjuppet,projet allios :,travail sur le formatage du texte du chatbot et ajouter des puces et d'autres fonctionnalités projet tribuneo :,back
+2024-09-09 15:50:27.988000+00:00,jeremyjuppet,projet allios :,"réunion, exports des partenaires, ajout de fiches trello",general
+2024-09-05 16:04:49.774000+00:00,jeremyjuppet,projet allios :,"travail sur l'api, toujours sur les bases et les substitutions",back
+2024-09-05 16:04:49.774000+00:00,jeremyjuppet,bot discord :,"travail sur la fonctionnalité de recherche et sur la rédaction de résumé, en cas de tâche complexe",report
+2024-09-04 15:32:14.706000+00:00,jeremyjuppet,projet allios :,"développement sur l'api : travail sur les bases et les substitutions, échanges avec daniel projet bot discord :",general
+2024-09-04 15:32:14.706000+00:00,jeremyjuppet,projet allios :,avancement du projet et réalisation de tests projet tribuneo :,database
+2024-09-04 15:32:14.706000+00:00,jeremyjuppet,projet allios :,aide pour la connexion après oubli de mot de passe et création d'une demande de remboursement du commerçant grangier photo (digne),front
+2024-09-03 15:32:47.134000+00:00,jeremyjuppet,allios,suite de l'état des lieux,front
+2024-09-03 15:32:47.134000+00:00,jeremyjuppet,allios,développement sur l'api bot discord,back
+2024-09-03 15:32:47.134000+00:00,jeremyjuppet,allios,avancement du projet et tests tribuneo,database
+2024-09-03 15:32:47.134000+00:00,jeremyjuppet,allios,tests et vérification du bon fonctionnement de la création de compte consommateur depuis l'application,front
+2024-09-02 15:36:56.350000+00:00,jeremyjuppet,bot discord :,poursuite du développement du bot discord projet allios :,front
+2024-09-02 15:36:56.350000+00:00,jeremyjuppet,bot discord :,état des lieux et tests,front
+2024-09-02 15:36:56.350000+00:00,jeremyjuppet,bot discord :,réalisation de document : détail de chaque page du projet,front
+2024-09-02 15:36:56.350000+00:00,jeremyjuppet,bot discord :,rédaction des questions à poser pour la suite du projet,front
+2024-08-29 06:36:10.458000+00:00,julienc.,du 28/08 allyos,,back
+2024-08-29 06:36:10.458000+00:00,julienc.,bot discord,avancement du projet.,database
+2024-08-29 06:36:10.458000+00:00,julienc.,bot discord,rédaction d'un guide pas à pas.,front
+2024-08-29 06:36:10.458000+00:00,julienc.,bot discord,tests de divers modèles open source.,database
+2024-08-29 06:36:10.458000+00:00,julienc.,neofid,mail de réponse envoyé à super u  sisteron et émilie de la cci.,back
+2024-08-29 06:36:10.458000+00:00,julienc.,neofid,réception de la réponse de super u : action en cours avec sa cliente.,back
+2024-08-14 15:52:08.817000+00:00,jeremyjuppet,projet allios :,frontend :,front
+2024-08-14 15:52:08.817000+00:00,jeremyjuppet,-,finalisation du crud pour les machines,back
+2024-08-14 15:52:08.817000+00:00,jeremyjuppet,-,travail sur le menu déroulant des filtres des produits commerciaux,front
+2024-08-14 15:52:08.817000+00:00,jeremyjuppet,-,api :,back
+2024-08-14 15:52:08.817000+00:00,jeremyjuppet,-,travail sur les produits sources,front
+2024-08-14 15:52:08.817000+00:00,jeremyjuppet,-,installation du projet sur la vm debian d'allios :,front
+2024-08-14 15:52:08.817000+00:00,jeremyjuppet,-,"après toutes ces péripéties, les conteneurs fonctionnent désormais sur la vm.",general
+2024-08-13 16:09:21.930000+00:00,jeremyjuppet,projet allios :,frontend :,front
+2024-08-13 16:09:21.930000+00:00,jeremyjuppet,-,finalisation du crud pour les logiciels,back
+2024-08-13 16:09:21.930000+00:00,jeremyjuppet,-,"création des modèles pour unitereponse, uniteonce, et machine",front
+2024-08-13 16:09:21.930000+00:00,jeremyjuppet,-,création et affichage de la liste des machines - api :,front
+2024-08-13 16:09:21.930000+00:00,jeremyjuppet,-,finalisation de la route des produits commerciaux avec filtres installation du projet sur la vm debian d'allios :,front
+2024-08-13 16:09:21.930000+00:00,jeremyjuppet,-,installation de docker et docker compose.,database
+2024-08-13 16:09:21.930000+00:00,jeremyjuppet,-,problèmes de connexion lors des mises à jour des conteneurs et des installations de dépendances.,back
+2024-08-13 16:09:21.930000+00:00,jeremyjuppet,-,"modification des paramètres dns et tests avec diverses images, mais les erreurs persistent.",back
+2024-08-13 16:09:21.930000+00:00,jeremyjuppet,-,"vérification des règles réseau, je suspecte un blocage par pare-feu ou une mauvaise configuration du proxy.",database
+2024-08-12 15:59:13.153000+00:00,jeremyjuppet,projet allios :,frontend :,front
+2024-08-12 15:59:13.153000+00:00,jeremyjuppet,-,"création du modèle pour le type de logiciel, travaille sur la création, la suppression et la modification (pas encore finalisé)",front
+2024-08-12 15:59:13.153000+00:00,jeremyjuppet,-,api :,back
+2024-08-12 15:59:13.153000+00:00,jeremyjuppet,-,travail sur la liste des produits commerciaux avec de nombreux filtres (pas tout à fait terminé),front
+2024-08-12 15:59:13.153000+00:00,jeremyjuppet,-,"contact avec daniel et jordan : j'ai obtenu les accès à la vm, et je devrais essayer de faire l'installation demain.",database
+2024-08-09 15:33:16.190000+00:00,julienc.,update and delete opérations :,noms de substitution des colorants,back
+2024-08-09 15:33:16.190000+00:00,julienc.,update and delete opérations :,règles de substitution des colorants,general
+2024-08-09 15:33:16.190000+00:00,julienc.,update and delete opérations :,conditionnements,general
+2024-08-09 15:33:16.190000+00:00,julienc.,update and delete opérations :,familles de colorants,general
+2024-08-09 15:33:16.190000+00:00,julienc.,update and delete opérations :,familles de remarques 2.,report
+2024-08-09 15:33:16.190000+00:00,julienc.,nouvelles fonctionnalités :,développement d'une nouvelle page dédiée à la gestion des magasins réseau.,front
+2024-08-09 15:33:16.190000+00:00,julienc.,nouvelles fonctionnalités :,création de la fonction toggle pour le changement de réseau,front
+2024-08-08 15:46:26.357000+00:00,jeremyjuppet,projet allios :,frontend :,front
+2024-08-08 15:46:26.357000+00:00,jeremyjuppet,-,suppression des colorants,back
+2024-08-08 15:46:26.357000+00:00,jeremyjuppet,-,"modification, suppression, système de colorants",report
+2024-08-08 15:46:26.357000+00:00,jeremyjuppet,-,création d'une classe de source de données dynamique pour les système de colorants - api :   - ajout de vérifications et d'exceptions dédiées avant les suppressions projet tribuneo :,front
+2024-08-08 15:46:26.357000+00:00,jeremyjuppet,-,réunion téléphonique avec judi et émilie pour trouver une solution à l'annulation d'un coupon,general
+2024-08-08 15:46:26.357000+00:00,jeremyjuppet,-,invalidation du coupon en question,front
+2024-08-08 15:46:26.357000+00:00,jeremyjuppet,-,la gestion comptable de ce sujet sera effectuée à la rentrée,database
+2024-08-07 15:32:05.637000+00:00,jeremyjuppet,projet allios :,frontend :,front
+2024-08-07 15:32:05.637000+00:00,jeremyjuppet,-,création d'une classe dynamique pour datasource pour toutes les vues,front
+2024-08-07 15:32:05.637000+00:00,jeremyjuppet,-,création de cellules dynamiques pour les actions et les données,front
+2024-08-07 15:32:05.637000+00:00,jeremyjuppet,-,modification des colorants,back
+2024-08-07 15:32:05.637000+00:00,jeremyjuppet,-,modification de l'ui des boîtes de dialogue,front
+2024-08-07 15:32:05.637000+00:00,jeremyjuppet,-,travail sur la page magasin/réseau,front
+2024-08-07 15:32:05.637000+00:00,jeremyjuppet,-,,back
+2024-08-07 15:32:05.637000+00:00,jeremyjuppet,-,vérification avant suppression pour bases et règles de substitution de colorant,front
+2024-08-07 15:32:05.637000+00:00,jeremyjuppet,-,refonte de la route pour afficher les magasins et leurs réseaux commerciaux,front
+2024-08-07 15:32:05.637000+00:00,jeremyjuppet,-,nettoyage des routes inutiles,database
+2024-08-07 15:32:05.637000+00:00,jeremyjuppet,-,création d'un nouveau type d'exception : inuse (code http 423),front
+2024-08-06 15:40:01.538000+00:00,jeremyjuppet,projet allios :,frontend :,front
+2024-08-06 15:40:01.538000+00:00,jeremyjuppet,-,modification et suppression pour base,database
+2024-08-06 15:40:01.538000+00:00,jeremyjuppet,-,api :,back
+2024-08-06 15:40:01.538000+00:00,jeremyjuppet,-,modification et suppression pour user,back
+2024-08-06 15:40:01.538000+00:00,jeremyjuppet,-,"création, modification et suppression pour machine",front
+2024-08-06 15:40:01.538000+00:00,jeremyjuppet,-,travail sur la suppression des règles de substitution de colorant,back
+2024-08-05 15:34:32.150000+00:00,jeremyjuppet,projet allios :,frontend :,front
+2024-08-05 15:34:32.150000+00:00,jeremyjuppet,-,recensement des tâches restantes à faire côté front,front
+2024-08-05 15:34:32.150000+00:00,jeremyjuppet,-,finalisation de la liste magasin/utilisateur,database
+2024-08-05 15:34:32.150000+00:00,jeremyjuppet,-,page bases : création et liste,front
+2024-08-05 15:34:32.150000+00:00,jeremyjuppet,-,mise en place des filtres et simplification du widget pour les appliquer,front
+2024-08-05 15:34:32.150000+00:00,jeremyjuppet,-,corrections des modèles,database
+2024-08-05 15:34:32.150000+00:00,jeremyjuppet,-,début de la page magasin/réseau,front
+2024-08-05 15:34:32.150000+00:00,jeremyjuppet,-,,back
+2024-08-05 15:34:32.150000+00:00,jeremyjuppet,-,correction de la création d'utilisateur/magasin,front
+2024-08-05 15:34:32.150000+00:00,jeremyjuppet,-,ajout de toutes les liaisons sur le modèle machine,general
+2024-08-05 15:34:32.150000+00:00,jeremyjuppet,-,crud des unités de réponse,back
+2024-08-05 15:34:32.150000+00:00,jeremyjuppet,-,nouveaux ajouts sur la gestion des erreurs/exceptions,front
+2024-08-02 15:44:10.780000+00:00,jeremyjuppet,projet allios :,frontend :,front
+2024-08-02 15:44:10.780000+00:00,jeremyjuppet,-,affichage de la liste de magasin/utilisateur (reste à finaliser le dialogue pour afficher tous les détails),general
+2024-08-02 15:44:10.780000+00:00,jeremyjuppet,-,api :,back
+2024-08-02 15:44:10.780000+00:00,jeremyjuppet,-,"crud : base, unitonce",back
+2024-08-02 15:44:10.780000+00:00,jeremyjuppet,-,ajout d'exceptions plus détaillées avec des messages d'erreur appropriés école dharti :,report
+2024-08-02 15:44:10.780000+00:00,jeremyjuppet,-,envoi d'un document détaillant nos projets et nos idées de projets pour dharti,database
+2024-08-01 15:43:01.487000+00:00,jeremyjuppet,projet allios :,frontend : travail sur la création des modèles pour correspondre au mieux aux réponses de l'api - api :,front
+2024-08-01 15:43:01.487000+00:00,jeremyjuppet,projet allios :,"création de fiches trello ""état d'avancement"" :     - pour noter les crud complets restant à développer     - pour les crud où il manque certaines routes",front
+2024-08-01 15:43:01.487000+00:00,jeremyjuppet,projet allios :,travail sur les crud réunion école dharti :,general
+2024-08-01 15:43:01.487000+00:00,jeremyjuppet,projet allios :,"rédaction d'un document à transmettre au professeur pour le tenir informé des projets de neofid, avec une proposition de projets correspondant à la formation de dharti et pouvant être ""intéressants"" pour neofid",database
+2024-08-01 15:43:01.487000+00:00,jeremyjuppet,projet allios :,explication du déroulement de la soutenance orale de fin de formation et de la période à laquelle elle la passera (normalement été 2025),general
+2024-07-31 15:38:41.630000+00:00,jeremyjuppet,projet allios :,frontend :,front
+2024-07-31 15:38:41.630000+00:00,jeremyjuppet,-,création d'un widget pour toutes les validations,front
+2024-07-31 15:38:41.630000+00:00,jeremyjuppet,-,mise à jour des magasins,report
+2024-07-31 15:38:41.630000+00:00,jeremyjuppet,-,création d'un widget pour le dialogue de progression,front
+2024-07-31 15:38:41.630000+00:00,jeremyjuppet,-,api :,back
+2024-07-31 15:38:41.630000+00:00,jeremyjuppet,-,correction de tous les problèmes signalés sur trello,report
+2024-07-31 15:38:41.630000+00:00,jeremyjuppet,-,crud pour les teintes et les types de logiciels,back
+2024-07-31 15:38:41.630000+00:00,jeremyjuppet,-,ajout de chargement de sous-modèles sur certaines routes (relations),back
+2024-07-31 15:38:41.630000+00:00,jeremyjuppet,-,ajout de restrictions par rôle utilisateur sur certaines routes,front
+2024-07-30 15:54:47.485000+00:00,jeremyjuppet,projet allios :,frontend :,front
+2024-07-30 15:54:47.485000+00:00,jeremyjuppet,-,"mise à jour des modèles, usecases et repositories pour machine, typeexport, reseaux, colorant system",front
+2024-07-30 15:54:47.485000+00:00,jeremyjuppet,-,travail en cours sur le dialogue de mise à jour des magasins (non terminé),report
+2024-07-30 15:54:47.485000+00:00,jeremyjuppet,-,déploiement :,general
+2024-07-30 15:54:47.485000+00:00,jeremyjuppet,-,restauration d'un snapshot de la vm,back
+2024-07-30 15:54:47.485000+00:00,jeremyjuppet,-,installation de docker et docker compose,database
+2024-07-30 15:54:47.485000+00:00,jeremyjuppet,-,déploiement du projet teintexpress sur la vm,database
+2024-07-30 15:54:47.485000+00:00,jeremyjuppet,-,construction des images,database
+2024-07-30 15:54:47.485000+00:00,jeremyjuppet,-,lancement des conteneurs et test de l'api,back
+2024-07-30 15:54:47.485000+00:00,jeremyjuppet,-,rédaction d'un tutoriel avec toutes les commandes utilisées,general
+2024-07-30 15:54:47.485000+00:00,jeremyjuppet,-,api :,back
+2024-07-30 15:54:47.485000+00:00,jeremyjuppet,-,correction d'erreurs rencontrées lors du développement du frontend,front
+2024-07-29 16:09:36.979000+00:00,jeremyjuppet,projet allios :,frontend :,front
+2024-07-29 16:09:36.979000+00:00,jeremyjuppet,-,"création pour les entités user, software, packaging",front
+2024-07-29 16:09:36.979000+00:00,jeremyjuppet,-,modifications du dockerfile de l'api :,back
+2024-07-29 16:09:36.979000+00:00,jeremyjuppet,-,les conteneurs docker fonctionnent sur la vm debian 12.,database
+2024-07-29 16:09:36.979000+00:00,jeremyjuppet,-,"j'arrive à contacter l'api, qui est sur un conteneur lui-même sur la vm, depuis mon pc.",front
+2024-07-26 15:31:37.503000+00:00,jeremyjuppet,frontend :,création d'un widget de dialogue de création dynamique,front
+2024-07-26 15:31:37.503000+00:00,jeremyjuppet,frontend :,finalisation de la création pour :,front
+2024-07-26 15:31:37.503000+00:00,jeremyjuppet,frontend :,colorant,back
+2024-07-26 15:31:37.503000+00:00,jeremyjuppet,frontend :,famille de colorants,general
+2024-07-26 15:31:37.503000+00:00,jeremyjuppet,frontend :,nom de colorant,front
+2024-07-26 15:31:37.503000+00:00,jeremyjuppet,frontend :,système de colorant,database
+2024-07-26 15:31:37.503000+00:00,jeremyjuppet,frontend :,remarque,back
+2024-07-26 15:31:37.503000+00:00,jeremyjuppet,frontend :,règles de colorant,general
+2024-07-26 15:31:37.503000+00:00,jeremyjuppet,frontend :,abandon de la création de vm avec vagrant en raison de problèmes de version,front
+2024-07-26 15:31:37.503000+00:00,jeremyjuppet,frontend :,création manuelle d'une vm et création d'un snapshot,front
+2024-07-26 15:31:37.503000+00:00,jeremyjuppet,frontend :,"installation de docker et docker compose, mais problème lors de la création des images (dépendances de php pour l'image de l'api, comme sur la vm d'allios) projet neofid",front
+2024-07-26 15:31:37.503000+00:00,jeremyjuppet,frontend :,caramax :,front
+2024-07-26 15:31:37.503000+00:00,jeremyjuppet,frontend :,"correction d'un problème de recherche de consommateur avec une douchette, problème rencontré chez dessange",back
+2024-07-26 15:31:37.503000+00:00,jeremyjuppet,frontend :,création des fiches consommateurs qu'elle n'avait pas pu créer,front
+2024-07-26 15:31:37.503000+00:00,jeremyjuppet,frontend :,bascule sur d.neofid avec le thème caramax (pour l'instant seulement dessange),front
+2024-07-24 15:37:17.166000+00:00,jeremyjuppet,projet allios :,frontend :,front
+2024-07-24 15:37:17.166000+00:00,jeremyjuppet,-,affichage des listes :     - remarques prédéfinies,front
+2024-07-24 15:37:17.166000+00:00,jeremyjuppet,-,règles de substitution,general
+2024-07-24 15:37:17.166000+00:00,jeremyjuppet,-,logiciels,database
+2024-07-24 15:37:17.166000+00:00,jeremyjuppet,-,tentative de création d'une vm avec docker et docker compose pour préparer l'installation neofid studios :,front
+2024-07-24 15:37:17.166000+00:00,jeremyjuppet,-,correction des factures et compréhension du problème rencontré : ne pas mettre d'apostrophe dans les libellés d'article,back
+2024-07-23 15:34:47.787000+00:00,jeremyjuppet,projet allios :,frontend :,front
+2024-07-23 15:34:47.787000+00:00,jeremyjuppet,-,affichage des listes :     - famille de colorant,report
+2024-07-23 15:34:47.787000+00:00,jeremyjuppet,-,système de substitution de colorant     - nom de substitution de colorant     -,back
+2024-07-23 15:34:47.787000+00:00,jeremyjuppet,conditionnement,api :,back
+2024-07-23 15:34:47.787000+00:00,jeremyjuppet,conditionnement,ajout de vérifications avant suppression sur plusieurs modèles,front
+2024-07-23 15:34:47.787000+00:00,jeremyjuppet,-,crud des logiciels,back
+2024-07-23 15:34:47.787000+00:00,jeremyjuppet,projet neofid :,récupération des informations pour la facturation des sms de fasthotel (sms de création de compte),front
+2024-07-22 15:27:41.656000+00:00,jeremyjuppet,projet allios :,frontend :,front
+2024-07-22 15:27:41.656000+00:00,jeremyjuppet,-,modification du code sur la page colorant selon les instructions de julien - api :,front
+2024-07-22 15:27:41.656000+00:00,jeremyjuppet,-,mise au point générale et état des lieux (voir tableur : https://docs.google.com/spreadsheets/d/16p13pwddm52fiehlxwhxrk5c_hpsuxumhu7xycdew9i/edit?usp=sharing),front
+2024-07-22 15:27:41.656000+00:00,jeremyjuppet,-,correction des bugs rencontrés lors des tests/état des lieux,front
+2024-07-19 15:29:12.202000+00:00,jeremyjuppet,projet allios :,finalisation des crud pour les modèles suivants :,front
+2024-07-19 15:29:12.202000+00:00,jeremyjuppet,-,colorant,back
+2024-07-19 15:29:12.202000+00:00,jeremyjuppet,-,système de substitution de colorant,back
+2024-07-19 15:29:12.202000+00:00,jeremyjuppet,-,nom de substitution de colorant,back
+2024-07-19 15:29:12.202000+00:00,jeremyjuppet,-,règle de substitution de colorant  - correction de plusieurs problèmes sur des routes existantes,back
+2024-07-18 15:33:44.933000+00:00,jeremyjuppet,projet allios :,gestion des erreurs pour les routes non allouées.,database
+2024-07-18 15:33:44.933000+00:00,jeremyjuppet,projet allios :,correction de la création des utilisateurs magasin avec la création d'un magasin temporaire.,front
+2024-07-18 15:33:44.933000+00:00,jeremyjuppet,ce magasin sera modifié après la création de son utilisateur.,travail sur le crud des colorants et des familles de colorants.,back
+2024-07-18 15:33:44.933000+00:00,jeremyjuppet,projet neofid :,campagne sms pour régusse vernouillet afin d'annoncer leurs congés annuels.,front
+2024-07-16 15:28:14.294000+00:00,jeremyjuppet,projet allios :,retravail de la gestion des erreurs de l'api pour mieux séparer le code et améliorer sa lisibilité.,front
+2024-07-16 15:28:14.294000+00:00,jeremyjuppet,projet allios :,poursuite du développement des routes de crud pour les magasins et les machines.,front
+2024-07-16 15:28:14.294000+00:00,jeremyjuppet,projet neofid :,"travail sur l'image du nouveau logo de fasthotel et mise en place dans le thème ""fasthotel"".",back
+2024-07-16 15:28:14.294000+00:00,jeremyjuppet,projet neofid :,"le nouveau logo est en place sur neofid, mais je ne l'ai pas intégré sur notre page (consultation de points/bons et création de compte) liée à leur site internet, leur site n'a actuellement pas le nouveau logo.",front
+2024-07-15 15:40:17.555000+00:00,jeremyjuppet,projet allios :,reprise en main du projet api,back
+2024-07-15 15:40:17.555000+00:00,jeremyjuppet,projet allios :,correction des erreurs et des remarques faites pendant mes congés,report
+2024-07-15 15:40:17.555000+00:00,jeremyjuppet,projet allios :,,back
+2024-07-12 15:35:17.278000+00:00,julienc.,projets et tâches réunion avec la cci du 05 :,participation à la réunion avec la chambre de commerce et d'industrie.,general
+2024-07-12 15:35:17.278000+00:00,julienc.,page machine:*,travail en cours sur la page machine.,front
+2024-07-12 15:35:17.278000+00:00,julienc.,page machine:*,intégration des nouvelles fonctionnalités et ajustements selon les spécifications d'allios.,front
+2024-07-12 15:35:17.278000+00:00,julienc.,page machine:*,j'ai laissé quelques tickets sur trello au sujet de quelques soucis urgence etna :,report
+2024-07-12 15:35:17.278000+00:00,julienc.,page machine:*,problème sur un projet qui a demandé mon attention,front
+2024-07-10 15:32:45.238000+00:00,julienc.,allios : page des opérateurs:,travail sur la partie repository pour qu'elle soit complètement fonctionnelle avec la nouvelle api.,back
+2024-07-10 15:32:45.238000+00:00,julienc.,allios : page des opérateurs:,finalisation des fonctionnalités et tests.,report
+2024-07-10 15:32:45.238000+00:00,julienc.,page des réseaux commerciaux :,implémentation complète des fonctionnalités crud.,back
+2024-07-10 15:32:45.238000+00:00,julienc.,page des réseaux commerciaux :,travail sur le repository pour garantir la compatibilité avec les nouvelles fonctionnalités.,back
+2024-07-08 15:40:49.253000+00:00,julienc.,page des demandes :,finalisation des diverses requêtes.,database
+2024-07-08 15:40:49.253000+00:00,julienc.,page des demandes :,correction des petits pépins remontés par allios lors de la réunion.,general
+2024-07-08 15:40:49.253000+00:00,julienc.,2.page opérateur :,intégration des nouveaux widgets.,front
+2024-07-08 15:40:49.253000+00:00,julienc.,2.page opérateur :,correction d'un souci lié à la différence de colonnes entre une page avec beaucoup de colonnes et une page avec très peu de colonnes.,front
+2024-07-08 15:40:49.253000+00:00,julienc.,tribuneo,sortir les transactions du 2nd trimestre.,report
+2024-07-04 15:38:13.134000+00:00,jeremyjuppet,projet allios :,api :,back
+2024-07-04 15:38:13.134000+00:00,jeremyjuppet,projet allios :,crud pour les remarques prédéfinies,back
+2024-07-04 15:38:13.134000+00:00,jeremyjuppet,projet allios :,travail sur le crud des familles de colorant,back
+2024-07-04 15:38:13.134000+00:00,jeremyjuppet,projet allios :,réunion/point,general
+2024-07-03 15:30:48.043000+00:00,jeremyjuppet,projet allios :,api : travail sur les associations des magasins aux réseaux :,front
+2024-07-03 15:30:48.043000+00:00,jeremyjuppet,projet allios :,liste en fonction des machines sélectionnées,database
+2024-07-03 15:30:48.043000+00:00,jeremyjuppet,projet allios :,création ou suppression des associations magasin/réseau,front
+2024-07-03 15:30:48.043000+00:00,jeremyjuppet,projet allios :,frontend : refactorisation du code et mise en place des nouveaux widgets sur la page des demandes,front
+2024-07-02 15:30:28.549000+00:00,jeremyjuppet,projet allios :,"api : travail sur les associations des magasins aux réseaux, sélection via leur machine",front
+2024-07-01 16:40:00.704000+00:00,jeremyjuppet,projet tribuneo :,"exploration des problèmes rencontrés par l'écomusée et m. klein, non concluante.",report
+2024-07-01 16:40:00.704000+00:00,jeremyjuppet,projet tribuneo :,ajout de logs pour chaque requête de transaction afin d'obtenir un maximum d'informations pour les futurs éventuels problèmes.,database
+2024-07-01 16:40:00.704000+00:00,jeremyjuppet,allios :,tests et utilisation de l'outil sourcetree.,report
+2024-07-01 16:40:00.704000+00:00,jeremyjuppet,allios :,"important travail de fusion (""merge"") du travail de l'équipe.",front
+2024-07-01 16:40:00.704000+00:00,jeremyjuppet,allios :,refactorisation du code sur le frontend.,front
+2024-07-01 16:40:00.704000+00:00,jeremyjuppet,allios :,travail sur l'api :,back
+2024-07-01 16:40:00.704000+00:00,jeremyjuppet,allios :,crud complet des thèmes,back
+2024-06-27 15:57:33.360000+00:00,jeremyjuppet,projet allios :,frontend :,front
+2024-06-27 15:57:33.360000+00:00,jeremyjuppet,-,création d'utilisateur et récupération d'utilisateur par rôle terminées,front
+2024-06-27 15:57:33.360000+00:00,jeremyjuppet,-,api :,back
+2024-06-27 15:57:33.360000+00:00,jeremyjuppet,-,révision de la création d'utilisateur,front
+2024-06-27 15:57:33.360000+00:00,jeremyjuppet,-,création des routes pour les thèmes et les magasins,front
+2024-06-26 15:36:25.007000+00:00,jeremyjuppet,projet allios :,frontend :,front
+2024-06-26 15:36:25.007000+00:00,jeremyjuppet,-,création du crud des conditionnements,front
+2024-06-26 15:36:25.007000+00:00,jeremyjuppet,-,"travail sur la maintenabilité et compartimentation du code, création de widgets.",front
+2024-06-26 15:36:25.007000+00:00,jeremyjuppet,-,api :,back
+2024-06-26 15:36:25.007000+00:00,jeremyjuppet,-,correction sur la création et modification des conditionnements,front
+2024-06-26 15:36:25.007000+00:00,jeremyjuppet,-,"travail sur les routes des machines, système de substitution de couleur, type export pour la création d'un magasin.",front
+2024-06-26 15:36:25.007000+00:00,jeremyjuppet,projet tribuneo :,dépannage de thomas pour l'écomusée de l'olivier (volx) projet neofid :,database
+2024-06-26 15:36:25.007000+00:00,jeremyjuppet,projet tribuneo :,renouvellement des certificats ssl,back
+2024-06-26 15:36:25.007000+00:00,jeremyjuppet,projet tribuneo :,campagne sms pour régusse vernouillet,front
+2024-06-25 16:00:31.911000+00:00,jeremyjuppet,projet allios :,finition de la création des demandes avec compte magasin et correction d'une erreur sur l'api.,front
+2024-06-25 16:00:31.911000+00:00,jeremyjuppet,projet allios :,api : crud des conditionnements et des unités de conditionnements.,back
+2024-06-24 15:29:41.335000+00:00,jeremyjuppet,projet allios :,création des demandes et développement du crud pour les réseaux commerciaux (admin).,front
+2024-06-24 15:29:41.335000+00:00,jeremyjuppet,projet tribuneo :,"correction et dépannage sur la génération des coupons cadeaux, limitation serveur.",front
+2024-06-21 15:42:44.393000+00:00,jeremyjuppet,projet allios :,frontend :,front
+2024-06-21 15:42:44.393000+00:00,jeremyjuppet,-,travail sur les filtres et les dropdowns de la page demandes.,front
+2024-06-21 15:42:44.393000+00:00,jeremyjuppet,-,travail sur les tableaux en général.,front
+2024-06-21 15:42:44.393000+00:00,jeremyjuppet,-,retravail des appels api.,general
+2024-06-21 15:42:44.393000+00:00,jeremyjuppet,-,api :,back
+2024-06-21 15:42:44.393000+00:00,jeremyjuppet,-,création de nouvelles routes.,front
+2024-06-21 15:42:44.393000+00:00,jeremyjuppet,-,correction et amélioration des routes existantes.,back
+2024-06-21 15:42:44.393000+00:00,jeremyjuppet,projet tribuneo :,correctif sur la page statistique et push des différentes versions.,front
+2024-06-20 15:52:55.918000+00:00,jeremyjuppet,projet allios :,front : travail sur la page des demandes.,front
+2024-06-20 15:52:55.918000+00:00,jeremyjuppet,projet allios :,api : avancées sur les réseaux de magasins.,front
+2024-06-19 15:32:05.512000+00:00,jeremyjuppet,projet allios :,travail sur les demandes de formulation.,report
+2024-06-19 15:32:05.512000+00:00,jeremyjuppet,projet allios :,développement de la création d'une nouvelle demande depuis un magasin.,front
+2024-06-19 15:32:05.512000+00:00,jeremyjuppet,projet tribuneo :,"backoffice : ajout de la personnalisation de la section ""offert par"" des coupons cadeaux.",front
+2024-06-19 15:32:05.512000+00:00,jeremyjuppet,neofid :,"réponse à fasthotel, sur les conditions de fidélité.",back
+2024-06-18 15:44:33.803000+00:00,jeremyjuppet,projet allios :,"travail sur les demandes de formulation, notamment sur les formulaires dynamiques.",general
+2024-06-18 15:44:33.803000+00:00,jeremyjuppet,projet tribuneo :,contact avec judicaëlle :,report
+2024-06-17 15:27:33.029000+00:00,jeremyjuppet,projet allios :,général (frontend/api): avancées sur les demandes de formulation.,front
+2024-06-17 15:27:33.029000+00:00,jeremyjuppet,projet allios :,"réunion sur le ""parcours utilisateur"".",general
+2024-06-14 15:31:06.350000+00:00,jeremyjuppet,projet allios :,"avancement sur le frontend et le backend, principalement sur la création d'une nouvelle demande par un magasin.",front
+2024-06-14 15:31:06.350000+00:00,jeremyjuppet,projet neofid :,campagnes sms pour territoire jeans.,report
+2024-06-14 15:31:06.350000+00:00,jeremyjuppet,projet tribuneo :,réunion de démonstration de tribuneo avec la cci ardèche.,general
+2024-06-13 15:25:23.633000+00:00,jeremyjuppet,projet allios :,"préparation pour la réunion de cet après-midi, travail sur le frontend et l'api.",general
+2024-06-13 15:25:23.633000+00:00,jeremyjuppet,projet allios :,"planification d'une nouvelle réunion, lundi à 14h30, pour redéfinir le processus complet et détailler les rapprochements de formule et autres.",general
+2024-06-12 15:46:27.122000+00:00,jeremyjuppet,projet allios :,préparation pour le point de demain.,front
+2024-06-11 16:33:16.982000+00:00,jeremyjuppet,projet allios :,frontend :,front
+2024-06-11 16:33:16.982000+00:00,jeremyjuppet,-,"travail sur la partie création, en particulier sur la récupération des données pour les menus déroulants.",front
+2024-06-11 16:33:16.982000+00:00,jeremyjuppet,-,api :,back
+2024-06-11 16:33:16.982000+00:00,jeremyjuppet,-,développement des routes dédiées aux magasins et aux demandes de formulations.,front
+2024-06-11 16:33:16.982000+00:00,jeremyjuppet,projet tribuneo :,support à thomas :,front
+2024-06-11 16:33:16.982000+00:00,jeremyjuppet,projet tribuneo :,résolution d'un problème d'identifiants perdus.,database
+2024-06-11 16:33:16.982000+00:00,jeremyjuppet,-,gestion d'un faux problème signalé sur l'application mobile.,front
+2024-06-10 15:30:06.231000+00:00,jeremyjuppet,projet allios :,api : travail sur la route des demandes en tant que magasin.,back
+2024-06-10 15:30:06.231000+00:00,jeremyjuppet,projet allios :,frontend :,front
+2024-06-10 15:30:06.231000+00:00,jeremyjuppet,-,retraitement des opérateurs,back
+2024-06-10 15:30:06.231000+00:00,jeremyjuppet,-,"travail sur l'enregistrement des thèmes (couleurs, images).",report
+2024-06-10 15:30:06.231000+00:00,jeremyjuppet,projet neofid :,préparation de la campagne pour t-jeans.,front
+2024-06-10 15:30:06.231000+00:00,jeremyjuppet,projet neofid :,"création de la version démo du ""sms à gratter"" pour mendy.",front
+2024-06-07 15:30:44.629000+00:00,jeremyjuppet,projet allios :,api : création de modèles et de nouvelles routes.,front
+2024-06-07 15:30:44.629000+00:00,jeremyjuppet,projet allios :,travail sur les thèmes côté frontend.,front
+2024-06-07 15:30:44.629000+00:00,jeremyjuppet,projet tribuneo :,assistance à thomas pour résoudre le problème de connexion d'un commerçant.,back
+2024-06-06 15:45:20.139000+00:00,jeremyjuppet,projet allios :,modification de la base de données pour permettre la gestion des tokens de connexion et des thèmes utilisateur.,back
+2024-06-06 15:45:20.139000+00:00,jeremyjuppet,projet allios :,travail sur l'api pour intégrer ces modifications.,back
+2024-06-05 15:33:00.772000+00:00,jeremyjuppet,projet allios :,api :,back
+2024-06-05 15:33:00.772000+00:00,jeremyjuppet,projet allios :,adaptation de la nouvelle structure et préparation pour la sauvegarde des thèmes flutter.,front
+2024-06-05 15:33:00.772000+00:00,jeremyjuppet,projet allios :,frontend :,front
+2024-06-05 15:33:00.772000+00:00,jeremyjuppet,-,poursuite de l'intégration du générateur de thèmes.,front
+2024-06-05 15:33:00.772000+00:00,jeremyjuppet,-,définition des informations à envoyer via le json.,database
+2024-06-05 15:33:00.772000+00:00,jeremyjuppet,-,travail sur les routes côté flutter.,front
+2024-06-05 15:33:00.772000+00:00,jeremyjuppet,-,modification du header pour intégrer la déconnexion et fluidifier la navigation entre les différents types de comptes.,front
+2024-06-05 15:33:00.772000+00:00,jeremyjuppet,-,développement et intégration d'un widget dropdownmenu personnalisé.,front
+2024-06-05 15:33:00.772000+00:00,jeremyjuppet,projet tribuneo :,assistance à thomas pour la création d'un compte commerçant,front
+2024-06-03 15:28:33.751000+00:00,jeremyjuppet,projet allios :,api : gros travail de nettoyage du code.,back
+2024-06-03 15:28:33.751000+00:00,jeremyjuppet,projet allios :,front : poursuite du développement du créateur de thèmes côté test.,front
+2024-06-03 15:28:33.751000+00:00,jeremyjuppet,projet allios :,front : ajout du créateur de thèmes sur la version web d'allios.,front
+2024-06-03 15:28:33.751000+00:00,jeremyjuppet,projet allios :,front : refactorisation et amélioration du code.,front
+2024-06-03 15:28:33.751000+00:00,jeremyjuppet,projet neofid :,"envoi des différentes informations des campagnes à stéphanie pour la campagne de monsieur durand, avec recalcul complet suite à une erreur.",front
+2024-06-03 15:28:33.751000+00:00,jeremyjuppet,projet tribuneo :,correction d'une erreur d'attribution de compte faite par thomas sur intermarché des mées.,report
+2024-05-29 15:41:00.972000+00:00,jeremyjuppet,projet allios :,point prévu le jeudi 13 juin à 14h.,front
+2024-05-29 15:41:00.972000+00:00,jeremyjuppet,projet allios :,nettoyage du dépôt git pour rassembler le travail effectué sur toutes les branches.,general
+2024-05-29 15:41:00.972000+00:00,jeremyjuppet,projet allios :,début du travail de reprise et de nettoyage des projets frontend et api pour unifier le travail de l'équipe.,front
+2024-05-29 15:41:00.972000+00:00,jeremyjuppet,projet tribuneo :,contact avec thomas pour résoudre un problème de création de compte pour la boîte à fromages de digne.,front
+2024-05-28 16:28:59.767000+00:00,jeremyjuppet,projet tribuneo :,transmission des informations de connexion pour la version de démonstration.,back
+2024-05-28 16:28:59.767000+00:00,jeremyjuppet,projet tribuneo :,continuation des tests en préproduction (validés !).,front
+2024-05-28 16:28:59.767000+00:00,jeremyjuppet,projet tribuneo :,"déploiement en production : api, version web, back-office",front
+2024-05-28 16:28:59.767000+00:00,jeremyjuppet,projet tribuneo :,appel téléphonique avec thomas,general
+2024-05-28 16:28:59.767000+00:00,jeremyjuppet,pour discuter :,des comptes collaborateurs de terre d'oc.,general
+2024-05-28 16:28:59.767000+00:00,jeremyjuppet,-,de la transmission des informations sur les avancées de la nouvelle version à la cci.,front
+2024-05-28 16:28:59.767000+00:00,jeremyjuppet,-,appel téléphonique avec le patron de bricomarché pour :,general
+2024-05-28 16:28:59.767000+00:00,jeremyjuppet,-,la création de ses comptes collaborateurs.,front
+2024-05-28 16:28:59.767000+00:00,jeremyjuppet,-,répondre à ses multiples questions et inquiétudes.,front
+2024-05-28 16:28:59.767000+00:00,jeremyjuppet,-,suppression des comptes collaborateurs qu'il ne souhaitait pas garder.,report
+2024-05-28 16:28:59.767000+00:00,jeremyjuppet,projet neofid :,prise de contact avec la cave de regusse vernouillet pour réaliser une campagne sms.,front
+2024-05-28 16:28:59.767000+00:00,jeremyjuppet,projet neofid :,création d'un nouveau compte hôtelier pour fasthotel.,front
+2024-05-27 15:25:44.659000+00:00,jeremyjuppet,projet tribuneo :,fusion du travail de l'équipe sur git.,front
+2024-05-27 15:25:44.659000+00:00,jeremyjuppet,projet tribuneo :,compilation de tous les projets et mise en préproduction pour les tests.,database
+2024-05-27 15:25:44.659000+00:00,jeremyjuppet,projet tribuneo :,"test général en version préproduction (web, mobile, back-office).",front
+2024-05-27 15:25:44.659000+00:00,jeremyjuppet,projet tribuneo :,correction des problèmes rencontrés :,database
+2024-05-27 15:25:44.659000+00:00,jeremyjuppet,-,filtres après modifications des clients/partenaires (back-office).,back
+2024-05-27 15:25:44.659000+00:00,jeremyjuppet,-,notification des nouvelles demandes de remboursement (back-office).,back
+2024-05-27 15:25:44.659000+00:00,jeremyjuppet,-,application des nouvelles normes pour la future mise à jour (mobile).,report
+2024-05-27 15:25:44.659000+00:00,jeremyjuppet,-,script de correction des vues et fonctions mysql provenant de dump.,back
+2024-05-27 15:25:44.659000+00:00,jeremyjuppet,-,correction du scanner de qr code.,database
+2024-05-27 15:25:44.659000+00:00,jeremyjuppet,-,autres corrections diverses.,back
+2024-05-24 15:55:35.754000+00:00,jeremyjuppet,projet tribuneo :,version démo :,database
+2024-05-24 15:55:35.754000+00:00,jeremyjuppet,projet tribuneo :,création de chèques cadeaux de test et de comptes utilisateurs pour la démonstration avec mendy.,front
+2024-05-24 15:55:35.754000+00:00,jeremyjuppet,projet tribuneo :,version web :,front
+2024-05-24 15:55:35.754000+00:00,jeremyjuppet,projet tribuneo :,activation/désactivation du tri par localisation sur la page des partenaires.,front
+2024-05-24 15:55:35.754000+00:00,jeremyjuppet,projet tribuneo :,back-office :,back
+2024-05-24 15:55:35.754000+00:00,jeremyjuppet,projet tribuneo :,travail sur les notifications de remboursement.,report
+2024-05-24 15:55:35.754000+00:00,jeremyjuppet,projet tribuneo :,api :,back
+2024-05-24 15:55:35.754000+00:00,jeremyjuppet,projet tribuneo :,installation d'un débogueur pour l'api en php.,back
+2024-05-24 15:55:35.754000+00:00,jeremyjuppet,projet fasthotel :,ajout de 90 points à un consommateur sur leur demande.,report
+2024-05-24 15:55:35.754000+00:00,jeremyjuppet,jeans :,lancement de deux campagnes par point de vente.,front
+2024-05-23 15:51:00.087000+00:00,jeremyjuppet,projet tribuneo :,application mobile :,database
+2024-05-23 15:51:00.087000+00:00,jeremyjuppet,-,fonctionnalité de barre de recherche par nom de magasin et ville sur la page des partenaires.,front
+2024-05-23 15:51:00.087000+00:00,jeremyjuppet,-,correction de la vidéo sur la page de scan de qr code (pour payer).,front
+2024-05-23 15:51:00.087000+00:00,jeremyjuppet,-,compilation d'un apk pour la version démo.,database
+2024-05-23 15:51:00.087000+00:00,jeremyjuppet,-,version web :,front
+2024-05-23 15:51:00.087000+00:00,jeremyjuppet,-,correction d'un problème de formulaire qui ne s'affichait plus sur la page des collaborateurs.,front
+2024-05-23 15:51:00.087000+00:00,jeremyjuppet,-,compilation,general
+2024-05-22 15:32:15.714000+00:00,jeremyjuppet,projet tribuneo :,modification des pages pour les rendre responsives le back-office.,front
+2024-05-22 15:32:15.714000+00:00,jeremyjuppet,projet tribuneo :,ajout de messages de succès et d'erreur sur toutes les pages lors de la soumission de formulaires.,front
+2024-05-22 15:32:15.714000+00:00,jeremyjuppet,projet tribuneo :,mise en place de l'environnement sur le pc de dharti pour qu'elle puisse travailler sur l'application mobile.,front
+2024-05-22 15:32:15.714000+00:00,jeremyjuppet,projet neofid :,réalisation de plusieurs échantillonnages pour les campagnes sms.,report
+2024-05-22 15:32:15.714000+00:00,jeremyjuppet,projet allios :,point docker : tentative de mise en place du projet sur une vm chez allios.,front
+2024-05-22 15:32:15.714000+00:00,jeremyjuppet,projet allios :,"installation de docker, git et création d'une clé ssh.",front
+2024-05-22 15:32:15.714000+00:00,jeremyjuppet,projet allios :,"erreur lors de la création des images, à tester sur notre serveur ""grid"" dédié à docker.",front
+2024-05-21 15:30:44.127000+00:00,jeremyjuppet,projet tribuneo :,correction et amélioration du script de déploiement automatique.,back
+2024-05-21 15:30:44.127000+00:00,jeremyjuppet,projet tribuneo :,"déploiement des versions de démonstration du back-office, de la version web et de l'api.",front
+2024-05-21 15:30:44.127000+00:00,jeremyjuppet,projet tribuneo :,création de comptes de test pour faciliter les démonstrations.,front
+2024-05-21 15:30:44.127000+00:00,jeremyjuppet,projet tribuneo :,amélioration de la page statistiques.,front
+2024-05-21 15:30:44.127000+00:00,jeremyjuppet,projet tribuneo :,travail sur le design responsive et intégration de feedback pour le back-office.,back
+2024-05-17 15:30:16.709000+00:00,jeremyjuppet,projet tribuneo :,réparation de l'application et mise en place du package dio pour les requêtes http.,database
+2024-05-17 15:30:16.709000+00:00,jeremyjuppet,projet tribuneo :,correction et amélioration du script de compilation et de déploiement automatique.,back
+2024-05-17 15:30:16.709000+00:00,jeremyjuppet,projet tribuneo :,configuration de l'environnement tribuneo sur le poste de dharti.,report
+2024-05-17 15:30:16.709000+00:00,jeremyjuppet,projet tribuneo :,correction du formulaire de création de collaborateurs sur la version web.,front
+2024-05-17 15:30:16.709000+00:00,jeremyjuppet,projet tribuneo :,nettoyage de la base de données de la version démo.,database
+2024-05-17 15:30:16.709000+00:00,jeremyjuppet,projet tribuneo :,travail sur trois onglets différents de la page statistique du back-office.,front
+2024-05-16 15:41:35.867000+00:00,jeremyjuppet,projet tribuneo :,backoffice :,back
+2024-05-16 15:41:35.867000+00:00,jeremyjuppet,projet tribuneo :,fusion des branches de travail sur git.,general
+2024-05-16 15:41:35.867000+00:00,jeremyjuppet,-,correction du problème d'affichage et de rechargement des onglets sur les pages clients et partenaires.,front
+2024-05-16 15:41:35.867000+00:00,jeremyjuppet,-,amélioration du script batch pour faciliter la compilation et le déploiement.,back
+2024-05-16 15:41:35.867000+00:00,jeremyjuppet,-,communication :,general
+2024-05-16 15:41:35.867000+00:00,jeremyjuppet,-,échanges avec thomas au sujet des comptes collaborateurs pour résoudre les problèmes.,general
+2024-05-16 15:41:35.867000+00:00,jeremyjuppet,-,travail sur la base de données de la version de démonstration,database
+2024-05-15 15:33:05.261000+00:00,jeremyjuppet,projet allios :,travail sur l'affichage des demandes liées à un accès magasin projet tribuneo :,database
+2024-05-15 15:33:05.261000+00:00,jeremyjuppet,projet allios :,configuration de l'api pour la version de démonstration,back
+2024-05-15 15:33:05.261000+00:00,jeremyjuppet,projet allios :,travail sur les pages de statistiques dans le back-office,front
+2024-05-15 15:33:05.261000+00:00,jeremyjuppet,projet allios :,"création de scripts batch destinés à simplifier les futurs déploiements de la version web et du back-office sur les environnements de production, préproduction et démonstration.",front
+2024-05-14 16:00:15.626000+00:00,jeremyjuppet,projet tribuneo :,correction de l'expression régulière utilisée pour vérifier le format des adresses email lors de la création ou modification d'un compte.,front
+2024-05-14 16:00:15.626000+00:00,jeremyjuppet,(problème bloquant plusieurs partenaires),développement des fonctionnalités d'exportation pour les statistiques/états.,report
+2024-05-14 16:00:15.626000+00:00,jeremyjuppet,(problème bloquant plusieurs partenaires),création d'un tableau trello dédié à tribuneo pour améliorer le suivi du projet et la gestion des tâches.,front
+2024-05-14 16:00:15.626000+00:00,jeremyjuppet,allios :,travail sur les rôles utilisateurs.,general
+2024-05-14 16:00:15.626000+00:00,jeremyjuppet,allios :,"investigation des problèmes de performance, en particulier sur le chargement des données entre l'api et la base de données.",back
+2024-05-13 15:58:37.781000+00:00,jeremyjuppet,projet tribuneo :,retour au projet après période de congés et mise à jour sur l'état actuel des développements.,database
+2024-05-13 15:58:37.781000+00:00,jeremyjuppet,projet tribuneo :,front du back-office :,front
+2024-05-13 15:58:37.781000+00:00,jeremyjuppet,projet tribuneo :,tests d'une nouvelle mise en page pour la vue statistiques en utilisant le widget datatable2.,front
+2024-05-13 15:58:37.781000+00:00,jeremyjuppet,-,debug pour corriger l'affichage de la page de statistiques.,front
+2024-05-13 15:58:37.781000+00:00,jeremyjuppet,-,back de l'api :,back
+2024-05-13 15:58:37.781000+00:00,jeremyjuppet,-,"renforcement de la sécurité des données sensibles, dans les fichiers de configuration et pour l'authentification utilisateur.",database
+2024-05-13 15:58:37.781000+00:00,jeremyjuppet,-,collaboration avec la cci :,general
+2024-05-13 15:58:37.781000+00:00,jeremyjuppet,-,réunion téléphonique avec thomas pour discuter des petits problèmes et questions.,general
+2024-05-13 15:58:37.781000+00:00,jeremyjuppet,(il envisage de passer au bureau mercredi midi) activités commerciales :,réunion avec mendy reconduite au vendredi 17 à 15h.,general
+2024-05-13 15:58:37.781000+00:00,jeremyjuppet,(il envisage de passer au bureau mercredi midi) activités commerciales :,point sur les activités commerciales.,report
+2024-04-30 15:22:06.668000+00:00,jeremyjuppet,projet allios :,finalisation de la fonctionnalité de suppression de machines pour le front et développement en cours de la fonctionnalité de création de machines.,front
+2024-04-30 15:22:06.668000+00:00,jeremyjuppet,projet allios :,test d'un plugin pour améliorer la gestion et l'affichage des tableaux.,front
+2024-04-30 15:22:06.668000+00:00,jeremyjuppet,projet tribuneo :,"reprise de contact avec thomas pour obtenir son adresse mail, ainsi que des retours sur les derniers commerçants connectés",back
+2024-04-29 15:20:22.193000+00:00,jeremyjuppet,projet allios :,fusion de toutes les branches de travail pour préparer la réunion.,general
+2024-04-29 15:20:22.193000+00:00,jeremyjuppet,projet allios :,tests approfondis post-fusion pour assurer le bon fonctionnement.,report
+2024-04-29 15:20:22.193000+00:00,jeremyjuppet,projet allios :,correction des appels api sur la page shop et delete des machines,general
+2024-04-29 15:20:22.193000+00:00,jeremyjuppet,projet allios :,"réunion d'une heure, avec l'équipe allios.",general
+2024-04-29 15:20:22.193000+00:00,jeremyjuppet,projet allios :,reprise de contact avec l'équipe informatique pour organiser un point docker projet tribuneo :,front
+2024-04-29 15:20:22.193000+00:00,jeremyjuppet,projet allios :,"correction d'un problème sur un commerçant, signalé par thomas.",report
+2024-04-26 15:29:17.117000+00:00,jeremyjuppet,projet allios :,"résolution d'un problème technique concernant l'affichage d'un widget dropdown, horizontalement sur la page principale et verticalement dans un dialogue.",front
+2024-04-26 15:29:17.117000+00:00,jeremyjuppet,projet allios :,développement de la fonctionnalité de lecture pour les colorants de substitution.,back
+2024-04-26 15:29:17.117000+00:00,jeremyjuppet,projet allios :,continuation du développement de la page magasin projet tribuneo :,front
+2024-04-26 15:29:17.117000+00:00,jeremyjuppet,projet allios :,finalisation des routes d'état pour le backoffice,back
+2024-04-26 15:29:17.117000+00:00,jeremyjuppet,projet allios :,"tests sur la version web de tribuneo, qui est maintenant prête pour le déploiement.",front
+2024-04-26 15:29:17.117000+00:00,jeremyjuppet,mendy cavare :,réunion commerciale et présentation du produit tribuneo à mendy cavare,general
+2024-04-25 16:09:48.210000+00:00,jeremyjuppet,projet tribuneo :,contact avec thomas de la cci 04 pour plusieurs problématiques :,report
+2024-04-25 16:09:48.210000+00:00,jeremyjuppet,-,problème de lien/qr,database
+2024-04-25 16:09:48.210000+00:00,jeremyjuppet,-,correction d'une erreur (de la cci) d'attribution de compte où un commerçant de manosque a été connecté avec le compte d'un autre de peipin.,report
+2024-04-25 16:09:48.210000+00:00,jeremyjuppet,-,intervention manuelle dans la base de données pour corriger et associer correctement les comptes aux commerçants concernés.,front
+2024-04-25 16:09:48.210000+00:00,jeremyjuppet,-,développement des routes d'états pour le backoffice,back
+2024-04-25 16:09:48.210000+00:00,jeremyjuppet,-,création d'indexes sur certaines tables pour améliorer les performances de la base de données.,front
+2024-04-25 16:09:48.210000+00:00,jeremyjuppet,allios :,"poursuite de l'intégration sur le front, des routes disponibles sur l'api teintexpress",front
+2024-04-24 15:40:17.294000+00:00,jeremyjuppet,projet allios :,résolution d'un problème technique sur la page des machines.,front
+2024-04-24 15:40:17.294000+00:00,jeremyjuppet,projet allios :,harmonisation du design des tables sur l'ensemble des pages développées.,front
+2024-04-24 15:40:17.294000+00:00,jeremyjuppet,projet allios :,implémentation et gestion des filtres déroulants sur la page des machines.,front
+2024-04-24 15:40:17.294000+00:00,jeremyjuppet,projet allios :,développement d'un dialogue de création pour les nouvelles entrées sur la page des machines.,front
+2024-04-24 15:40:17.294000+00:00,jeremyjuppet,projet allios :,développement du crud pour les colorants et le service après-vente sur le front-end.,front
+2024-04-24 15:40:17.294000+00:00,jeremyjuppet,projet tribuneo :,mise en place des routes d'états pour le backoffice.,back
+2024-04-24 15:40:17.294000+00:00,jeremyjuppet,projet tribuneo :,"débogage de la partie web de tribuneo pour les derniers tests avant la mise en production, ainsi que résolution d'un problème de chargement des fonds sur l'application mobile.",front
+2024-04-24 15:40:17.294000+00:00,jeremyjuppet,projet tribuneo :,réunion avec emilie de la cci pour discuter des progrès du projet et adresser ses questions.,general
+2024-04-24 15:40:17.294000+00:00,jeremyjuppet,projet fasthotel :,annulation d'un bon utilisé par erreur.,back
+2024-04-23 16:05:50.593000+00:00,jeremyjuppet,projet allios :,affichage des données des filtres sur la page machine,front
+2024-04-23 16:05:50.593000+00:00,jeremyjuppet,projet allios :,"quelques problèmes, sur cette page, restent à corriger.",front
+2024-04-23 16:05:50.593000+00:00,jeremyjuppet,projet tribuneo :,api : travail sur les états et l'extraction de données pour le backoffice.,back
+2024-04-22 15:38:18.975000+00:00,jeremyjuppet,projet allios :,"frontend : travaux sur les entités/pages remarques, familles de colorants, machine et colorant.",front
+2024-04-22 15:38:18.975000+00:00,jeremyjuppet,tribuneo web :,révision des routes put pour corriger les problèmes identifiés.,back
+2024-04-22 15:38:18.975000+00:00,jeremyjuppet,tribuneo web :,"révision des dernières pages, corrections de design, standardisation des boutons, des couleurs et d'autres éléments visuels.",front
+2024-04-22 15:38:18.975000+00:00,jeremyjuppet,projet neofid :,résolution du problème avec les appels api allmysms : correction d'un bug empêchant l'envoi de sms depuis le 16 avril.,general
+2024-04-22 15:38:18.975000+00:00,jeremyjuppet,projet fasthotel :,campagne sms envoyée avec l'information sur le numéro de carte.,report
+2024-04-22 15:38:18.975000+00:00,jeremyjuppet,projet fasthotel :,création et utilisation dans la base d'un bon pour monsieur bulbul.,front
+2024-04-22 15:38:18.975000+00:00,jeremyjuppet,boulangerie la panetière :,campagne sms envoyée informant les clients de leur période de congés.,report
+2024-04-22 15:38:18.975000+00:00,jeremyjuppet,boulangerie la panetière :,suppression d'un consommateur à sa demande.,report
+2024-04-19 15:35:28.084000+00:00,jeremyjuppet,projet allios :,frontend réseaux commerciaux et base :,front
+2024-04-19 15:35:28.084000+00:00,jeremyjuppet,-,conception des dialogues de création et de mise à jour.,front
+2024-04-19 15:35:28.084000+00:00,jeremyjuppet,-,frontend pour l'opérateur :,front
+2024-04-19 15:35:28.084000+00:00,jeremyjuppet,-,développement des fonctionnalités de mise à jour et de suppression.,report
+2024-04-19 15:35:28.084000+00:00,jeremyjuppet,-,backend pour l'opérateur :,back
+2024-04-19 15:35:28.084000+00:00,jeremyjuppet,-,implémentation des fonctionnalités de mise à jour et de suppression.,report
+2024-04-19 15:35:28.084000+00:00,jeremyjuppet,projet tribuneo :,tests suite au problème signalé par emilie de la cci concernant les collaborateurs : fonctionnement vérifié et normal.,front
+2024-04-19 15:35:28.084000+00:00,jeremyjuppet,modifications apportées pour le déploiement de la prochaine version.,résolution de conflits liés à la mise à jour de flutter.,front
+2024-04-19 15:35:28.084000+00:00,jeremyjuppet,projet fasthotel :,échange et mise au point avec pauline.,general
+2024-04-19 15:35:28.084000+00:00,jeremyjuppet,projet fasthotel :,"réponse à guillaume faget concernant la campagne sms, proposition du texte de la dernière campagne.",front
+2024-04-19 15:35:28.084000+00:00,jeremyjuppet,neofid studios :,correction des factures et ajustement des scripts d'exports pour neofid studios.,front
+2024-04-19 15:35:28.084000+00:00,jeremyjuppet,gestion de version (git) :,"fusion des travaux de dharti et alex, pour lundi.",front
+2024-04-18 15:47:19.727000+00:00,jeremyjuppet,projet allios :,frontend :,front
+2024-04-18 15:47:19.727000+00:00,jeremyjuppet,-,développement du formulaire de modification pour les logiciels.,database
+2024-04-18 15:47:19.727000+00:00,jeremyjuppet,-,implémentation d'une boîte de dialogue pour la confirmation de suppression des logiciels.,report
+2024-04-18 15:47:19.727000+00:00,jeremyjuppet,projet tribuneo :,"création de trois sous-domaines : apidemo, backofficedemo, et webdemo pour les démonstrations commerciales.",front
+2024-04-18 15:47:19.727000+00:00,jeremyjuppet,projet tribuneo :,coordination avec laurent de grid pour la création de clones des serveurs,front
+2024-04-18 15:47:19.727000+00:00,jeremyjuppet,projet tribuneo :,préparations des fichiers de configurations pour ces nouveau sous-domaines.,database
+2024-04-18 15:47:19.727000+00:00,jeremyjuppet,projet neofid :,préparation d'un échantillonnage de consommateur.,general
+2024-04-18 15:47:19.727000+00:00,jeremyjuppet,pour les sms destinés à être envoyé aux anciens consommateurs de fasthotel.,le coût de la campagne est d'environ 230 € monacosanté :,general
+2024-04-18 15:47:19.727000+00:00,jeremyjuppet,pour les sms destinés à être envoyé aux anciens consommateurs de fasthotel.,"brève réunion de 5 minutes pour établir un nouveau point la semaine prochaine, faute de temps disponible aujourd'hui.",general
+2024-04-18 15:47:19.727000+00:00,jeremyjuppet,pour les sms destinés à être envoyé aux anciens consommateurs de fasthotel.,discussion sur la possibilité d'un déplacement à aix : il envisage cela seulement en dernier recours.,general
+2024-04-17 15:38:54.723000+00:00,jeremyjuppet,projet allios :,frontend :,front
+2024-04-17 15:38:54.723000+00:00,jeremyjuppet,-,"finalisation de la mise en forme du formulaire des magasins, y compris l'intégration d'appels api pour remplir les combobox.",general
+2024-04-17 15:38:54.723000+00:00,jeremyjuppet,-,"page logiciel : mise en fonction du formulaire de création de logiciels, ajout de la fonctionnalité de suppression.",front
+2024-04-17 15:38:54.723000+00:00,jeremyjuppet,-,fusion des branches pour restaurer la page des opérateurs.,front
+2024-04-16 16:12:50.714000+00:00,jeremyjuppet,projet allios :,frontend :,front
+2024-04-16 16:12:50.714000+00:00,jeremyjuppet,-,amélioration et mise à jour de la page magasins avec les dernières informations manquantes.,front
+2024-04-16 16:12:50.714000+00:00,jeremyjuppet,-,conception et intégration de la page logiciels.,front
+2024-04-16 16:12:50.714000+00:00,jeremyjuppet,-,développement du formulaire pour la création de nouveaux logiciels.,front
+2024-04-16 16:12:50.714000+00:00,jeremyjuppet,-,"api :   - enrichissement du shopmodel avec l'ajout de nouvelles propriétés : réseaumodel, machinemodel, et substitutioncolorantsmodel.",back
+2024-04-16 16:12:50.714000+00:00,jeremyjuppet,-,nettoyage et optimisation du code.,database
+2024-04-16 16:12:50.714000+00:00,jeremyjuppet,-,gestion de version (git) :,database
+2024-04-16 16:12:50.714000+00:00,jeremyjuppet,-,fusion de branches existantes et création de nouvelles branches pour une meilleure organisation.,front
+2024-04-15 15:30:10.884000+00:00,jeremyjuppet,projet allios :,frontend :,front
+2024-04-15 15:30:10.884000+00:00,jeremyjuppet,-,correction des erreurs identifiées dans les développements antérieurs.,front
+2024-04-15 15:30:10.884000+00:00,jeremyjuppet,-,création de modèles pour faciliter la récupération des données depuis l'api.,front
+2024-04-15 15:30:10.884000+00:00,jeremyjuppet,-,intégration et affichage des données réelles sur la page magasin.,front
+2024-04-15 15:30:10.884000+00:00,jeremyjuppet,-,développement du formulaire pour la création de nouveaux magasins.,front
+2024-04-15 15:30:10.884000+00:00,jeremyjuppet,-,api :,back
+2024-04-15 15:30:10.884000+00:00,jeremyjuppet,-,finalisation du crud pour le service après-vente (sav).,back
+2024-04-15 15:30:10.884000+00:00,jeremyjuppet,-,développement complet des crud pour les entités suivantes :,front
+2024-04-15 15:30:10.884000+00:00,jeremyjuppet,-,réseaux commerciaux     - colorant     - nom de subcolorant mission presta :,front
+2024-04-15 15:30:10.884000+00:00,jeremyjuppet,-,"15-20 minutes à rechercher des opportunités sur free-work, sans trouver de projets correspondant à mes compétences.",database
+2024-04-15 15:30:10.884000+00:00,jeremyjuppet,réunions :,"participation à une réunion téléphonique avec joëlle et julien pour discuter des avancements, des prochaines étapes et de la partie commerciale.",general
+2024-04-12 15:42:15.125000+00:00,jeremyjuppet,projet allios :,création d'un tableau trello et mise en place de toutes les cartes nécessaires pour le suivi du projet.,front
+2024-04-12 15:42:15.125000+00:00,jeremyjuppet,projet allios :,"développement des fonctionnalités crud pour les entités suivantes : service après-vente (sav), remarques, machine, et base.",front
+2024-04-12 15:42:15.125000+00:00,jeremyjuppet,pour prestation :,"réalisation et mise à jour de mon cv, avec l'aide de christopher.",report
+2024-04-12 15:42:15.125000+00:00,jeremyjuppet,pour prestation :,mise à jour de mon profil linkedin.,report
+2024-04-10 15:29:53.760000+00:00,jeremyjuppet,projet allios :,réalisation du create des machine.,database
+2024-04-10 15:29:53.760000+00:00,jeremyjuppet,projet allios :,"développement crud pour les entités : logiciel, unit response, unit",back
+2024-04-10 15:29:53.760000+00:00,jeremyjuppet,fasthotel :,analyse approfondie concernant les problématiques de compensation des bons d'achats utilisés par les hôteliers.,general
+2024-04-10 15:29:53.760000+00:00,jeremyjuppet,fasthotel :,améliorations de l'état de compensation pour les administrateurs de fasthotel.,back
+2024-04-10 15:29:53.760000+00:00,jeremyjuppet,fasthotel :,"communication avec mme almela pour présenter les améliorations apportées sur l'état de compensation, confirmer l'exactitude des données, et recommander un échange avec un hôtelier spécifique lié à l'utilisation inhabituelle de bons.",general
+2024-04-10 15:29:53.760000+00:00,jeremyjuppet,projet tribuneo :,poursuite du développement de la fonctionnalité permettant le téléchargement des documents (factures et remboursements) des commerçants partenaires via la version web.,front

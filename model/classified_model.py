@@ -33,7 +33,7 @@ class ClassifiedModel:
         ''', (timestamp, author, sentence, category, status))
         self.conn.commit()
 
-    def import_from_csv(self, csv_path="categorized_sentences.csv"):
+    def import_from_csv(self, csv_path="classify_model/categorized_sentences.csv"):
         """Import data from CSV to database (one-time load)."""
         if not os.path.exists(csv_path):
             print("❌ CSV file not found.")
@@ -49,11 +49,16 @@ class ClassifiedModel:
             return
 
         # Make sure expected columns exist
-        expected = {"Timestamp", "Author", "Sentence", "Category", "Status"}
+        expected = {"Timestamp", "Author", "Sentence", "Category"}
         if not expected.issubset(df.columns):
             print("❌ CSV format is incorrect. Expected columns:", expected)
             return
 
+        # Add default 'Status' if missing
+        if "Status" not in df.columns:
+            df["Status"] = "close"
+        
+        
         for _, row in df.iterrows():
             self.cursor.execute('''
                 INSERT INTO classified_messages (timestamp, author, sentence, category, status)

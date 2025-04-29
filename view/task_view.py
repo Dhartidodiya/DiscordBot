@@ -1,3 +1,4 @@
+import os
 import discord
 import asyncio
 from datetime import datetime, timedelta
@@ -5,7 +6,7 @@ from discord.ext import tasks,commands
 from view.task_ui_componanets import AddTaskView, TaskListView
 from viewmodel.conversation_viewmodel import ConversationViewModel
 import re
-from services.message_classifier_service import classify_message
+from classify_model.classifier import classify_message
 import requests
 
 
@@ -204,6 +205,11 @@ class TaskView(commands.Bot):
     async def on_message(self, message):
         """Handles message processing for task updates and filtering."""
         if message.author == self.user:
+            return
+        
+        # ✅ Only allow classification in Dharti server
+        ALLOWED_GUILD_ID = int(os.getenv("ALLOWED_GUILD_ID", 0))  
+        if message.guild and message.guild.id != ALLOWED_GUILD_ID:
             return
 
         user_id = str(message.author.id)
