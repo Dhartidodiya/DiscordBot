@@ -8,12 +8,14 @@ from model.data_model import DataModel
 from viewmodel.task_viewmodel import TaskViewModel
 from viewmodel.ml_viewmodel import MLViewModel
 from view.task_view import TaskView
-from services.data_service import DataService
+from services.message_logger_service import MessageLoggerService
+from services.task_classifier_service import TaskClassifierService
 from threading import Thread
 from flask_api import app as flask_app
 from dashboard.dashboard import create_dashboard 
 from services.api_service import api
 import discord
+from services.classify_api import classify_api
  
 
 # Load environment variables from .env file
@@ -40,7 +42,9 @@ task_model = TaskModel(reset_table=False)
 data_model = DataModel()
 task_viewmodel = TaskViewModel()
 ml_viewmodel = MLViewModel(data_model) 
-data_service = DataService(data_model)
+message_logger = MessageLoggerService()
+
+
 
 
 intents = discord.Intents.default()
@@ -61,7 +65,7 @@ scheduler = AsyncIOScheduler()
 async def fetch_and_train():
     """Fetch messages and train the ML model every 12 hours."""
     print("🔄 Scheduled Task: Fetching messages and training the model...")
-    fetched_count = await data_service.fetch_and_store_messages(client, channel_name="reporting")
+    fetched_count = await message_logger.fetch_and_store_messages(client, channel_name="reporting")
     accuracy = ml_viewmodel.train_model()
     print(f"📊 Fetched {fetched_count} messages and trained the model. Accuracy: {accuracy:.2f}%")
 
@@ -70,10 +74,19 @@ async def send_daily_report():
     """Send the daily task report at 5 PM."""
     print("📤 Sending daily report...")
     channel = client.get_channel(report_channel_id)
-    if channel:
-        await client.send_daily_report(channel)
-    else:
+
+    if not channel:
         print("❌ Report channel not found.")
+        return
+
+    # Step 1: Send detailed embed-based task report from TaskView
+    await client.send_daily_report(channel)
+
+    # Step 2: Send NLP-based categorized task summary
+    task_classifier = TaskClassifierService()
+    summary = task_classifier.get_daily_summary()
+    await channel.send(summary)
+
 
 
 DASHBOARD_DARK = True
@@ -106,6 +119,7 @@ async def on_ready():
     
 if __name__ == "__main__":
     flask_app.register_blueprint(api)
+    flask_app.register_blueprint(classify_api)
     client.run(discord_token)    
     
 # # Command to clear a specified number of messages

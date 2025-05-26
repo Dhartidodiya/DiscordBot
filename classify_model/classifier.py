@@ -1,30 +1,24 @@
+import os
 import joblib
 from classify_model.text_processing import clean_text, segment_text
 
-# Placeholder for global variables
-model = None
-vectorizer = None
-label_encoder = None
+# Relative model path handling
+MODEL_DIR = os.path.dirname(__file__)
+model = joblib.load(os.path.join(MODEL_DIR, "random_forest_model.pkl"))
+vectorizer = joblib.load(os.path.join(MODEL_DIR, "tfidf_vectorizer.pkl"))
+label_encoder = joblib.load(os.path.join(MODEL_DIR, "label_encoder.pkl"))
 
-def load_model():
-    global model, vectorizer, label_encoder
-    model = joblib.load("classify_model/random_forest_model.pkl")
-    vectorizer = joblib.load("classify_model/tfidf_vectorizer.pkl")
-    label_encoder = joblib.load("classify_model/label_encoder.pkl")
-
-def classify_message(text):
-    if model is None or vectorizer is None or label_encoder is None:
-        raise ValueError("Model not loaded. Call load_model() before using classify_message().")
-
-    cleaned = clean_text(text)
-    segments = segment_text(cleaned)
-    if not segments:
-        return []
-
-    vectors = vectorizer.transform(segments)
-    preds = model.predict(vectors)
-    categories = label_encoder.inverse_transform(preds)
-
-    return [{"sentence": s, "category": c} for s, c in zip(segments, categories)]
-
-load_model()
+def classify_message(message: str):
+    cleaned = clean_text(message)
+    sentences = segment_text(cleaned)
+    
+    results = []
+    for sent in sentences:
+        X = vectorizer.transform([sent])
+        pred = model.predict(X)
+        label = label_encoder.inverse_transform(pred)[0]
+        results.append({
+            "sentence": sent,
+            "category": label
+        })
+    return results

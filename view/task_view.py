@@ -221,23 +221,32 @@ class TaskView(commands.Bot):
 
         # Route classified sentences to their respective channels
         if classification:
-            payload = {
-                "author": str(message.author),
-                "results": classification
-            }
-
-            try:
-                # 🛠 Use your Render API URL after deployment
-                requests.post("http://localhost:5000/api/classify", json=payload)
-            except Exception as e:
-                print("❌ Failed to send to API:", e)
-
-            # Optional: Send feedback in Discord
+            
             for item in classification:
-                await message.channel.send(
-                    f"🔍 **Sentence**: `{item['sentence']}`\n📁 **Category**: `{item['category']}`"
+                sentence = item["sentence"]
+                category = item["category"]
+                author = str(message.author)
+                channel_name = CATEGORY_TO_CHANNEL.get(category.lower(), "général")
+                
+                # ✅ Save to DB
+                self.model.store_task(
+                    content=sentence,
+                    description="Auto-categorized",
+                    author=author,
+                    channel=channel_name
                 )
-
+                
+                # ✅ Optional: forward to that channel
+                target_channel = discord.utils.get(message.guild.text_channels, name=channel_name)
+                if target_channel:
+                    await target_channel.send(
+                        f"📝 **Task** from {author}:\n`{sentence}`\n📁 Category: `{category}`"
+                    )
+                    
+            # ✅ Feedback in current channel
+            await message.channel.send(f"✅ Processed and stored {len(classification)} tasks.")
+        # ✅ Process commands like !discuss, !manage_list, etc.
+        await self.process_commands(message)   
         
        # ✅ NLP-Based Discussion Retrieval (`!discuss <topic>`)
         if content.startswith("!discuss"):

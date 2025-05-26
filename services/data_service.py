@@ -50,3 +50,54 @@ class DataService:
         """Determine if a message is a report based on predefined keywords."""
         report_keywords = ["Rapport Quotidien d'Activité", "Projet", "Tâche", "Suivi", "Résumé"]
         return any(keyword.lower() in message_content.lower() for keyword in report_keywords)
+
+    def save_classified_sentences(self, results):
+        conn = sqlite3.connect("classified_sentences.db")
+        cursor = conn.cursor()
+
+        cursor.execute('''
+            CREATE TABLE IF NOT EXISTS categorized_sentences (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                sentence TEXT,
+                category TEXT,
+                timestamp TEXT
+            )
+        ''')
+
+        for item in results:
+            cursor.execute('''
+                INSERT INTO categorized_sentences (sentence, category, timestamp)
+                VALUES (?, ?, datetime('now'))
+            ''', (item['sentence'], item['category']))
+
+        conn.commit()
+        conn.close()
+
+    def get_daily_classification_summary(self):
+        conn = sqlite3.connect("classified_sentences.db")
+        cursor = conn.cursor()
+
+        cursor.execute('''
+            SELECT category, sentence FROM categorized_sentences
+            WHERE date(timestamp) = date('now')
+        ''')
+
+        data = cursor.fetchall()
+        conn.close()
+
+        if not data:
+            return "📌 No categorized tasks found today."
+
+        # Group by category
+        summary = {}
+        for category, sentence in data:
+            summary.setdefault(category, []).append(sentence)
+
+        # Format as a Discord message
+        report = "**📊 Daily Categorized Task Summary**\n"
+        for cat, items in summary.items():
+            report += f"\n**{cat.capitalize()}**:\n"
+            for s in items:
+                report += f"• {s}\n"
+
+        return report

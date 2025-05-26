@@ -6,7 +6,7 @@ from datetime import datetime
 
 api = Blueprint('api', __name__)
 
-# ✅ Task DB - Read Only
+# Task DB - Read Only
 @api.route('/api/tasks')
 def get_tasks():
     conn = sqlite3.connect("discord_tasks.db")
@@ -31,7 +31,7 @@ def get_tasks():
 
 
 
-# ✅ Train the model
+#  Train the model
 @api.route('/api/train-model', methods=['POST'])
 def train_model():
     data_model = DataModel()
@@ -40,7 +40,7 @@ def train_model():
     return jsonify({"accuracy": round(accuracy, 2)})
 
 
-# ✅ Conversation memory search
+#  Conversation memory search
 @api.route('/api/conversations')
 def get_conversations():
     user_id = request.args.get('user_id')

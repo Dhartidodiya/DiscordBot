@@ -31,23 +31,23 @@ def render_filters(df, authors=None):
     return html.Div([
         dbc.Row([
             dbc.Col([
-                html.Label("👤 Author"),
+                html.Label(" Author"),
                 dcc.Dropdown(options=author_options, id="filter-author", placeholder="Select author", style={"color": "black"})
             ]),
             dbc.Col([
-                html.Label("📌 Status"),
+                html.Label(" Status"),
                 dcc.Dropdown(options=[
                     {"label": s, "value": s} for s in df['status'].dropna().unique()
                 ], id="filter-status", placeholder="Select status", style={"color": "black"})
             ]),
             dbc.Col([
-                html.Label("🏷️ Channel"),
+                html.Label(" Channel"),
                 dcc.Dropdown(options=[
                     {"label": c, "value": c} for c in df['channel'].dropna().unique()
                 ], id="filter-channel", placeholder="Select channel", style={"color": "black"})
             ]),
             dbc.Col([
-                html.Label("📅 Date Range"),
+                html.Label(" Date Range"),
                 dcc.DatePickerRange(
                     id="filter-date",
                     min_date_allowed=df['timestamp'].min().date(),
@@ -57,7 +57,7 @@ def render_filters(df, authors=None):
                 )
             ]),
             dbc.Col([
-                html.Label("⚠️ High Priority"),
+                html.Label(" High Priority"),
                 dcc.Checklist(
                     id="filter-priority",
                     options=[{"label": "Show only high-priority", "value": "high"}],
@@ -89,30 +89,56 @@ def render_analytics_tab(df=None, dark_mode=False):
     status_donut_chart.update_layout(template='plotly_dark' if dark_mode else 'plotly_white')
 
     time_trend = df.groupby('date').size().reset_index(name="count")
-    line_chart = px.line(time_trend, x='date', y='count', title="📅 Task Trend Over Time")
+    line_chart = px.line(time_trend, x='date', y='count', title=" Task Trend Over Time")
 
     channel_group = df.groupby(['channel', 'status']).size().reset_index(name='count')
     grouped_bar = px.bar(channel_group, x='channel', y='count', color='status', barmode='group',
-                         title="📺 Tasks Per Channel by Status")
+                         title=" Tasks Per Channel by Status")
     grouped_bar.update_layout(template='plotly_dark' if dark_mode else 'plotly_white')
 
-    user_summary = df['author'].value_counts().reset_index()
+    # user_summary = df['author'].value_counts().reset_index()
+    # user_summary.columns = ['author', 'count']
+    # user_funnel = px.funnel(user_summary, x='count', y='author', title="Most Active Users (Funnel View)")
+    
+    all_authors = df_initial['author'].unique()
+    user_summary = df['author'].value_counts().reindex(all_authors, fill_value=0).reset_index()
     user_summary.columns = ['author', 'count']
-    user_funnel = px.funnel(user_summary, x='count', y='author', title="🔽 Most Active Users (Funnel View)")
+    user_bar = px.bar(
+        user_summary,
+        x='author',
+        y='count',
+        title="Tasks Per User",
+        color_discrete_sequence=["#6A5ACD"]
+    )
+    user_bar.update_layout(template='plotly_dark' if dark_mode else 'plotly_white')
 
-    heatmap_data = df.groupby(['author', 'date']).size().reset_index(name="tasks")
-    heatmap_fig = px.density_heatmap(heatmap_data, x="date", y="author", z="tasks",
-                                     color_continuous_scale="Viridis", title="🧑‍💼 Daily User Activity")
+
+    # heatmap_data = df.groupby(['author', 'date']).size().reset_index(name="tasks")
+    # heatmap_fig = px.density_heatmap(heatmap_data, x="date", y="author", z="tasks",
+    #                                  color_continuous_scale="Viridis", title=" Daily User Activity")
+    
+    activity_data = df.groupby(['date', 'author']).size().reset_index(name='tasks')
+
+    grouped_activity_bar = px.bar(
+        activity_data,
+        x='date',
+        y='tasks',
+        color='author',
+        barmode='group',
+        title="Daily User Activity (Grouped Bar)"
+    )
+    grouped_activity_bar.update_layout(template='plotly_dark' if dark_mode else 'plotly_white')
+
 
     return html.Div([
 
         # KPIs
         dbc.Row([
-            dbc.Col(dbc.Alert(f"📋 Total Tasks: {total_tasks}", color="primary")),
-            dbc.Col(dbc.Alert(f"🆕 Tasks Today: {tasks_today}", color="info")),
-            dbc.Col(dbc.Alert(f"🛠️ Open Tasks: {open_tasks}", color="warning")),
-            dbc.Col(dbc.Alert(f"✅ Completed Tasks: {completed_tasks}", color="success")),
-            dbc.Col(dbc.Alert(f"🔥 High Priority: {high_priority_tasks}", color="danger")),
+            dbc.Col(dbc.Alert(f" Total Tasks: {total_tasks}", color="primary")),
+            dbc.Col(dbc.Alert(f" Tasks Today: {tasks_today}", color="info")),
+            dbc.Col(dbc.Alert(f" Open Tasks: {open_tasks}", color="warning")),
+            dbc.Col(dbc.Alert(f" Completed Tasks: {completed_tasks}", color="success")),
+            dbc.Col(dbc.Alert(f" High Priority: {high_priority_tasks}", color="danger")),
         ], className="mb-4"),
 
         dbc.Row([
@@ -128,13 +154,13 @@ def render_analytics_tab(df=None, dark_mode=False):
 
         html.Hr(),
 
-        html.H5("Most Active Users"),
-        dcc.Graph(figure=user_funnel),
+        html.H5("Tasks Per User"),
+        dcc.Graph(figure=user_bar),
 
         html.Hr(),
 
-        html.H5("🗓️ Daily User Activity"),
-        dcc.Graph(figure=heatmap_fig),
+        html.H5(" Daily User Activity"),
+        dcc.Graph(figure=grouped_activity_bar),
     ])
 
 
