@@ -1,82 +1,145 @@
 import spacy
 import re
+import string
 from langdetect import detect
 import nltk
-from transformers import pipeline, MBart50Tokenizer, MBartForConditionalGeneration
 from nltk.tokenize.punkt import PunktSentenceTokenizer
 from nltk.data import load
+from model.task_model import TaskModel  
+task_model = TaskModel()
 
-# Download punkt only once
-nltk.download('punkt')
+# Ensure punkt is downloaded
+nltk.download('punkt', quiet=True)
 
-
-# 🛠 Custom tokenizer loader with fallback
-def get_tokenizer(lang):
-    lang_map = {'en': 'english', 'fr': 'french'}
-    lang_name = lang_map.get(lang, 'english')
-
-    try:
-        return load(f'tokenizers/punkt/{lang_name}.pickle')
-    except LookupError as e:
-        print(f"[WARN] Could not load punkt tokenizer for {lang_name}: {e}")
-        return PunktSentenceTokenizer()
-
-
-# ✅ Manual test block
-if __name__ == "__main__":
-    tokenizer_fr = get_tokenizer('fr')
-    tokenizer_en = get_tokenizer('en')
-
-    text_fr = "Bonjour. Je m'appelle Paul. Comment ça va ?"
-    print("French Tokenizer Output:", tokenizer_fr.tokenize(text_fr))
-
-    text_en = "Hello. My name is John. How are you?"
-    print("English Tokenizer Output:", tokenizer_en.tokenize(text_en))
-# Load spaCy models
+# Load spaCy models (English + French)
 nlp_en = spacy.load("en_core_web_sm")
 nlp_fr = spacy.load("fr_core_news_sm")
 
-# Load mBART model
-tokenizer = MBart50Tokenizer.from_pretrained('facebook/mbart-large-50')
-model = MBartForConditionalGeneration.from_pretrained('facebook/mbart-large-50')
-hf_sentence_splitter = pipeline("text2text-generation", model=model, tokenizer=tokenizer)
-
-# Text cleaner
+# Clean message text
 def clean_text(text):
-    text = re.sub(r"[\n\t\r]+", " ", text)
-    text = re.sub(r"\*\*|\>\s*", "", text)
-    text = re.sub(r"\brapport\s+quotidien(?:\s+d'activité)?\s*:?", "", text, flags=re.IGNORECASE)
+    text = str(text)
+    text = re.sub(r"[\t\r]+", " ", text)  # keep newlines!
+    text = re.sub(r"[>|\\]+", "", text)
+    
+    pattern = r"\b(?:rapport\s+quotidien\s+)?d[’'`]?\s*(activit[eéèê]|acticit[eéèê])\b\s*:?"
+    text = re.sub(pattern, "", text, flags=re.IGNORECASE)
+
     return text.strip().lower()
 
-# 🔍 Multilingual sentence segmenter with robust fallback
-def segment_text(text):
+
+# Normalize markdown asterisks
+def normalize_asterisks(text):
+    return re.sub(r"(\*{2,})\s*\*{0,2}\s*([\w\s\-]+?)\s*\*{0,2}\s*(\*{2,})", r"**\2**", text)
+
+# Extract titles and sentences
+def extract_titles_sentences(text):
+    text = str(text).strip()
+    lines = text.splitlines()
+    results = []
+
+    current_title = None
+    for line in lines:
+        line = line.strip()
+        if not line:
+            continue
+
+        if len(line.split()) <= 4 and not any(p in line for p in ".!?"):
+            current_title = line
+            continue
+
+        cleaned = re.sub(r"^[\s\u00A0\u200B\u202F]*[•\-‣◦●▪]?\s*", "", line).strip()
+        sentence = cleaned
+        results.append((current_title or None, sentence))
+
+    # Fallbacks
+    if not results:
+        pattern_multi = re.compile(r"\*{1,2}([^*]+?)\*{1,2}\s*-\s*([^*]+)", flags=re.DOTALL)
+        matches = pattern_multi.findall(text)
+        if matches:
+            for title, sentence in matches:
+                sentence = re.sub(r"^\s*-\s*", "", sentence)
+                results.append((title.strip(), sentence.strip()))
+            return results
+
+        fallback_colon = re.match(r"^(projet\s+\w+|\w+)\s*:?-?\s*(.*)", text, flags=re.IGNORECASE)
+        if fallback_colon:
+            return [(fallback_colon.group(1).strip(), fallback_colon.group(2).strip())]
+
+        return [(None, text.strip())]
+
+    return results
+
+
+
+
+# NLTK tokenizer fallback
+def get_tokenizer(lang):
     try:
-        lang = detect(text)
-    except Exception:
-        lang = 'en'
+        return load(f"tokenizers/punkt/{lang}.pickle")
+    except LookupError:
+        return PunktSentenceTokenizer()
 
-    lang_nltk = {'en': 'english', 'fr': 'french'}.get(lang, 'english')
-    nlp = nlp_fr if lang == 'fr' else nlp_en
+# Full segmenter with spaCy + fallback logic
+def segment_text(text, return_titles=False):
+    
+    cleaned_text = clean_text(text)
+    
+    cleaned_text = normalize_asterisks(cleaned_text)
+    
+    segments = extract_titles_sentences(cleaned_text)
+   
+    output = []
+    
+    #  Known status keywords
+    status_keywords = {
+    # Completed
+    "done", "completed", "finished", "complete",
+    "terminé", "terminée", "termine", "terminer", "fin", "fini", "fait", "succès", "réalisé", "realisé", "clôturé", "cloturé", "clôture", "cloture",
 
-    # First try spaCy
-    doc = nlp(text)
-    sentences = [sent.text.strip() for sent in doc.sents]
+    #  In Progress
+    "in progress", "doing", "working", "active", "wip", "processing",
+    "en cours", "cours", "en traitement", "traitement", "en marche", "en train de faire", "traiter",
 
-    # Fallback 1: Check if spaCy returned only one long sentence
-    if len(sentences) <= 1:
-        # Split on period if present
-        if '.' in text:
-            sentences = [s.strip() for s in text.split('.') if s.strip()]
-        
-        # Fallback 2: Try comma split if still short
-        if len(sentences) <= 1 and ',' in text:
-            comma_split = [s.strip() for s in text.split(',') if s.strip()]
-            if len(comma_split) > 1:
-                sentences = comma_split
+    #  On Hold
+    "on hold", "paused", "waiting", "hold", "pending", "standby",
+    "en attente", "attente", "bloqué", "bloque", "bloquée", "bloques", "suspendu", "interrompu", "gelé", "gelée"
+}
 
-    # Final fallback: use NLTK Punkt
-    if len(sentences) <= 1:
-        tokenizer = get_tokenizer(lang_nltk)
-        sentences = tokenizer.tokenize(text)
+    # Process each segment
+    for title, raw_sentence in segments:
+        sentence = raw_sentence.strip()
+        raw_status = "in progress"
 
-    return sentences
+        status_match = re.search(r"\s*[-:]\s*([^\n\r]+)$", sentence)
+         
+        if status_match:
+            possible_status = status_match.group(1).strip().lower().strip(string.punctuation)
+            if possible_status in status_keywords:
+                raw_status = possible_status
+                sentence = re.sub(r"\s*[-:]\s*" + re.escape(status_match.group(1)) + r"$", "", sentence, flags=re.UNICODE).strip()
+                print(" Detected Status Keyword:", raw_status)
+                print(" Cleaned Sentence:", sentence)
+            else:
+                print("⚠️ Found trailing text but not a known status keyword:", possible_status)
+        else:
+            print(" No status-like ending found. Defaulting to:", raw_status)
+
+        if return_titles:
+            output.append({
+                "title": title,
+                "sentence": sentence,
+                "status": raw_status
+            })
+        else:
+            output.append(sentence)
+
+    print("\n Final Segments Output:", output)
+    return output
+
+
+# Manual test
+if __name__ == "__main__":
+    test = ""
+    
+    import json
+    print(json.dumps(segment_text(test, return_titles=True), indent=2, ensure_ascii=False))

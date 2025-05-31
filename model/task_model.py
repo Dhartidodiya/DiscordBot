@@ -11,21 +11,21 @@ class TaskModel:
             self.drop_table_if_exists()
         self.create_table()
         self.create_checklist_table()
-        self.nlp = spacy.load("fr_core_news_sm")  # ✅ Use French NLP model
+        self.nlp = spacy.load("fr_core_news_sm")  #  Use French NLP model
         
     def drop_table_if_exists(self):
         """Drop the tasks table if it already exists."""
         self.c.execute("DROP TABLE IF EXISTS tasks")
         self.c.execute("DROP TABLE IF EXISTS checklists")
         self.conn.commit()
-        print("✅ Dropped existing tables.")
+        print(" Dropped existing tables.")
 
     def get_tasks_by_keyword(self, keyword):
         """Retrieve tasks that contain related keywords using NLP & fuzzy matching."""
         self.c.execute("SELECT task_id, content, description, author, channel, status, timestamp FROM tasks")
         all_tasks = self.c.fetchall()
 
-        # ✅ Extract the lemma (root word) of the keyword
+        # Extract the lemma (root word) of the keyword
         keyword_lemma = self.detect_keywords(keyword)
 
         matching_tasks = []
@@ -89,25 +89,6 @@ class TaskModel:
         return self.c.fetchall()
 
 
-    def normalize_status(self,input_status):
-        """Maps various user inputs to standardized status values."""
-        status_mapping = {
-            "in progress": "In Progress",
-            "progress": "In Progress",
-            "inprogress": "In Progress",
-            "on hold": "On Hold",
-            "onhold": "On Hold",
-            "hold": "On Hold",
-            "completed": "Completed",
-            "complete": "Completed",
-            "done": "Completed"
-        }
-
-        # Convert to lowercase & normalize spaces
-        input_status = input_status.lower().strip()
-
-        # Return normalized status or fallback to default
-        return status_mapping.get(input_status, "In Progress")  # Default: "In Progress"
 
 
     def create_table(self):
@@ -160,16 +141,19 @@ class TaskModel:
 
 
 
-    def store_task(self, content, description,author, channel, language='unknown'):
-        """Store a new task in the database with default 'In Progress' status."""
+    def store_task(self, content, description, author, channel, language='unknown', status="In Progress"):
+        """Store a new task in the database with a given or default status."""
         timestamp = str(datetime.now())
         try:
-            self.c.execute("INSERT INTO tasks (content,description, author, channel, status, timestamp, language) VALUES (?, ?, ?, ?, ?, ?, ?)",
-                        (content,description, author, channel, "In Progress", timestamp, language))
+            self.c.execute(
+                "INSERT INTO tasks (content, description, author, channel, status, timestamp, language) VALUES (?, ?, ?, ?, ?, ?, ?)",
+                (content, description, author, channel, status, timestamp, language)
+            )
             self.conn.commit()
-            print(f"✅ Stored task from {author} in {channel}: '{content}' with description '{description}' [Status: In Progress]")
+            print(f"✅ Stored task from {author} in {channel}: '{content}' with description '{description}' [Status: {status}]")
         except sqlite3.Error as e:
             print(f"❌ Error inserting task: {e}")
+
 
     def update_task_status(self, task_id, new_status):
         """Update task status with normalized input."""

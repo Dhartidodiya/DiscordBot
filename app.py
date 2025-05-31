@@ -11,7 +11,7 @@ from view.task_view import TaskView
 from services.message_logger_service import MessageLoggerService
 from services.task_classifier_service import TaskClassifierService
 from threading import Thread
-from flask_api import app as flask_app
+from services.flask_server import create_flask_server
 from dashboard.dashboard import create_dashboard 
 from services.api_service import api
 import discord
@@ -64,19 +64,19 @@ scheduler = AsyncIOScheduler()
 @scheduler.scheduled_job("interval", hours=12)
 async def fetch_and_train():
     """Fetch messages and train the ML model every 12 hours."""
-    print("🔄 Scheduled Task: Fetching messages and training the model...")
+    print(" Scheduled Task: Fetching messages and training the model...")
     fetched_count = await message_logger.fetch_and_store_messages(client, channel_name="reporting")
     accuracy = ml_viewmodel.train_model()
-    print(f"📊 Fetched {fetched_count} messages and trained the model. Accuracy: {accuracy:.2f}%")
+    print(f" Fetched {fetched_count} messages and trained the model. Accuracy: {accuracy:.2f}%")
 
 @scheduler.scheduled_job("cron", hour=17)
 async def send_daily_report():
     """Send the daily task report at 5 PM."""
-    print("📤 Sending daily report...")
+    print(" Sending daily report...")
     channel = client.get_channel(report_channel_id)
 
     if not channel:
-        print("❌ Report channel not found.")
+        print(" Report channel not found.")
         return
 
     # Step 1: Send detailed embed-based task report from TaskView
@@ -90,6 +90,12 @@ async def send_daily_report():
 
 
 DASHBOARD_DARK = True
+
+# ✅ Start Flask dashboard in a new thread
+def run_flask(authors):
+    flask_app = create_flask_server()  # ✅ Create central Flask app
+    dash_app = create_dashboard(flask_app, dark_mode=DASHBOARD_DARK, authors=authors)
+    dash_app.run(host="0.0.0.0", port=5000,debug=True,use_reloader=False)
 
 
 @client.event
@@ -111,15 +117,10 @@ async def on_ready():
     authors = sorted(authors)
     print("✅ Filtered unique authors from DhartiBot server:", authors)
     
-    # ✅ Start Flask dashboard in a new thread
-    def run_flask():
-        create_dashboard(flask_app, dark_mode=DASHBOARD_DARK, authors=authors).run(host="0.0.0.0", port=5000)
+    Thread(target=run_flask, args=(authors,)).start()
 
-    Thread(target=run_flask).start()
     
 if __name__ == "__main__":
-    flask_app.register_blueprint(api)
-    flask_app.register_blueprint(classify_api)
     client.run(discord_token)    
     
 # # Command to clear a specified number of messages

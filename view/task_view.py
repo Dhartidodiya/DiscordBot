@@ -7,8 +7,9 @@ from view.task_ui_componanets import AddTaskView, TaskListView
 from viewmodel.conversation_viewmodel import ConversationViewModel
 import re
 from classify_model.classifier import classify_message
-import requests
-
+from classify_model.text_processing import segment_text, clean_text
+from collections import defaultdict
+import aiohttp
 
 # Map predicted categories to actual Discord channel names
 CATEGORY_TO_CHANNEL = {
@@ -29,7 +30,7 @@ class TaskView(commands.Bot):
         self.task_display_message = None  # Store reference to the task display message
         self.additional_task_messages = []
         
-        # ✅ Register all commands properly
+        # Register all commands properly
         self.conversation_vm = ConversationViewModel()
         self.cache = {} 
         self.add_commands()
@@ -37,7 +38,7 @@ class TaskView(commands.Bot):
     
     async def on_ready(self):
         """Bot startup log."""
-        print(f"✅ Logged in as {self.user}")
+        print(f" Logged in as {self.user}")
         
         
          
@@ -194,6 +195,11 @@ class TaskView(commands.Bot):
         else:
             print("❌ Report channel not found. Check channel ID!")
 
+    def format_message_with_quote(self,title, author, sentence_status_list):
+        
+        title_line = f"> **{title.capitalize()}** [.{author}]"
+        formatted_sentences = "\n".join(f"> ➤  {s.capitalize()} [{status.capitalize()}]" for s, status in sentence_status_list)
+        return f"{title_line}\n{formatted_sentences}"
 
     
     async def process_commands(self, message):
@@ -207,46 +213,79 @@ class TaskView(commands.Bot):
         if message.author == self.user:
             return
         
-        # ✅ Only allow classification in Dharti server
+        # Only allow classification in Dharti server
         ALLOWED_GUILD_ID = int(os.getenv("ALLOWED_GUILD_ID", 0))  
         if message.guild and message.guild.id != ALLOWED_GUILD_ID:
             return
 
         user_id = str(message.author.id)
+        author = str(message.author)
         content = message.content.strip()
-        
-        # ✅ Store user message in conversation memory
+                
+        # Store the raw user message for conversation tracking
         self.conversation_vm.store_user_message(user_id, message.author.name, content)
-        classification = classify_message(content)
 
-        # Route classified sentences to their respective channels
-        if classification:
-            
-            for item in classification:
-                sentence = item["sentence"]
-                category = item["category"]
-                author = str(message.author)
-                channel_name = CATEGORY_TO_CHANNEL.get(category.lower(), "général")
-                
-                # ✅ Save to DB
-                self.model.store_task(
-                    content=sentence,
-                    description="Auto-categorized",
-                    author=author,
-                    channel=channel_name
+        # Dictionary: {category -> {project -> [sentences]}}
+        categorized_tasks = defaultdict(lambda: defaultdict(list))
+        
+        # Extract optional status line from the message
+        # Look for: "Status: terminé" or "status - done"
+        status_match = re.search(r"\s*[-:]\s*([\w\s\u00C0-\u024F]+)$", content, flags=re.IGNORECASE)
+        status = status_match.group(1).strip() if status_match else "in progress"
+
+        # Clean the message (remove the status line before sending to classifier)
+        content_cleaned = re.sub(r"status\s*[:\-]?.*", "", content, flags=re.IGNORECASE).strip()
+        
+        # Call API once with full message
+        async with aiohttp.ClientSession() as session:
+            try:
+                response = await session.post(
+                    "http://127.0.0.1:5000/api/predict",
+                    json={"message": content_cleaned, "status": status}
                 )
+                if response.status != 200:
+                    print(f"⚠️ API failed with status {response.status}")
+                    return
+
+                data = await response.json()
+                predictions = data.get("results", [])
+            except Exception as e:
+                print(f"❌ API request failed: {e}")
+                return
+        
+        # Process each prediction
+        for item in predictions:
+            sentence = item.get("sentence")
+            category = item.get("category", "general").lower()
+            title = item.get("title", "General")
+            status = item.get("status", "In Progress")
+
+            channel_name = CATEGORY_TO_CHANNEL.get(category, "général")
+
+            # Save in DB
+            self.model.store_task(
+                content=sentence,
+                description=f"Auto from {title}",
+                author=author,
+                channel=channel_name,
+                status=status
+            )
+
+            # Group for display
+            categorized_tasks[channel_name][title].append((sentence, status))     
                 
-                # ✅ Optional: forward to that channel
-                target_channel = discord.utils.get(message.guild.text_channels, name=channel_name)
-                if target_channel:
-                    await target_channel.send(
-                        f"📝 **Task** from {author}:\n`{sentence}`\n📁 Category: `{category}`"
-                    )
-                    
-            # ✅ Feedback in current channel
-            await message.channel.send(f"✅ Processed and stored {len(classification)} tasks.")
-        # ✅ Process commands like !discuss, !manage_list, etc.
-        await self.process_commands(message)   
+        # Send formatted messages to respective channels
+        for channel_name, projects in categorized_tasks.items():
+            target_channel = discord.utils.get(message.guild.text_channels, name=channel_name)
+            if not target_channel:
+                continue
+
+            for project, sentences in projects.items():
+                formatted = self.format_message_with_quote(project, message.author.name, sentences)
+                await target_channel.send(formatted)
+
+        await message.channel.send(f"✅ Classifié et stocké: {sum(len(s) for p in categorized_tasks.values() for s in p.values())} tâches.")
+        await self.process_commands(message)       
         
        # ✅ NLP-Based Discussion Retrieval (`!discuss <topic>`)
         if content.startswith("!discuss"):
