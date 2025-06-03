@@ -5,8 +5,7 @@ from langdetect import detect
 import nltk
 from nltk.tokenize.punkt import PunktSentenceTokenizer
 from nltk.data import load
-from model.task_model import TaskModel  
-task_model = TaskModel()
+
 
 # Ensure punkt is downloaded
 nltk.download('punkt', quiet=True)
