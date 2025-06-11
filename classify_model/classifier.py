@@ -20,16 +20,19 @@ def classify_message(message: str, include_title=False):
 
         X = vectorizer.transform([sentence])
         pred = model.predict(X)
-        label = label_encoder.inverse_transform(pred)[0]
+        predicted_category  = label_encoder.inverse_transform(pred)[0]
 
         result = {
             "sentence": sentence,
-            "category": label,
-            "status": item.get("status", "In Progress")
+            "category": predicted_category ,
+            "status": item.get("status"),
+            "label":item.get("label"),
+            "emoji":item.get("emoji"),
         }
+        
         if include_title:
              result["title"] = item.get("title", None)
-
+        print(result)
         results.append(result)
 
     return results

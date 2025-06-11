@@ -14,18 +14,23 @@ CATEGORY_TO_CHANNEL = {
 }
 
 class PredictView(discord.Client):
-    def __init__(self, model: PredictionModel, conversation_vm: ConversationViewModel, **kwargs):
+    def __init__(self, model: PredictionModel, conversation_vm: ConversationViewModel,allowed_guild_id: int, **kwargs):
         intents = kwargs.get("intents", discord.Intents.default())
         super().__init__(intents=intents)
         self.model = model
         self.predict_service = PredictService()
         self.conversation_vm = conversation_vm
+        self.allowed_guild_id = allowed_guild_id
 
     async def on_ready(self):
         print(f"✅ PredictBot ready as {self.user}")
 
     async def on_message(self, message):
         if message.author == self.user or not message.guild:
+            return
+        
+        # Restrict processing to the allowed guild/server
+        if message.guild.id != self.allowed_guild_id:
             return
 
         user_id = str(message.author.id)
@@ -44,11 +49,13 @@ class PredictView(discord.Client):
             sentence = item["sentence"]
             category = item.get("category", "general").lower()
             title = item.get("title", "General")
-            status = item.get("status", "in progress")
+            status = item.get("status") or "completed"
+            label    = item.get("label") or "Terminé"
+            emoji    = item.get("emoji", "🟢")     
             channel_name = CATEGORY_TO_CHANNEL.get(category, "général")
 
-            self.model.store_prediction(sentence, title, author, channel_name, status)
-            categorized[channel_name][title].append((sentence, status))
+            self.model.store_prediction(sentence, title, author, channel_name, status,label,emoji)
+            categorized[channel_name][title].append((sentence, f"{emoji} {label}"))
 
         for channel_name, projects in categorized.items():
             target_channel = discord.utils.get(message.guild.text_channels, name=channel_name)
@@ -63,6 +70,6 @@ class PredictView(discord.Client):
 
     def format_message(self, title, author, items):
         title_line = f"> **{title.capitalize()}** [{author}]"
-        lines = [f"> ➤  {s.strip().capitalize()} [{st.capitalize()}]" for s, st in items]
+        lines = [f"> ➤  {s.strip().capitalize()} [{st}]" for s, st in items]
         return f"{title_line}\n" + "\n".join(lines)
 

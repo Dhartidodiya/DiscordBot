@@ -5,7 +5,11 @@ from langdetect import detect
 import nltk
 from nltk.tokenize.punkt import PunktSentenceTokenizer
 from nltk.data import load
+from transformers import pipeline
 
+# Load once globally (or cache elsewhere for performance)
+classifier_en = pipeline("zero-shot-classification", model="facebook/bart-large-mnli")
+classifier_fr = pipeline("zero-shot-classification", model="morit/french_xlm_xnli")  # or mtheo/camembert-base-xnli
 
 # Ensure punkt is downloaded
 nltk.download('punkt', quiet=True)
@@ -13,6 +17,20 @@ nltk.download('punkt', quiet=True)
 # Load spaCy models (English + French)
 nlp_en = spacy.load("en_core_web_sm")
 nlp_fr = spacy.load("fr_core_news_sm")
+
+STATUS_LABELS_EN = ["Completed", "In Progress", "On Hold"]
+STATUS_LABELS_FR = ["Terminé", "En cours", "En attente"]
+
+STATUS_EMOJIS = {
+    "Completed": "🟢", "In Progress": "🟡", "On Hold": "🔴",
+    "Terminé": "🟢", "En cours": "🟡", "En attente": "🔴"
+}
+
+KNOWN_TITLES = {
+    "Neofid", "Tribuneo", "DiscordBot", "TeintExpress", "Stage", "Conformité RGPD"
+}
+
+
 
 # Clean message text
 def clean_text(text):
@@ -23,7 +41,7 @@ def clean_text(text):
     pattern = r"\b(?:rapport\s+quotidien\s+)?d[’'`]?\s*(activit[eéèê]|acticit[eéèê])\b\s*:?"
     text = re.sub(pattern, "", text, flags=re.IGNORECASE)
 
-    return text.strip().lower()
+    return text.strip()
 
 
 # Normalize markdown asterisks
@@ -35,14 +53,19 @@ def extract_titles_sentences(text):
     text = str(text).strip()
     lines = text.splitlines()
     results = []
-
     current_title = None
+    
     for line in lines:
         line = line.strip()
         if not line:
             continue
+        
+        # Title detection (based on known projects)
+        if line in KNOWN_TITLES:
+            current_title = line
+            continue
 
-        if len(line.split()) <= 4 and not any(p in line for p in ".!?"):
+        if current_title is None and len(line.split()) <= 4 and not any(p in line for p in ".!?"):
             current_title = line
             continue
 
@@ -77,62 +100,53 @@ def get_tokenizer(lang):
         return load(f"tokenizers/punkt/{lang}.pickle")
     except LookupError:
         return PunktSentenceTokenizer()
+    
+    
+def get_status_from_model(sentence: str):
+    try:
+        lang = detect(sentence)
+    except:
+        lang = "en"  # fallback
+    
+    if lang == "fr":
+        result = classifier_fr(sentence, STATUS_LABELS_FR)
+    else:
+        result = classifier_en(sentence, STATUS_LABELS_EN)
 
-# Full segmenter with spaCy + fallback logic
+    top_label = result["labels"][0]
+    emoji = STATUS_EMOJIS.get(top_label, "🟢")
+    
+    return top_label, emoji
+
+
 def segment_text(text, return_titles=False):
-    
+    #  Clean & normalize
     cleaned_text = clean_text(text)
-    
     cleaned_text = normalize_asterisks(cleaned_text)
-    
+
+    #  Break into (title, raw_sentence) pairs
     segments = extract_titles_sentences(cleaned_text)
-   
     output = []
-    
-    #  Known status keywords
-    status_keywords = {
-    # Completed
-    "done", "completed", "finished", "complete",
-    "terminé", "terminée", "termine", "terminer", "fin", "fini", "fait", "succès", "réalisé", "realisé", "clôturé", "cloturé", "clôture", "cloture",
 
-    #  In Progress
-    "in progress", "doing", "working", "active", "wip", "processing",
-    "en cours", "cours", "en traitement", "traitement", "en marche", "en train de faire", "traiter",
-
-    #  On Hold
-    "on hold", "paused", "waiting", "hold", "pending", "standby",
-    "en attente", "attente", "bloqué", "bloque", "bloquée", "bloques", "suspendu", "interrompu", "gelé", "gelée"
-}
-
-    # Process each segment
     for title, raw_sentence in segments:
         sentence = raw_sentence.strip()
-        raw_status = "in progress"
 
-        status_match = re.search(r"\s*[-:]\s*([^\n\r]+)$", sentence)
-         
-        if status_match:
-            possible_status = status_match.group(1).strip().lower().strip(string.punctuation)
-            if possible_status in status_keywords:
-                raw_status = possible_status
-                sentence = re.sub(r"\s*[-:]\s*" + re.escape(status_match.group(1)) + r"$", "", sentence, flags=re.UNICODE).strip()
-                print(" Detected Status Keyword:", raw_status)
-                print(" Cleaned Sentence:", sentence)
-            else:
-                print("⚠️ Found trailing text but not a known status keyword:", possible_status)
-        else:
-            print(" No status-like ending found. Defaulting to:", raw_status)
+        label, emoji = get_status_from_model(sentence)
+
+        print(f"✅ Detected status → {label} {emoji}")
+
 
         if return_titles:
             output.append({
-                "title": title,
+                "title":    title,
                 "sentence": sentence,
-                "status": raw_status
+                "status":   label.lower(),
+                "label":    label,
+                "emoji":    emoji
             })
         else:
             output.append(sentence)
 
-    print("\n Final Segments Output:", output)
     return output
 
 

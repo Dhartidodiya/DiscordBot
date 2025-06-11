@@ -47,10 +47,11 @@ intents.members = True
 client = PredictView(
     model=prediction_model,
     conversation_vm=conversation_vm,
+    allowed_guild_id=allowed_guild_id,
     intents=intents
 )
 
-report_client = ReportView(intents=intents)
+report_client = ReportView(intents=intents, allowed_guild_id=allowed_guild_id)
 
 
 # Scheduler
@@ -58,7 +59,7 @@ scheduler = AsyncIOScheduler()
 
 DASHBOARD_DARK = True
 
-@scheduler.scheduled_job("cron", hour=17, minute=5)
+@scheduler.scheduled_job("cron", hour=17, minute=4)
 async def send_daily_report():
     print("🕔 Scheduled: Sending daily report...")
     channel = client.get_channel(report_channel_id)

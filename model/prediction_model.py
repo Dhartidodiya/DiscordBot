@@ -16,22 +16,26 @@ class PredictionModel:
                             description TEXT,
                             author TEXT,
                             channel TEXT,
-                            status TEXT DEFAULT 'In Progress',
+                            status TEXT DEFAULT 'Completed',
+                            label  TEXT,
+                            emoji  TEXT,
                             timestamp TEXT,
                             language TEXT
                         )''')
         self.conn.commit()
 
-    def store_prediction(self, sentence, title, author, channel_name, status="In Progress", language="unknown"):
+    def store_prediction(self, sentence, title, author, channel_name, status, label ,
+                         emoji, language="unknown"):
         """Store a classified task/prediction into the DB."""
         timestamp = str(datetime.now())
         description = title
         try:
             self.c.execute("""
-                INSERT INTO tasks (content, description, author, channel, status, timestamp, language,title)
-                VALUES (?, ?, ?, ?, ?, ?, ?,?)
-            """, (sentence, description, author, channel_name, status, timestamp, language,title))
+                INSERT INTO tasks (content, description, author, channel, status, label, emoji, timestamp, language,title)
+                VALUES (?, ?, ?, ?, ?, ?, ?,?,?,?)
+            """, (sentence, description, author, channel_name, status, label, emoji, timestamp, language,title))
             self.conn.commit()
             print(f"✅ Stored prediction: {sentence} ({title}) in {channel_name}")
+            print(f"✅ Stored: {sentence!r} | status={status}, label={label}, emoji={emoji}")
         except sqlite3.Error as e:
             print(f"❌ DB Error storing prediction: {e}")
