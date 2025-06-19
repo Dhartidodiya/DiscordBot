@@ -5,28 +5,29 @@ from datetime import datetime, timedelta
 import aiohttp
 import dateparser
 import re
+from utils.date_parser import parse_date_range
+
 
 class ReportView:
-    def __init__(self, *, intents: discord.Intents, allowed_guild_id: int):
+    def __init__(self, *,allowed_guild_id: int):
         self.allowed_guild_id = allowed_guild_id
         self.report_channel_name = os.getenv("REPORT_CHANNEL_NAME", "report")
         self.report_api_url = os.getenv("REPORT_API_URL")
-        self.client = discord.Client(intents=intents)
-
+        
     async def send_daily_report(self, channel):
         if channel.guild.id != self.allowed_guild_id:
-            print(f"❌ Skipping report: guild ID {channel.guild.id} not allowed.")
+            print(f" Skipping report: guild ID {channel.guild.id} not allowed.")
             return
        
         try:
             async with aiohttp.ClientSession() as session:
                 async with session.get(self.report_api_url) as resp:
                     if resp.status != 200:
-                        print(f"⚠️ Failed to fetch report. Status: {resp.status}")
+                        print(f"Failed to fetch report. Status: {resp.status}")
                         return
                     data = await resp.json()
         except Exception as e:
-            print(f"❌ API fetch error: {e}")
+            print(f" API fetch error: {e}")
             return
 
         report_data = data.get("report", [])
@@ -45,7 +46,6 @@ class ReportView:
         for group in report_data:
             title = group.get("title") or " "
             entries = group["entries"]
-            
             embed = discord.Embed(
             title=f"**{title.capitalize()}**",
             )
@@ -91,71 +91,119 @@ class ReportView:
             return
 
         query_text = message.content.strip()
-        parsed_dates = self.extract_date_range(query_text)
 
-        if not parsed_dates:
-            await message.channel.send("❓ Je n'ai pas compris la date. Essayez par ex. 'les tâches d'hier'.")
+        # ✅ NEW: Use date parser
+        from_date, to_date = parse_date_range(query_text)
+
+        if not from_date or not to_date:
+            await message.channel.send("❓ Je n'ai pas compris la date. Essayez par ex. 'rapport d'hier' ou 'du 5 juin au 10 juin'.")
             return
 
-        from_date, to_date = parsed_dates
-        url = f"{self.report_api_url}?q={query_text}"  # 👈 Let API do the parsing
+
+        user_match = re.search(r"de\s+(\w+)", query_text)
+        status_match = re.search(r"\b(en\s+cours|terminée?|done|in\s+progress|completed|finie?)\b", query_text)
+        
+        # ✅ NEW: Send parsed dates to the API
+        
+        query_user = user_match.group(1).lower() if user_match else None
+        query_status = status_match.group(1).lower() if status_match else None
+
+        # Normalize known status values
+        if query_status in ["done", "terminée", "finie", "completed"]:
+            query_status = "completed"
+        elif query_status in ["en cours", "in progress"]:
+            query_status = "in progress"
+
+        if query_user and query_status:
+            url = f"{self.report_api_url}/report_by_user_and_status?user={query_user}&status={query_status}"
+        elif query_user:
+            url = f"{self.report_api_url}/report_by_user?user={query_user}&from={from_date}&to={to_date}"
+        elif query_status:
+            url = f"{self.report_api_url}/report_by_status?status={query_status}"
+        else:
+            url = f"{self.report_api_url}/daily_report?from={from_date}&to={to_date}"
+
 
         try:
             async with aiohttp.ClientSession() as session:
                 async with session.get(url) as resp:
                     if resp.status != 200:
-                        await message.channel.send("⚠️ Erreur API.")
+                        await message.channel.send(" Erreur lors de la récupération du rapport.")
                         return
                     data = await resp.json()
         except Exception as e:
-            await message.channel.send(f"❌ Erreur de récupération : {e}")
+            await message.channel.send(f" Erreur de récupération : {e}")
             return
 
         report_data = data.get("report", [])
         if not report_data:
-            await message.channel.send("📭 Aucune tâche trouvée pour cette période.")
+            await message.channel.send(" Aucune tâche trouvée pour cette période.")
             return
 
+        header = f"> Rapport d'activité : {from_date} → {to_date}"
+        await message.channel.send(header)
+
         for group in report_data:
-            title = group.get("title", " ")
+            title = group.get("title") or " "
             entries = group["entries"]
 
-            embed = discord.Embed(title=f"**{title.capitalize()}**")
-
+            
+            embed = discord.Embed(title=f"{title.capitalize()}")
+            
+            field_count = 0
             for entry in entries:
                 sentence = entry["sentence"].strip().capitalize()
-                status = entry["status"]
                 emoji = entry.get("emoji", "")
-                author = entry["author"]
+                status = entry["status"]
 
                 embed.add_field(
                     name=f"➤ {sentence}",
                     value=f"`{emoji} {status}`",
                     inline=False
                 )
+                
+                field_count += 1
+                
+                if field_count >= 25:
+                    await message.channel.send(embed=embed)
+                    embed = discord.Embed(title=f"{title.capitalize()} (suite)")
+                    field_count = 0
 
-            await message.channel.send(embed=embed)
+            if field_count > 0:
+                await message.channel.send(embed=embed)
             
    
-    def extract_date_range(self, text: str):
-        text = text.lower()
-        now = datetime.now()
+    def extract_date_range(text: str):
+        text = text.lower().strip()
+        today = datetime.today().date()
+
+        # Handle keywords
+        if "aujourd'hui" in text or "today" in text:
+            return today, today
 
         if "hier" in text or "yesterday" in text:
-            d = now - timedelta(days=1)
-            return d, d
-        if "aujourd" in text or "today" in text:
-            return now, now
+            return today - timedelta(days=1), today - timedelta(days=1)
 
+        # Handle format: 05/06/2025 - 10/06/2025
+        match = re.search(r"(\d{1,2}/\d{1,2}/\d{4})\s*[-àto]+\s*(\d{1,2}/\d{1,2}/\d{4})", text)
+        if match:
+            d1 = dateparser.parse(match.group(1), languages=["fr", "en"])
+            d2 = dateparser.parse(match.group(2), languages=["fr", "en"])
+            if d1 and d2:
+                return d1.date(), d2.date()
+
+        # Handle format: "du 5 juin au 10 juin"
         match = re.search(r"(?:from|du)\s+(.*?)\s+(?:to|au|jusqu[’']?à)\s+(.*)", text)
         if match:
             d1 = dateparser.parse(match.group(1), languages=["fr", "en"])
             d2 = dateparser.parse(match.group(2), languages=["fr", "en"])
             if d1 and d2:
-                return d1, d2
+                return d1.date(), d2.date()
 
-        single = dateparser.parse(text, languages=["fr", "en"])
-        if single:
-            return single, single
+        # Handle format: "5 juin", "10 June", etc.
+        d = dateparser.parse(text, languages=["fr", "en"])
+        if d:
+            return d.date(), d.date()
 
-        return None       
+        #  No valid date found
+        return None

@@ -25,7 +25,7 @@ class PredictView(discord.Client):
     async def on_ready(self):
         print(f"✅ PredictBot ready as {self.user}")
 
-    async def on_message(self, message):
+    async def handle_prediction_message(self, message):
         if message.author == self.user or not message.guild:
             return
         
@@ -69,7 +69,9 @@ class PredictView(discord.Client):
         await message.channel.send("✅ Tâches classées et enregistrées.")
 
     def format_message(self, title, author, items):
-        title_line = f"> **{title.capitalize()}** [{author}]"
+        # Safe-guard: treat None or "" as “Sans titre”
+        safe_title = (title or "Sans titre").capitalize()
+        title_line = f"> **{safe_title}** [{author}]"
         lines = [f"> ➤  {s.strip().capitalize()} [{st}]" for s, st in items]
         return f"{title_line}\n" + "\n".join(lines)
 

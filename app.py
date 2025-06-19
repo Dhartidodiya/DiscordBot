@@ -26,12 +26,12 @@ report_channel_id = int(os.getenv('REPORT_CHANNEL_ID', 0))  # Default to 0 if no
 allowed_guild_id = int(os.getenv("ALLOWED_GUILD_ID", 0))
 
 if not discord_token:
-    print("❌ Error: DISCORD_TOKEN is not set. Please check your .env file!")
+    print(" Error: DISCORD_TOKEN is not set. Please check your .env file!")
     exit()
     
 
 if report_channel_id == 0:
-    print("⚠ Warning: REPORT_CHANNEL_ID is not set. Please check your .env file!")
+    print(" Warning: REPORT_CHANNEL_ID is not set. Please check your .env file!")
 
 # Instantiate Model, ViewModel, and View
 prediction_model = PredictionModel()
@@ -51,7 +51,7 @@ client = PredictView(
     intents=intents
 )
 
-report_client = ReportView(intents=intents, allowed_guild_id=allowed_guild_id)
+report_client = ReportView(allowed_guild_id=allowed_guild_id)
 
 
 # Scheduler
@@ -59,12 +59,12 @@ scheduler = AsyncIOScheduler()
 
 DASHBOARD_DARK = True
 
-@scheduler.scheduled_job("cron", hour=17, minute=4)
+@scheduler.scheduled_job("cron", hour=9, minute=55)
 async def send_daily_report():
-    print("🕔 Scheduled: Sending daily report...")
+    print(" Scheduled: Sending daily report...")
     channel = client.get_channel(report_channel_id)
     if not channel:
-        print("⚠️ Report channel not found.")
+        print(" Report channel not found.")
         return
     await report_client.send_daily_report(channel)
 
@@ -92,6 +92,18 @@ async def on_ready():
                     authors.add(member.name)
     Thread(target=run_flask, args=(sorted(authors),)).start()
 
+@client.event
+async def on_message(message):
+    # Ignore bot's own messages or messages outside a guild
+    if message.author.bot or not message.guild:
+        return
+
+    # Always pass message to the prediction handler
+    await client.handle_prediction_message(message)
+
+    # Only pass to report handler if in the report channel
+    if message.channel.name == os.getenv("REPORT_CHANNEL_NAME", "report"):
+        await report_client.handle_report_query(message)
 
 
     
