@@ -1,7 +1,7 @@
 import sqlite3
 import discord
 from discord.ext import commands
-
+import json
 class DataModel:
     def __init__(self, db_path="channel_data.db"):
         self.conn = sqlite3.connect(db_path)

@@ -17,13 +17,11 @@ def daily_report():
     
     try:
         if from_date_str and to_date_str:
-            # Bot or user manually specified range
             start_date = datetime.strptime(from_date_str, "%Y-%m-%d").date()
             end_date = datetime.strptime(to_date_str, "%Y-%m-%d").date()
         else:
-            # Scheduler or default case: use today
-            today = datetime.now().date()
-            start_date = end_date = today
+            start_date = datetime(2000, 1, 1).date()
+            end_date = datetime.now().date()
     except ValueError:
         return jsonify({"report": []})
     
@@ -94,10 +92,8 @@ def report_by_status():
 @report_api.route("/report_by_user", methods=["GET"])
 def report_by_user():
     user = request.args.get("user", "").strip().lower()
-    if not user:
-        return jsonify({"report": []})
+    user_id = request.args.get("user_id", "").strip()
 
-    # Optional date range
     from_date_str = request.args.get("from")
     to_date_str = request.args.get("to")
 
@@ -106,8 +102,8 @@ def report_by_user():
             start_date = datetime.strptime(from_date_str, "%Y-%m-%d").date()
             end_date = datetime.strptime(to_date_str, "%Y-%m-%d").date()
         else:
-            today = datetime.now().date()
-            start_date = end_date = today
+            start_date = datetime(2000, 1, 1).date()
+            end_date = datetime.now().date()
     except ValueError:
         return jsonify({"report": []})
 
@@ -116,44 +112,112 @@ def report_by_user():
 
     conn = sqlite3.connect("discord_tasks.db")
     cursor = conn.cursor()
-    sql = """
-        SELECT description as title, content, status, label,
-               emoji, author, channel, timestamp
-        FROM tasks
-        WHERE timestamp BETWEEN ? AND ? AND LOWER(author) = ?
-        ORDER BY title, timestamp
-    """
-    rows = cursor.execute(sql, (start_str, end_str, user)).fetchall()
-    conn.close()
 
+    try:
+        if user_id:
+            sql = """
+                SELECT description as title, content, status, label,
+                       emoji, author, channel, timestamp
+                FROM tasks
+                WHERE timestamp BETWEEN ? AND ? 
+                  AND json_valid(author)
+                  AND json_extract(author, '$.id') = ?
+                ORDER BY title, timestamp
+            """
+            rows = cursor.execute(sql, (start_str, end_str, user_id)).fetchall()
+        elif user:
+            sql = """
+                SELECT description as title, content, status, label,
+                       emoji, author, channel, timestamp
+                FROM tasks
+                WHERE timestamp BETWEEN ? AND ?
+                  AND json_valid(author)
+                  AND LOWER(json_extract(author, '$.name')) = ?
+                ORDER BY title, timestamp
+            """
+            rows = cursor.execute(sql, (start_str, end_str, user)).fetchall()
+        else:
+            return jsonify({"report": []})
+
+    except sqlite3.OperationalError as e:
+        # Fallback: try matching legacy plain-text author names
+        print(f"⚠️ SQLite JSON error: {e}. Falling back to plain author match.")
+        if user:
+            sql = """
+                SELECT description as title, content, status, label,
+                       emoji, author, channel, timestamp
+                FROM tasks
+                WHERE timestamp BETWEEN ? AND ?
+                  AND LOWER(author) = ?
+                ORDER BY title, timestamp
+            """
+            rows = cursor.execute(sql, (start_str, end_str, user)).fetchall()
+        else:
+            rows = []
+
+    conn.close()
     return jsonify({"report": group_rows(rows)})
+
+
 
 
 
 @report_api.route("/report_by_user_and_status", methods=["GET"])
 def report_by_user_and_status():
     user = request.args.get("user", "").strip().lower()
+    user_id = request.args.get("user_id", "").strip()
     status = request.args.get("status", "").strip().lower()
-    if not user or not status:
+
+    if not status or (not user and not user_id):
         return jsonify({"report": []})
 
-    today = datetime.now().date()
-    start_str = f"{today} 00:00:00"
-    end_str = f"{today} 23:59:59"
+    from_date_str = request.args.get("from")
+    to_date_str = request.args.get("to")
+
+    try:
+        if from_date_str and to_date_str:
+            start_date = datetime.strptime(from_date_str, "%Y-%m-%d").date()
+            end_date = datetime.strptime(to_date_str, "%Y-%m-%d").date()
+        else:
+            start_date = datetime(2000, 1, 1).date()
+            end_date = datetime.now().date()
+    except ValueError:
+        return jsonify({"report": []})
+
+    start_str = f"{start_date} 00:00:00"
+    end_str = f"{end_date} 23:59:59"
 
     conn = sqlite3.connect("discord_tasks.db")
     cursor = conn.cursor()
-    sql = """
-        SELECT description as title, content, status, label,
-               emoji, author, channel, timestamp
-        FROM tasks
-        WHERE timestamp BETWEEN ? AND ? AND LOWER(author) = ? AND LOWER(status) = ?
-        ORDER BY title, timestamp
-    """
-    rows = cursor.execute(sql, (start_str, end_str, user, status)).fetchall()
-    conn.close()
 
+    if user_id:
+        sql = """
+            SELECT description as title, content, status, label,
+                   emoji, author, channel, timestamp
+            FROM tasks
+            WHERE timestamp BETWEEN ? AND ? 
+              AND json_extract(author, '$.id') = ?
+              AND LOWER(status) = ?
+            ORDER BY title, timestamp
+        """
+        rows = cursor.execute(sql, (start_str, end_str, user_id, status)).fetchall()
+    elif user:
+        sql = """
+            SELECT description as title, content, status, label,
+                   emoji, author, channel, timestamp
+            FROM tasks
+            WHERE timestamp BETWEEN ? AND ? 
+              AND LOWER(json_extract(author, '$.name')) = ?
+              AND LOWER(status) = ?
+            ORDER BY title, timestamp
+        """
+        rows = cursor.execute(sql, (start_str, end_str, user, status)).fetchall()
+    else:
+        return jsonify({"report": []})
+
+    conn.close()
     return jsonify({"report": group_rows(rows)})
+
 
 
 def group_rows(rows):

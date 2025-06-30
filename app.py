@@ -98,13 +98,16 @@ async def on_message(message):
     if message.author.bot or not message.guild:
         return
 
-    # Always pass message to the prediction handler
-    await client.handle_prediction_message(message)
-
     # Only pass to report handler if in the report channel
     if message.channel.name == os.getenv("REPORT_CHANNEL_NAME", "report"):
-        await report_client.handle_report_query(message)
-
+        content = message.content.lower()
+        if any(word in content for word in ["rapport", "report", "status", "tâches", "tasks"]):
+            await report_client.handle_report_query(message)
+            return
+            
+    # Always pass message to the prediction handler
+    await client.handle_prediction_message(message)
+        
 
     
 if __name__ == "__main__":

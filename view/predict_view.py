@@ -5,6 +5,9 @@ from collections import defaultdict
 from services.predict_service import PredictService
 from model.prediction_model import PredictionModel
 from viewmodel.conversation_viewmodel import ConversationViewModel
+import json
+from utils.helpers import get_display_name_from_author
+
 
 CATEGORY_TO_CHANNEL = {
     "front": "front",
@@ -34,7 +37,10 @@ class PredictView(discord.Client):
             return
 
         user_id = str(message.author.id)
-        author = str(message.author)
+        author_info = json.dumps({
+            "id": str(message.author.id),         # Store Discord user ID as string
+            "name": message.author.name           # Store Discord username
+        })
         content = message.content.strip()
 
         self.conversation_vm.store_user_message(user_id, message.author.name, content)
@@ -54,7 +60,7 @@ class PredictView(discord.Client):
             emoji    = item.get("emoji", "🟢")     
             channel_name = CATEGORY_TO_CHANNEL.get(category, "général")
 
-            self.model.store_prediction(sentence, title, author, channel_name, status,label,emoji)
+            self.model.store_prediction(sentence, title, author_info, channel_name, status,label,emoji)
             categorized[channel_name][title].append((sentence, f"{emoji} {label}"))
 
         for channel_name, projects in categorized.items():
@@ -63,7 +69,8 @@ class PredictView(discord.Client):
                 continue
 
             for title, items in projects.items():
-                formatted = self.format_message(title, author, items)
+                author_name,_ = get_display_name_from_author(author_info, message.guild)
+                formatted = self.format_message(title, author_name, items)
                 await target_channel.send(formatted)
 
         await message.channel.send("✅ Tâches classées et enregistrées.")
