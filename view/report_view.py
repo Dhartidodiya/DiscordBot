@@ -5,7 +5,6 @@ from datetime import datetime, timedelta
 import aiohttp
 import dateparser
 import re
-from utils.date_parser import parse_date_range
 from utils.helpers import get_display_name_from_author
 
 class ReportView:
@@ -21,18 +20,23 @@ class ReportView:
        
         try:
             async with aiohttp.ClientSession() as session:
-                async with session.get(self.report_api_url) as resp:
+                async with session.get(f"{self.report_api_url}/daily_report") as resp:
+                    text = await resp.text()
+                    print(f"[DEBUG] Daily report fetch status: {resp.status}, response: {text}")
                     if resp.status != 200:
                         print(f"Failed to fetch report. Status: {resp.status}")
+                        
                         return
                     data = await resp.json()
+                   
+
         except Exception as e:
             print(f" API fetch error: {e}")
             return
 
         report_data = data.get("report", [])
         if not report_data:
-            await channel.send("🕘 Aucun rapport pour aujourd'hui.")
+            await channel.send(" Aucun rapport pour aujourd'hui.")
             return
 
         header = (
@@ -113,24 +117,25 @@ class ReportView:
 
         # Extract status
         status_match = re.search(
-            r"\b(?:status\s+)?(en\s+cours|in\s+progress|terminée?|finie?|completed|done)\b",
+            r"\b(?:status\s+)?(en\s+cours|in\s+progress|terminé[e]?|finie?|fini|finish|completed|done)\b",
             query_text.lower()
         )
+
         query_status = status_match.group(1).lower() if status_match else None
         print(f"[DEBUG] Extracted query_status: {query_status}")
-        if query_status in ["done", "terminée", "finie", "completed"]:
+        if query_status in ["done", "terminée", "terminé", "finie", "fini", "completed", "finish"]:
             query_status = "completed"
         elif query_status in ["en cours", "in progress"]:
             query_status = "in progress"
 
         # Extract date range
-        from_date, to_date = parse_date_range(query_text)
+        from_date, to_date = self.extract_date_range(query_text)
         print(f"[DEBUG] Extracted date range: {from_date} → {to_date}")
 
         # If no date found AND no user or status, send clarification message
         if not from_date or not to_date:
             if not query_user and not query_status:
-                await message.channel.send("❓ Je n'ai pas compris la date. Essayez par ex. 'rapport d'hier' ou 'du 5 juin au 10 juin'.")
+                await message.channel.send(" Je n'ai pas compris la date. Essayez par ex. 'rapport d'hier' ou 'du 5 juin au 10 juin'.")
                 return
             else:
                 from_date = to_date = None  # Dates are optional if user/status exists
@@ -174,23 +179,29 @@ class ReportView:
                 async with session.get(url) as resp:
                     print(f"[DEBUG] API status code: {resp.status}")
                     if resp.status != 200:
-                        await message.channel.send("❌ Erreur lors de la récupération du rapport.")
+                        await message.channel.send(" Erreur lors de la récupération du rapport.")
                         return
                     data = await resp.json()
                     print(f"[DEBUG] API response JSON: {data}")
         except Exception as e:
             print(f"[DEBUG] Exception during API call: {e}")
-            await message.channel.send(f"❌ Erreur de récupération : {e}")
+            await message.channel.send(f" Erreur de récupération : {e}")
             return
 
         report_data = data.get("report", [])
         if not report_data:
-            await message.channel.send("❗ Aucune tâche trouvée pour cette période.")
+            await message.channel.send(" Aucune tâche trouvée pour cette période.")
             return
 
         header = f"> Rapport d'activité"
         if from_date and to_date:
-            header += f" : {from_date} → {to_date}"
+            from_date_str = from_date.strftime("%d/%m/%Y")
+            to_date_str = to_date.strftime("%d/%m/%Y")
+            if from_date == to_date:
+                header += f" : {from_date_str}"
+            else:
+                header += f" : {from_date_str} → {to_date_str}"
+            
         await message.channel.send(header)
 
         for group in report_data:
@@ -229,7 +240,7 @@ class ReportView:
 
             
    
-    def extract_date_range(text: str):
+    def extract_date_range(self,text: str):
         text = text.lower().strip()
         today = datetime.today().date()
 
@@ -255,11 +266,17 @@ class ReportView:
             d2 = dateparser.parse(match.group(2), languages=["fr", "en"])
             if d1 and d2:
                 return d1.date(), d2.date()
+            
 
-        # Handle format: "5 juin", "10 June", etc.
-        d = dateparser.parse(text, languages=["fr", "en"])
-        if d:
-            return d.date(), d.date()
+        # Handle format: "5 juin", "10 June", "July 1", "3 juillet", etc.
+        match = re.search(
+            r"(\d{1,2}(?:st|nd|rd|th)?\s+\w+|\w+\s+\d{1,2}(?:st|nd|rd|th)?|\w+\s+\d{1,2}(?:,?\s+\d{4})?|\d{1,2}/\d{1,2}/\d{4})",
+            text)
+        if match:
+            date_substring = match.group(1).replace("du ", "").replace("de ", "").strip()
+            d = dateparser.parse(date_substring, languages=["fr", "en"],settings={'DATE_ORDER': 'DMY'})
+            if d:
+                return d.date(), d.date()
 
-        #  No valid date found
-        return None
+        
+        return None, None

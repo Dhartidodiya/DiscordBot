@@ -36,14 +36,14 @@ class TaskClassifierService:
 
         rows = self.cursor.fetchall()
         if not rows:
-            return "📌 No categorized tasks found today."
+            return " No categorized tasks found today."
 
         summary = {}
         for category, sentence in rows:
             summary.setdefault(category, []).append(sentence)
 
         # Format for Discord
-        report = "**📊 Daily Task Summary (by Category)**\n"
+        report = "** Daily Task Summary (by Category)**\n"
         for cat, items in summary.items():
             report += f"\n**{cat.capitalize()}**:\n"
             for s in items:

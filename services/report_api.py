@@ -10,30 +10,17 @@ data_model = DataModel()
 
 @report_api.route("/daily_report", methods=["GET"])
 def daily_report():
-    
-    from_date_str = request.args.get("from")
-    to_date_str = request.args.get("to")
-    
-    
-    try:
-        if from_date_str and to_date_str:
-            start_date = datetime.strptime(from_date_str, "%Y-%m-%d").date()
-            end_date = datetime.strptime(to_date_str, "%Y-%m-%d").date()
-        else:
-            start_date = datetime(2000, 1, 1).date()
-            end_date = datetime.now().date()
-    except ValueError:
-        return jsonify({"report": []})
-    
-        
-    print(f"📅 Parsed start_date: {start_date}, end_date: {end_date}")       
+    # Always use today's date
+    today = datetime.now().date()
+    start_date = end_date = today
+
+    print(f" Daily report date: {start_date}")
 
     # Convert to datetime strings for SQL
     start_str = f"{start_date} 00:00:00"
     end_str = f"{end_date} 23:59:59"
     print(f" SQL range: {start_str} -> {end_str}")
-    
-    
+
     conn = sqlite3.connect("discord_tasks.db")
     cursor = conn.cursor()
 
@@ -48,6 +35,7 @@ def daily_report():
     conn.close()
 
     return jsonify({"report": group_rows(rows)})
+
 
 
 @report_api.route("/report_by_status", methods=["GET"])
@@ -141,7 +129,7 @@ def report_by_user():
 
     except sqlite3.OperationalError as e:
         # Fallback: try matching legacy plain-text author names
-        print(f"⚠️ SQLite JSON error: {e}. Falling back to plain author match.")
+        print(f" SQLite JSON error: {e}. Falling back to plain author match.")
         if user:
             sql = """
                 SELECT description as title, content, status, label,

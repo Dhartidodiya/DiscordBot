@@ -3,7 +3,7 @@ import spacy
 from datetime import datetime
 from sentence_transformers import SentenceTransformer
 import numpy as np
-from fuzzywuzzy import fuzz  # ✅ For better matching
+from fuzzywuzzy import fuzz  #  For better matching
 
 class ConversationMemory:
     def __init__(self, db_path="conversation_memory.db"):
@@ -11,11 +11,11 @@ class ConversationMemory:
         self.cursor = self.conn.cursor()
         self.create_table()
 
-        # ✅ Load NLP Models
+        #  Load NLP Models
         self.nlp = spacy.load("fr_core_news_sm")  # French model (use "en_core_web_sm" for English)
         self.embedder = SentenceTransformer("all-MiniLM-L6-v2")  # Semantic search model
         
-        print("✅ SpaCy & Sentence Transformers loaded successfully!")
+        print(" SpaCy & Sentence Transformers loaded successfully!")
 
     def create_table(self):
         """Create a table to store conversations if it doesn't exist."""
@@ -60,13 +60,13 @@ class ConversationMemory:
         similarities = [np.dot(query_embedding, emb) / (np.linalg.norm(query_embedding) * np.linalg.norm(emb))
                         for emb in message_embeddings]
 
-        # ✅ Sort by similarity & fuzzy matching
+        #  Sort by similarity & fuzzy matching
         sorted_results = sorted(
             [(msg, timestamp, score) for (msg, timestamp), score in zip(messages, similarities)],
             key=lambda x: x[2], reverse=True
         )
         
-        # ✅ Apply fuzzy matching for better topic recognition
+        #  Apply fuzzy matching for better topic recognition
         final_results = [
             (msg, timestamp) for msg, timestamp, score in sorted_results
             if score > 0.5 or fuzz.ratio(query.lower(), msg.lower()) > 70  # Flexible matching

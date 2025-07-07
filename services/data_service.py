@@ -24,7 +24,7 @@ class DataService:
         """Fetch messages from the channel and store them in the SQLite database."""
         channel = discord.utils.get(client.get_all_channels(), name=channel_name)
         if not channel:
-            print(f"❌ Channel '{channel_name}' not found.")
+            print(f"Channel '{channel_name}' not found.")
             return 0
 
         fetched_count = 0
@@ -38,7 +38,7 @@ class DataService:
                 fetched_count += 1
 
         self.conn.commit()
-        print(f"✅ Stored {fetched_count} new messages in SQLite.")
+        print(f"Stored {fetched_count} new messages in SQLite.")
         return fetched_count
 
     def message_exists(self, message_id):
@@ -86,7 +86,7 @@ class DataService:
         conn.close()
 
         if not data:
-            return "📌 No categorized tasks found today."
+            return "No categorized tasks found today."
 
         # Group by category
         summary = {}
@@ -94,7 +94,7 @@ class DataService:
             summary.setdefault(category, []).append(sentence)
 
         # Format as a Discord message
-        report = "**📊 Daily Categorized Task Summary**\n"
+        report = "** Daily Categorized Task Summary**\n"
         for cat, items in summary.items():
             report += f"\n**{cat.capitalize()}**:\n"
             for s in items:

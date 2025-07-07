@@ -59,7 +59,7 @@ scheduler = AsyncIOScheduler()
 
 DASHBOARD_DARK = True
 
-@scheduler.scheduled_job("cron", hour=9, minute=55)
+@scheduler.scheduled_job("cron", hour=12, minute=8)
 async def send_daily_report():
     print(" Scheduled: Sending daily report...")
     channel = client.get_channel(report_channel_id)

@@ -1,0 +1,39 @@
+/* 1) Make the outer wrapper flex‐centered, with Bootstrap background, border and rounding */
+#filter-date .DateRangePickerInput {
+  display: flex !important;
+  align-items: center !important;
+
+  /* match Bootstrap form-control */
+  background-color: #fff !important;
+  border: 1px solid #ced4da !important;
+  border-radius: 0.25rem !important;
+
+  /* exact same height as your dropdowns */
+  height: 38px !important;
+  padding: 0 0.75rem !important;
+}
+
+/* 2) Remove the default box‐shadow & border from the inner inputs */
+#filter-date .DateInput_input,
+#filter-date .DateInput_input__display-text {
+  background: none !important;
+  border: none !important;
+  box-shadow: none !important;
+
+  /* make sure text vertically centers in our 38px container */
+  height: auto !important;
+  line-height: 1.5 !important;
+  padding: 0 !important;
+  font-size: 0.875rem !important;
+}
+
+/* 3) Keep the “→” on one line */
+#filter-date .DateInput_input__display-text {
+  white-space: nowrap !important;
+}
+
+/* 4) Tweak the little arrow icon color to match Bootstrap text-muted */
+#filter-date .DateRangePickerInput_arrow {
+  color: #6c757d !important;
+   margin: 0 0.5rem !important;
+}

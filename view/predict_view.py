@@ -26,7 +26,7 @@ class PredictView(discord.Client):
         self.allowed_guild_id = allowed_guild_id
 
     async def on_ready(self):
-        print(f"✅ PredictBot ready as {self.user}")
+        print(f"PredictBot ready as {self.user}")
 
     async def handle_prediction_message(self, message):
         if message.author == self.user or not message.guild:
@@ -47,7 +47,7 @@ class PredictView(discord.Client):
 
         predictions = await self.predict_service.predict(content)
         if not predictions:
-            await message.channel.send("❌ Aucune prédiction reçue.")
+            await message.channel.send(" Aucune prédiction reçue.")
             return
 
         categorized = defaultdict(lambda: defaultdict(list))
@@ -55,9 +55,23 @@ class PredictView(discord.Client):
             sentence = item["sentence"]
             category = item.get("category", "general").lower()
             title = item.get("title", "General")
-            status = item.get("status") or "completed"
-            label    = item.get("label") or "Terminé"
-            emoji    = item.get("emoji", "🟢")     
+            status = (item.get("status") or "completed").lower()
+            if status in ["done", "terminée","terminé", "finie","fini","finish", "completed"]:
+                status = "completed"
+                label = "Completed"
+                emoji = "🟢"
+            elif status in ["en cours", "in progress"]:
+                status = "in progress"
+                label = "In Progress"
+                emoji = "🟡"
+            elif status in ["on hold", "en attente"]:
+                status = "on hold"
+                label = "On Hold"
+                emoji = "🔴"
+            else:
+                label = item.get("label") or "Completed"
+                emoji = item.get("emoji", "🟢")
+                        
             channel_name = CATEGORY_TO_CHANNEL.get(category, "général")
 
             self.model.store_prediction(sentence, title, author_info, channel_name, status,label,emoji)
@@ -73,7 +87,7 @@ class PredictView(discord.Client):
                 formatted = self.format_message(title, author_name, items)
                 await target_channel.send(formatted)
 
-        await message.channel.send("✅ Tâches classées et enregistrées.")
+        await message.channel.send(" Tâches classées et enregistrées.")
 
     def format_message(self, title, author, items):
         # Safe-guard: treat None or "" as “Sans titre”
